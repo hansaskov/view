@@ -21,8 +21,3 @@ This project aims to to be the singular OpenSource application for your home med
 - Immich (Google photo)
 - Jellyfin
 - Onedrive
-
-
-## Stack
-- Singular executeable
-- 

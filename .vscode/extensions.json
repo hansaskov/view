@@ -5,7 +5,6 @@
     "meganrogge.template-string-converter",
     "oven.bun-vscode",
     "biomejs.biome",
-    "ms-azuretools.vscode-docker",
     "rphlmr.vscode-drizzle-orm"
   ]
 }

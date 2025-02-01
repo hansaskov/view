@@ -13,9 +13,15 @@
     "rootDir": "./src",
     "noEmit": true,
     "allowImportingTsExtensions": true,
-    "noUncheckedIndexedAccess": true
+    "noUncheckedIndexedAccess": true,
+    "paths": {
+      "$config/*": [ "./src/config/*" ],
+      "$db/*": [ "./src/db/*" ],
+      "$collections/*": [ "./src/collections/*" ]
+    }
   },
   "include": [
     "src"
   ],
+
 }
