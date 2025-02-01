@@ -2,8 +2,7 @@ import { Elysia } from "elysia";
 import { db } from "./db/drizzle"
 import { users } from "./collection/user/schema";
 
-db.insert(users).values({
-    id: "1",
+await db.insert(users).values({
     name: "Hans",
     email: "hans@askov.dk",
     emailVerified: true

@@ -19,5 +19,5 @@ process.on("unhandledRejection", (error) => {
 });
 
 app.listen(env.PORT ?? 3000, () =>
-	console.log(`🦊 Server started at ${app.server?.url.origin}`),
+	console.log(`🚀 Server started at ${app.server?.url.origin}`),
 );

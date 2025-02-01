@@ -1,6 +1,7 @@
 import type { Config } from "drizzle-kit"
+import { getSqlitePath } from "./src/config/enviroment"
 
-const SQLITE = process.env.SQLITE ?? "sqlite.db"
+const SQLITE_PATH = getSqlitePath()
 
 export default {
   schema: "./src/collection/**/schema.ts",
@@ -8,6 +9,6 @@ export default {
   dialect: "sqlite",
   casing: "snake_case",
   dbCredentials: {
-    url: `file:./${SQLITE}`
+    url: SQLITE_PATH
   }
 } satisfies Config
