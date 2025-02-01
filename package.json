@@ -1,0 +1,25 @@
+{
+  "name": "view",
+  "type": "module",
+  "scripts": {
+    "dev": "bun --watch src/index.ts",
+    "start": "NODE_ENV=production bun run ./src/index.ts",
+    "lint": "bun x @biomejs/biome check src",
+    "lint:fix": "bun lint --write",
+    "db:generate": "bun x drizzle-kit generate",
+    "db:push": "bun x drizzle-kit push",
+    "db:migrate": "bun x drizzle-kit migrate",
+    "db:studio": "bun x drizzle-kit studio"
+  },
+  "dependencies": {
+    "better-auth": "^1.1.15",
+    "drizzle-orm": "^0.39.1",
+    "elysia": "^1.2.10"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@types/bun": "^1.2.1",
+    "drizzle-kit": "^0.30.4",
+    "typescript": "^5.7.3"
+  }
+}

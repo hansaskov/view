@@ -1,0 +1,16 @@
+services:
+  backend:
+    build: 
+      dockerfile: ./Dockerfile.develop
+    develop:
+      watch:
+        - action: sync
+          path: ./src
+          target: /app/src
+        - action: sync+restart
+          path: ./.env
+          target: /app/.env
+        - action: rebuild
+          path: ./package.json
+    environment:
+      - NODE_ENV=development
