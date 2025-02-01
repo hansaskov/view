@@ -1,9 +1,9 @@
-import { randomUUIDv7 } from "bun";
+import { randomUUID } from "node:crypto";
 import { sqliteTable, text, integer } from "drizzle-orm/sqlite-core";
 
 
 export const users = sqliteTable('users', {
-    id: text().primaryKey(),
+    id: text().primaryKey().default(randomUUID()),
     name: text().notNull(),
     email: text().notNull(),
     emailVerified: integer({ mode: "boolean" }).notNull(),
