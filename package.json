@@ -2,11 +2,13 @@
   "name": "view",
   "type": "module",
   "scripts": {
-    "dev": "bun --watch src/index.ts",
-    "start": "NODE_ENV=production bun run ./src/index.ts",
-    "lint": "bun x @biomejs/biome check src",
-    "lint:fix": "bun lint --write",
+    "dev": "bun src/index.ts --watch",
+    "start": "NODE_ENV=production bun ./src/index.ts",
+    "check": "bun x tsc --noEmit",
+    "format": "bun x @biomejs/biome format src --write",
+    "lint": "bun x @biomejs/biome check src --write",
     "db:generate": "bun x drizzle-kit generate",
+    "db:migrate": "bun x drizzle-kit migrate",
     "db:studio": "bun x drizzle-kit studio"
   },
   "dependencies": {
