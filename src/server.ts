@@ -1,6 +1,6 @@
 import { Elysia } from "elysia";
 import { db } from "./db/drizzle"
-import { users } from "./collection/user/schema";
+import { users } from "./collections/user/schema";
 
 await db.insert(users).values({
     name: "Hans",
