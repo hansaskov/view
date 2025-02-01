@@ -4,7 +4,7 @@ import { getSqlitePath } from "./src/config/enviroment"
 const SQLITE_PATH = getSqlitePath()
 
 export default {
-  schema: "./src/collection/**/schema.ts",
+  schema: "./src/collections/**/schema.ts",
   out: "./src/db/migrations",
   dialect: "sqlite",
   casing: "snake_case",
