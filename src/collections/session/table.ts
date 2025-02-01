@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import users from "$collections/users";
+import { table as users } from "$collections/users/table";
 import { sql } from "drizzle-orm";
 import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
@@ -9,7 +9,7 @@ export const table = sqliteTable(TABLE_NAME, {
 	id: text().primaryKey().$defaultFn(randomUUID),
 	userId: text()
 		.notNull()
-		.references(() => users.table.id, { onDelete: "cascade" }),
+		.references(() => users.id, { onDelete: "cascade" }),
 	token: text().notNull(),
 	expiresAt: integer({ mode: "timestamp" }).notNull(),
 	ipAddress: text(),
