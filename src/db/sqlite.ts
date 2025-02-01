@@ -1,8 +1,7 @@
-
 import { Database } from "bun:sqlite";
 import { getSqlitePath } from "../config/enviroment";
 
-const SQLITE_PATH = getSqlitePath()
+const SQLITE_PATH = getSqlitePath();
 
 console.log(`🗂️  Running sqlite at ${SQLITE_PATH}`);
 
