@@ -29,7 +29,7 @@ jobs:
     steps: 
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
-      - name: Check format
+      - name: Check lints
         run: bun x @biomejs/biome lint src --error-on-warnings
 
   build:
@@ -38,5 +38,5 @@ jobs:
       - uses: actions/checkout@v4
       - name: Copy env file
         run: cp .env.example .env
-      - name: Build Docker Images
+      - name: Build Docker Image
         run: docker compose -f compose.yaml build
