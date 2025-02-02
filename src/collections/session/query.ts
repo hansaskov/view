@@ -19,3 +19,7 @@ export async function insert(values: Insert[]): Promise<Select[]>;
 export async function insert(values: Insert | Insert[]) {
 	return Array.isArray(values) ? insertMany(values) : insertOne(values);
 }
+
+export async function selectAll() {
+	return await db.select().from(table);
+}

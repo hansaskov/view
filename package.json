@@ -2,7 +2,7 @@
   "name": "view",
   "type": "module",
   "scripts": {
-    "dev": "bun src/index.ts --watch",
+    "dev": "bun --watch src/index.ts ",
     "start": "NODE_ENV=production bun ./src/index.ts",
     "check": "bun x tsc --noEmit",
     "format": "bun x @biomejs/biome format src --write",
