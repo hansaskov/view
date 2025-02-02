@@ -1,4 +1,4 @@
-import users from "$collections/users";
+import { users, type User } from "$collections/users";
 import { Elysia } from "elysia";
 
 export const app = new Elysia()
@@ -9,3 +9,7 @@ export const app = new Elysia()
 		async () =>
 			await users.queries.insert({ name: "hans", email: "hans@asov.dk" }),
 	);
+
+const hans: User = await users.queries.selectFirst();
+
+console.log(hans);

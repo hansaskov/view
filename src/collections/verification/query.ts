@@ -23,3 +23,11 @@ export async function insert(values: Insert | Insert[]) {
 export async function selectAll() {
 	return await db.select().from(table);
 }
+
+export async function selectFirst() {
+	return await db
+		.select()
+		.from(table)
+		.limit(1)
+		.then(v => v[0] as Select);
+}
