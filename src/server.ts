@@ -1,4 +1,4 @@
-import { users, type User } from "$collections/users";
+import { type User, users } from "$collections/users";
 import { Elysia } from "elysia";
 
 export const app = new Elysia()
