@@ -8,6 +8,7 @@ WORKDIR /app
 # Copy necessary package files to install dependencies
 COPY package.json package.json
 COPY bun.lock bun.lock
+COPY tsconfig.json tsconfig.json
 
 # Install dependencies using Bun
 RUN bun install --production
