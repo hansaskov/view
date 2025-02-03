@@ -10,10 +10,10 @@
 <body class="min-h-screen flex flex-col">
     <main class="flex-grow flex flex-col gap-6 items-center justify-center">
         <fieldset class="w-xs flex flex-col gap-4 bg-base-100 border border-base-200 p-4 rounded-box">
-            <h1 class="font-semibold pb-2">Login</h1>
+            <h1 class="font-semibold">Login</h1>
 
-            <label class="floating-label flex flex-col gap-2">
-                <span>Username</span>
+            <div class="flex flex-col gap-2 ">
+                <legend class="text-xs font-semibold">username</legend>
                 <input type="input" class="input validator" required placeholder="Username"
                     pattern="[A-Za-z][A-Za-z0-9\-]*" minlength="3" maxlength="30"
                     title="Only letters, numbers or dash" />
@@ -21,26 +21,25 @@
                     Must be 3 to 30 characters
                     <br />containing only letters, numbers or dash
                 </p>
-            </label>
+            </div>
 
-            <label class="floating-label flex flex-col gap-2">
-                <span>Password</span>
+            <div class="flex flex-col gap-2 pb-2">
+                <legend class="text-xs font-semibold">password</legend>
                 <input type="password" class="input validator" required placeholder="Password" minlength="8"
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     title="Must be more than 8 characters, including number, lowercase letter, uppercase letter" />
                 <p class="validator-hint hidden">
-                    Must be 3 to 30 characters
-                    <br />containing only letters, numbers or dash
+                    Must be more than 8 characters, including
+                    <br />At least one number
+                    <br />At least one lowercase letter
+                    <br />At least one uppercase letter
                 </p>
-            </label>
-
-            <button class="btn btn-neutral">Login</button>
+            </div>
 
 
+            <button class="my-12 btn btn-neutral">Login</button>
 
             <hr class="h-[1px] border-t-0 bg-base-200" />
-
-
 
             <button class="btn bg-white text-black ">
                 <svg aria-label="Google logo" width="16" height="16" xmlns="http://www.w3.org/2000/svg"
