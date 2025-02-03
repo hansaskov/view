@@ -8,12 +8,13 @@
         "bun-plugin-tailwind": "^0.0.14",
         "drizzle-orm": "^0.39.1",
         "drizzle-typebox": "^0.3.0",
-        "elysia": "^1.2.10",
+        "elysia": "^1.2.11",
       },
       "devDependencies": {
         "@biomejs/biome": "^1.9.4",
         "@libsql/client": "^0.14.0",
-        "@types/bun": "^1.2.1",
+        "@types/bun": "^1.2.2",
+        "daisyui": "^5.0.0-beta.6",
         "drizzle-kit": "^0.30.4",
         "typescript": "^5.7.3",
       },
@@ -166,6 +167,8 @@
     "bun-types": ["bun-types@1.2.2", "", { "dependencies": { "@types/node": "*", "@types/ws": "~8.5.10" } }, "sha512-RCbMH5elr9gjgDGDhkTTugA21XtJAy/9jkKe/G3WR2q17VPGhcquf9Sir6uay9iW+7P/BV0CAHA1XlHXMAVKHg=="],
 
     "cookie": ["cookie@1.0.2", "", {}, "sha512-9Kr/j4O16ISv8zBBhJoi4bXOYNTkFLOqSL3UDB0njXxCXNezjeyVrJyGOWtgfs/q2km1gwBcfH8q1yEGoMYunA=="],
+
+    "daisyui": ["daisyui@5.0.0-beta.6", "", {}, "sha512-gwXHv6MApRBrvUayzg83vS6bfZ+y7/1VGLu0a8/cEAMviS4rXLCd4AndEdlVxhq+25wkAp0CZRkNQ7O4wIoFnQ=="],
 
     "data-uri-to-buffer": ["data-uri-to-buffer@4.0.1", "", {}, "sha512-0R9ikRb668HB7QDxT1vkpuUBtqc53YyAwMwGeUFKRojY/NWKvdZ+9UYtRfGmhqNbRkTSVpMbmyhXipFFv2cb/A=="],
 
