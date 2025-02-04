@@ -1,43 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="emerald" lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View</title>
     <link rel="stylesheet" href="./styles/reset.css" />
-    <link rel="stylesheet" href="./styles/styles.css" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5.0.0-beta.6/daisyui.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5.0.0-beta.6/themes.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
 <body class="min-h-screen flex flex-col">
+
     <main class="flex-grow flex flex-col gap-6 items-center justify-center">
-        <fieldset class="w-xs flex flex-col gap-4 bg-base-100 border border-base-200 p-4 rounded-box">
-            <h1 class="font-semibold">Login</h1>
-
-            <div class="flex flex-col gap-2 ">
-                <legend class="text-xs font-semibold">username</legend>
-                <input type="input" class="input validator" required placeholder="Username"
-                    pattern="[A-Za-z][A-Za-z0-9\-]*" minlength="3" maxlength="30"
-                    title="Only letters, numbers or dash" />
-                <p class="validator-hint hidden">
-                    Must be 3 to 30 characters
-                    <br />containing only letters, numbers or dash
-                </p>
+        <div class=" flex flex-col gap-4 w-xs  bg-base-100 border border-base-200 p-4 rounded-box">
+            <div role="tablist" class="tabs tabs-box">
+                <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Tab 1" />
+                <input type="radio" name="my_tabs_1" role="tab" class="tab" aria-label="Tab 2" checked="checked" />
             </div>
 
-            <div class="flex flex-col gap-2 pb-2">
-                <legend class="text-xs font-semibold">password</legend>
-                <input type="password" class="input validator" required placeholder="Password" minlength="8"
-                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                    title="Must be more than 8 characters, including number, lowercase letter, uppercase letter" />
-                <p class="validator-hint hidden">
-                    Must be more than 8 characters, including
-                    <br />At least one number
-                    <br />At least one lowercase letter
-                    <br />At least one uppercase letter
-                </p>
-            </div>
+            <fieldset class="flex flex-col gap-4">
+                <div class="flex flex-col gap-2 ">
+                    <legend class="text-xs font-semibold">username</legend>
+                    <input type="input" class="input validator" required placeholder="Username"
+                        pattern="[A-Za-z][A-Za-z0-9\-]*" minlength="3" maxlength="30"
+                        title="Only letters, numbers or dash" />
+                    <p class="validator-hint hidden">
+                        Must be 3 to 30 characters
+                        <br />containing only letters, numbers or dash
+                    </p>
+                </div>
 
+                <div class="flex flex-col gap-2 pb-2">
+                    <legend class="text-xs font-semibold">password</legend>
+                    <input type="password" class="input validator" required placeholder="Password" minlength="8"
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                        title="Must be more than 8 characters, including number, lowercase letter, uppercase letter" />
+                    <p class="validator-hint hidden">
+                        Must be more than 8 characters, including
+                        <br />At least one number
+                        <br />At least one lowercase letter
+                        <br />At least one uppercase letter
+                    </p>
+                </div>
 
-            <button class="my-12 btn btn-neutral">Login</button>
+                <button class="btn btn-neutral">Login</button>
+
+            </fieldset>
 
             <hr class="h-[1px] border-t-0 bg-base-200" />
 
@@ -54,7 +64,7 @@
                 </svg>
                 Login with Google
             </button>
-        </fieldset>
+        </div>
     </main>
 </body>
 
