@@ -13,10 +13,10 @@
     "studio": "bun x drizzle-kit studio"
   },
   "dependencies": {
-    "better-auth": "^1.1.15",
-    "drizzle-orm": "^0.39.1",
+    "better-auth": "^1.1.16",
+    "drizzle-orm": "^0.39.2",
     "drizzle-typebox": "^0.3.0",
-    "elysia": "^1.2.11"
+    "elysia": "^1.2.12"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
