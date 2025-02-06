@@ -12,20 +12,20 @@
 </head>
 
 <body class="min-h-screen flex flex-col">
-    <main class="flex-grow flex flex-col gap-6 items-center justify-center">
-        <div role="tablist" class="tabs tabs-lift ">
+    <main class="flex-grow flex flex-col gap-6 items-center pt-[25vh]">
+        <div role="tablist" class="tabs w-xs tabs-lift">
             <input type="radio" name="my_tabs_3" role="tab" class="tab" aria-label="Login" checked="checked" />
             <div class="tab-content bg-base-100  border border-base-200 p-4">
                 <div class="flex flex-col gap-4">
 
                     <fieldset class="flex flex-col gap-4">
-                        <div class="flex flex-col gap-2 ">
-                            <legend class="text-xs font-semibold">username</legend>
-                            <input type="input" class="input w-full" required placeholder="Username" />
+                        <div class="flex flex-col">
+                            <legend class="text-xs font-semibold pb-2">email</legend>
+                            <input type="email" class="input w-full" required placeholder="Email" autofocus />
                         </div>
 
-                        <div class="flex flex-col gap-2 pb-2">
-                            <legend class="text-xs font-semibold">password</legend>
+                        <div class="flex flex-col">
+                            <legend class="text-xs font-semibold pb-2">password</legend>
                             <input type="password" class="input w-full" required placeholder="Password" />
                         </div>
 
@@ -35,7 +35,7 @@
 
                     <hr class="h-[1px] border-t-0 bg-base-200" />
 
-                    <button class="btn w-full bg-white text-black ">
+                    <button class="btn w-full bg-white text-black">
                         <svg aria-label="Google logo" width="16" height="16" xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 512 512">
                             <g>
@@ -57,19 +57,36 @@
                 <div class="flex flex-col gap-4">
 
                     <fieldset class="flex flex-col gap-4">
-                        <div class="flex flex-col gap-2 ">
-                            <legend class="text-xs font-semibold">username</legend>
-                            <input type="input" class="input validator w-full" required placeholder="Username"
-                                pattern="[A-Za-z][A-Za-z0-9\-]*" minlength="3" maxlength="30"
-                                title="Only letters, numbers or dash" />
+
+                        <div class="flex flex-col">
+                            <legend class="text-xs font-semibold pb-2">first name</legend>
+                            <input type="input" class="input validator" required placeholder="First name"
+                                maxlength="40" />
                             <p class="validator-hint hidden">
-                                Must be 3 to 30 characters
-                                <br />containing only letters, numbers or dash
+                                Required and must have less than 40 characters
                             </p>
                         </div>
 
-                        <div class="flex flex-col gap-2 pb-2">
-                            <legend class="text-xs font-semibold">password</legend>
+                        <div class="flex flex-col">
+                            <legend class="text-xs font-semibold pb-2">last name</legend>
+                            <input type="input" class="input validator" required placeholder="Last name"
+                                maxlength="40" />
+                            <p class="validator-hint hidden">
+                                Required and must have less than 40 characters
+                            </p>
+                        </div>
+
+                        <div class="flex flex-col">
+                            <legend class="text-xs font-semibold pb-2">email</legend>
+                            <input type="email" class="input validator w-full" required placeholder="Email"
+                                pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" title="Please enter a valid email address" />
+                            <p class="validator-hint hidden">
+                                Must be a valid email address
+                            </p>
+                        </div>
+
+                        <div class="flex flex-col">
+                            <legend class="text-xs font-semibold pb-2">password</legend>
                             <input type="password" class="input validator w-full" required placeholder="Password"
                                 minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                                 title="Must be more than 8 characters, including number, lowercase letter, uppercase letter" />
@@ -81,13 +98,13 @@
                             </p>
                         </div>
 
-                        <button class="btn btn-neutral">Sign up</button>
+                        <button class="btn btn-neutral mt-2">Sign up</button>
 
                     </fieldset>
 
                     <hr class="h-[1px] border-t-0 bg-base-200" />
 
-                    <button class="btn w-full bg-white text-black ">
+                    <button class="btn w-full bg-white text-black">
                         <svg aria-label="Google logo" width="16" height="16" xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 512 512">
                             <g>
