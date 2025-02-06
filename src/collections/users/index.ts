@@ -6,4 +6,4 @@ export default { queries, schema, table } as const;
 
 export { default as users } from "./";
 export type * as User from "./types";
-export type User = User.Insert;
+export type User = User.Select;

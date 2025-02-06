@@ -6,4 +6,4 @@ export default { queries, schema, table } as const;
 
 export { default as verification } from "./";
 export * as Verification from "./types";
-export type Verification = Verification.Insert;
+export type Verification = Verification.Select;
