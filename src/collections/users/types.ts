@@ -1,4 +1,4 @@
-import type { PartialOmit, StrictPick } from "../../types/strict";
+import type { PartialOmit, StrictPick } from "$types/strict";
 import type { table } from "./table";
 
 export type Select = typeof table.$inferSelect;
