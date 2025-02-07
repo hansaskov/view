@@ -7,7 +7,7 @@ const TABLE_NAME = "users";
 export const table = sqliteTable(TABLE_NAME, {
 	id: text().primaryKey().$defaultFn(randomUUID),
 	name: text().notNull(),
-	email: text().notNull(),
+	email: text().unique().notNull(),
 	emailVerified: integer({ mode: "boolean" }).notNull().default(false),
 	image: text(),
 	createdAt: integer({ mode: "timestamp" })
