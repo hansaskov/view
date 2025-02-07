@@ -5,15 +5,8 @@
 		{
 			"idx": 0,
 			"version": "6",
-			"when": 1738449832520,
-			"tag": "0000_yielding_lady_ursula",
-			"breakpoints": true
-		},
-		{
-			"idx": 1,
-			"version": "6",
-			"when": 1738920859849,
-			"tag": "0001_chunky_weapon_omega",
+			"when": 1738926595999,
+			"tag": "0000_steady_madripoor",
 			"breakpoints": true
 		}
 	]

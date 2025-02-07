@@ -1,15 +1,27 @@
+import account from "$collections/account"
+import session from "$collections/session"
+import user from "$collections/user"
+import verification from "$collections/verification"
 import { db } from "$db/drizzle"
 import { betterAuth } from "better-auth"
 import { drizzleAdapter } from "better-auth/adapters/drizzle"
+import { openAPI } from "better-auth/plugins"
 import Elysia, { error } from "elysia"
 
 export const auth = betterAuth({
 	database: drizzleAdapter(db, {
-		provider: "sqlite", // or "mysql", "sqlite"
+		provider: "sqlite",
+		schema: {
+			user: user.table,
+			account: account.table,
+			verification: verification.table,
+			session: session.table,
+		},
 	}),
 	emailAndPassword: {
 		enabled: true,
 	},
+	plugins: [openAPI()],
 })
 
 export const authMiddleware = new Elysia()
@@ -32,5 +44,5 @@ export const authMiddleware = new Elysia()
 	.as("plugin")
 
 export const authRoutes = new Elysia({ prefix: "/api/auth/*" })
-	.post("/", auth.handler)
-	.get("/", auth.handler)
+	.post("/", ({ request }) => auth.handler(request))
+	.get("/", ({ request }) => auth.handler(request))

@@ -1,5 +1,6 @@
 import { env } from "elysia"
 import { app } from "./server.ts"
+import { logger } from "./utils/logger.ts"
 const signals = ["SIGINT", "SIGTERM"]
 
 for (const signal of signals) {
@@ -19,5 +20,5 @@ process.on("unhandledRejection", error => {
 })
 
 app.listen(env.PORT ?? 3000, () =>
-	console.log(`🚀 Server started at ${app.server?.url.origin}`),
+	logger.info(`🚀 Server started at ${app.server?.url.origin}`),
 )

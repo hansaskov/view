@@ -18,20 +18,24 @@
             <div class="tab-content bg-base-100  border border-base-200 p-4">
                 <div class="flex flex-col gap-4">
 
-                    <fieldset class="flex flex-col gap-4">
-                        <div class="flex flex-col">
-                            <legend class="text-xs font-semibold pb-2">email</legend>
-                            <input type="email" class="input w-full" required placeholder="Email" autofocus />
-                        </div>
+                    <form action="/api/auth/sign-in/email" method="post">
+                        <fieldset class="flex flex-col gap-4">
+                            <div class="flex flex-col">
+                                <legend class="text-xs font-semibold pb-2">email</legend>
+                                <input type="email" name="email" class="input w-full" required placeholder="Email"
+                                    autofocus />
+                            </div>
 
-                        <div class="flex flex-col">
-                            <legend class="text-xs font-semibold pb-2">password</legend>
-                            <input type="password" class="input w-full" required placeholder="Password" />
-                        </div>
+                            <div class="flex flex-col">
+                                <legend class="text-xs font-semibold pb-2">password</legend>
+                                <input type="password" name="password" class="input w-full" required
+                                    placeholder="Password" />
+                            </div>
 
-                        <button class="btn btn-neutral">Login</button>
+                            <button class="btn btn-neutral">Login</button>
 
-                    </fieldset>
+                        </fieldset>
+                    </form>
 
                     <hr class="h-[1px] border-t-0 bg-base-200" />
 
@@ -56,59 +60,51 @@
             <div class="tab-content bg-base-100  border border-base-200 p-4">
                 <div class="flex flex-col gap-4">
 
-                    <fieldset class="flex flex-col gap-4">
+                    <form action="/api/auth/sign-up/email" method="post">
+                        <fieldset class="flex flex-col gap-4">
 
-                        <div class="flex gap-4">
-                            <div class="flex flex-col w-1/2">
-                                <legend class="text-xs font-semibold pb-2">first name</legend>
-                                <input type="input" class="input validator w-full" required placeholder="First name"
-                                    maxlength="40" />
+                            <div class="flex flex-col">
+                                <legend class="text-xs font-semibold pb-2">Full names</legend>
+                                <input type="input" name="name" class="input validator w-full" required
+                                    placeholder="Your name" maxlength="40" />
                                 <p class="validator-hint hidden">
                                     Required
                                 </p>
                             </div>
 
-                            <div class="flex flex-col w-1/2">
-                                <legend class="text-xs font-semibold pb-2">last name</legend>
-                                <input type="input" class="input validator w-full" required placeholder="Last name"
-                                    maxlength="40" />
+                            <div class="flex flex-col">
+                                <legend class="text-xs font-semibold pb-2">email</legend>
+                                <input type="email" name="email" class="input validator w-full" required
+                                    placeholder="Your Email" pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+                                    title="Please enter a valid email address" />
                                 <p class="validator-hint hidden">
-                                    Required
+                                    Must be a valid email address
                                 </p>
                             </div>
-                        </div>
 
+                            <div class="flex flex-col">
+                                <legend class="text-xs font-semibold pb-2">password</legend>
+                                <input type="password" name="password" class="input validator w-full" required
+                                    placeholder="New Password" minlength="8"
+                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                    title="Must be more than 8 characters, including number, lowercase letter, uppercase letter" />
+                                <p class="validator-hint hidden">
+                                    Must be more than 8 characters, including
+                                    <br />At least one number
+                                    <br />At least one lowercase letter
+                                    <br />At least one uppercase letter
+                                </p>
+                            </div>
 
-                        <div class="flex flex-col">
-                            <legend class="text-xs font-semibold pb-2">email</legend>
-                            <input type="email" class="input validator w-full" required placeholder="Email"
-                                pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" title="Please enter a valid email address" />
-                            <p class="validator-hint hidden">
-                                Must be a valid email address
-                            </p>
-                        </div>
+                            <div class="flex flex-col">
+                                <legend class="text-xs font-semibold pb-2">profile picture (optional)</legend>
+                                <input type="file" class="file-input text-xs file-input-sm h-10" accept="image/*" />
+                            </div>
 
-                        <div class="flex flex-col">
-                            <legend class="text-xs font-semibold pb-2">password</legend>
-                            <input type="password" class="input validator w-full" required placeholder="Password"
-                                minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                                title="Must be more than 8 characters, including number, lowercase letter, uppercase letter" />
-                            <p class="validator-hint hidden">
-                                Must be more than 8 characters, including
-                                <br />At least one number
-                                <br />At least one lowercase letter
-                                <br />At least one uppercase letter
-                            </p>
-                        </div>
+                            <button class="btn btn-neutral mt-2">Sign up</button>
 
-                        <div class="flex flex-col">
-                            <legend class="text-xs font-semibold pb-2">profile picture (optional)</legend>
-                            <input type="file" class="file-input text-xs file-input-sm h-10" accept="image/*" />
-                        </div>
-
-                        <button class="btn btn-neutral mt-2">Sign up</button>
-
-                    </fieldset>
+                        </fieldset>
+                    </form>
 
                     <hr class="h-[1px] border-t-0 bg-base-200" />
 

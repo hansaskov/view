@@ -1,7 +1,7 @@
 {
 	"version": "6",
 	"dialect": "sqlite",
-	"id": "64589c35-d318-439a-b0cb-de53a5ce4a00",
+	"id": "7f3a1c82-7b6e-4458-88e1-aadd1aa92c6b",
 	"prevId": "00000000-0000-0000-0000-000000000000",
 	"tables": {
 		"account": {
@@ -101,10 +101,10 @@
 			},
 			"indexes": {},
 			"foreignKeys": {
-				"account_user_id_users_id_fk": {
-					"name": "account_user_id_users_id_fk",
+				"account_user_id_user_id_fk": {
+					"name": "account_user_id_user_id_fk",
 					"tableFrom": "account",
-					"tableTo": "users",
+					"tableTo": "user",
 					"columnsFrom": ["user_id"],
 					"columnsTo": ["id"],
 					"onDelete": "cascade",
@@ -177,10 +177,10 @@
 			},
 			"indexes": {},
 			"foreignKeys": {
-				"session_user_id_users_id_fk": {
-					"name": "session_user_id_users_id_fk",
+				"session_user_id_user_id_fk": {
+					"name": "session_user_id_user_id_fk",
 					"tableFrom": "session",
-					"tableTo": "users",
+					"tableTo": "user",
 					"columnsFrom": ["user_id"],
 					"columnsTo": ["id"],
 					"onDelete": "cascade",
@@ -191,8 +191,8 @@
 			"uniqueConstraints": {},
 			"checkConstraints": {}
 		},
-		"users": {
-			"name": "users",
+		"user": {
+			"name": "user",
 			"columns": {
 				"id": {
 					"name": "id",
@@ -228,6 +228,64 @@
 					"type": "text",
 					"primaryKey": false,
 					"notNull": false,
+					"autoincrement": false
+				},
+				"created_at": {
+					"name": "created_at",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true,
+					"autoincrement": false
+				},
+				"updated_at": {
+					"name": "updated_at",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true,
+					"autoincrement": false
+				}
+			},
+			"indexes": {
+				"user_email_unique": {
+					"name": "user_email_unique",
+					"columns": ["email"],
+					"isUnique": true
+				}
+			},
+			"foreignKeys": {},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {},
+			"checkConstraints": {}
+		},
+		"verification": {
+			"name": "verification",
+			"columns": {
+				"id": {
+					"name": "id",
+					"type": "text",
+					"primaryKey": true,
+					"notNull": true,
+					"autoincrement": false
+				},
+				"identifier": {
+					"name": "identifier",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": true,
+					"autoincrement": false
+				},
+				"value": {
+					"name": "value",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": true,
+					"autoincrement": false
+				},
+				"expires_at": {
+					"name": "expires_at",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true,
 					"autoincrement": false
 				},
 				"created_at": {
