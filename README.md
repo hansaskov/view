@@ -10,7 +10,8 @@ This project aims to to be the singular OpenSource application for your home med
 - [x] Web support
 - [x] Sign up with email and password.
 - [x] Login with email and password.
-- [ ] Upgrade to use tsx. Wait for new update
+- [x] Upgrade to use tsx. Wait for new update
+- [ ] Refactor homepage and login page to react, react router and better-stack
 - [ ] Send emails.
 - [ ] Password reset.
 - [ ] Upload photos
