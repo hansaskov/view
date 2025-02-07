@@ -5,5 +5,12 @@
   },
   "[typescript]": {
     "editor.defaultFormatter": "biomejs.biome"
+  },
+  "workbench.editor.customLabels.patterns": {
+    "**/src/collections/**/index.ts": "${dirname} - index.ts",
+    "**/src/collections/**/query.ts": "${dirname} - query.ts",
+    "**/src/collections/**/schema.ts": "${dirname} - schema.ts",
+    "**/src/collections/**/table.ts": "${dirname} - table.ts",
+    "**/src/collections/**/types.ts": "${dirname} - types.ts",
   }
 }
