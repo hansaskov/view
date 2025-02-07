@@ -10,6 +10,10 @@ export const table = sqliteTable(TABLE_NAME, {
 	email: text().unique().notNull(),
 	emailVerified: integer({ mode: "boolean" }).notNull().default(false),
 	image: text(),
+	role: text(),
+	banned: integer({ mode: "boolean" }),
+	banReason: text(),
+	banExpires: integer({ mode: "timestamp_ms" }),
 	createdAt: integer({ mode: "timestamp" })
 		.notNull()
 		.$default(() => sql`(current_timestamp)`),

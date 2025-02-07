@@ -5,8 +5,9 @@ import verification from "$collections/verification"
 import { db } from "$db/drizzle"
 import { betterAuth } from "better-auth"
 import { drizzleAdapter } from "better-auth/adapters/drizzle"
-import { openAPI } from "better-auth/plugins"
+import { admin, openAPI } from "better-auth/plugins"
 import Elysia, { error } from "elysia"
+import { logger } from "../utils/logger"
 
 export const auth = betterAuth({
 	database: drizzleAdapter(db, {
@@ -21,28 +22,48 @@ export const auth = betterAuth({
 	emailAndPassword: {
 		enabled: true,
 	},
-	plugins: [openAPI()],
+	plugins: [openAPI(), admin()],
 })
 
 export const authMiddleware = new Elysia()
 	.macro({
-		isAuth: {
+		role: (role: "user" | "admin") => ({
 			async resolve({ request }) {
 				const session = await auth.api.getSession({ headers: request.headers })
 
 				if (!session) {
-					return error("Method Not Allowed")
+					return error("Unauthorized", "Authentication is required")
 				}
 
-				return {
-					user: session.user,
-					session: session.session,
+				switch (role) {
+					case "user":
+						return {
+							user: session.user,
+							session: session.session,
+						}
+					case "admin":
+						if (!session.user.role) {
+							return error("Unauthorized", "User has no role")
+						}
+
+						if (session.user.role !== "admin") {
+							return error("Unauthorized", "Admin privilages required")
+						}
+						return {
+							user: session.user,
+							session: session.session,
+						}
+					default:
+						logger.error("❌ Auth Middleware Unreachable state reached")
+						return
 				}
 			},
-		},
+		}),
 	})
 	.as("plugin")
 
 export const authRoutes = new Elysia({ prefix: "/api/auth/*" })
 	.post("/", ({ request }) => auth.handler(request))
 	.get("/", ({ request }) => auth.handler(request))
+	.use(authMiddleware)
+	.get("/", ({ user }) => user.role, { role: "user" })
