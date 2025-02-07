@@ -1,4 +1,4 @@
-import { use, Suspense, cache } from "react"
+import { Suspense, cache, use } from "react"
 import { createRoot } from "react-dom/client"
 
 const fetchNames = cache(() => fetch("/api/names").then(res => res.json()))

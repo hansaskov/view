@@ -1,6 +1,6 @@
 import { Elysia } from "elysia"
-import { authMiddleware, authRoutes } from "./auth/better-auth"
 import react from "./app/index.html"
+import { authMiddleware, authRoutes } from "./auth/better-auth"
 import { logger } from "./utils/logger"
 
 export const app = new Elysia()
