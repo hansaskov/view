@@ -5,9 +5,9 @@ import login from "./pages/login.html"
 import { logger } from "./utils/logger"
 
 export const app = new Elysia()
-	.onBeforeHandle(({ path }) => logger.info(path))
 	.use(authRoutes)
 	.use(authMiddleware)
+	.onBeforeHandle(({ path }) => logger.info(path))
 	.get("/favicon.ico", Bun.file("./public/favicon.ico"))
 	.get("/", homepage)
 	.get("/login", login)
