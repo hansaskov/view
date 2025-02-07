@@ -1,8 +1,8 @@
 {
 	"version": "6",
 	"dialect": "sqlite",
-	"id": "8e86b993-5afb-4b96-8b1b-94d0bca247af",
-	"prevId": "7f3a1c82-7b6e-4458-88e1-aadd1aa92c6b",
+	"id": "a16b6a00-2767-4640-b080-ecc3a6b9dd4c",
+	"prevId": "8e86b993-5afb-4b96-8b1b-94d0bca247af",
 	"tables": {
 		"account": {
 			"name": "account",
@@ -241,8 +241,9 @@
 					"name": "role",
 					"type": "text",
 					"primaryKey": false,
-					"notNull": false,
-					"autoincrement": false
+					"notNull": true,
+					"autoincrement": false,
+					"default": "'user'"
 				},
 				"banned": {
 					"name": "banned",

@@ -1,13 +1,12 @@
 import account from "$collections/account"
-import session from "$collections/session"
-import user from "$collections/user"
+import session, { type Session } from "$collections/session"
+import user, { type User } from "$collections/user"
 import verification from "$collections/verification"
 import { db } from "$db/drizzle"
 import { betterAuth } from "better-auth"
 import { drizzleAdapter } from "better-auth/adapters/drizzle"
 import { admin, openAPI } from "better-auth/plugins"
 import Elysia, { error } from "elysia"
-import { logger } from "../utils/logger"
 
 export const auth = betterAuth({
 	database: drizzleAdapter(db, {
@@ -27,7 +26,7 @@ export const auth = betterAuth({
 
 export const authMiddleware = new Elysia()
 	.macro({
-		role: (role: "user" | "admin") => ({
+		isAuth: {
 			async resolve({ request }) {
 				const session = await auth.api.getSession({ headers: request.headers })
 
@@ -35,35 +34,34 @@ export const authMiddleware = new Elysia()
 					return error("Unauthorized", "Authentication is required")
 				}
 
-				switch (role) {
-					case "user":
-						return {
-							user: session.user,
-							session: session.session,
-						}
-					case "admin":
-						if (!session.user.role) {
-							return error("Unauthorized", "User has no role")
-						}
-
-						if (session.user.role !== "admin") {
-							return error("Unauthorized", "Admin privilages required")
-						}
-						return {
-							user: session.user,
-							session: session.session,
-						}
-					default:
-						logger.error("❌ Auth Middleware Unreachable state reached")
-						return
+				return {
+					user: session.user as User,
+					session: session.session as Session,
 				}
 			},
-		}),
+		},
+
+		isAdmin: {
+			async resolve({ request }) {
+				const session = await auth.api.getSession({ headers: request.headers })
+
+				if (!session) {
+					return error("Unauthorized", "Authentication is required")
+				}
+
+				if (session.user.role !== "admin") {
+					return error("Unauthorized", "Admin privilages is required")
+				}
+
+				return {
+					user: session.user as User,
+					session: session.session as Session,
+				}
+			},
+		},
 	})
 	.as("plugin")
 
 export const authRoutes = new Elysia({ prefix: "/api/auth/*" })
 	.post("/", ({ request }) => auth.handler(request))
 	.get("/", ({ request }) => auth.handler(request))
-	.use(authMiddleware)
-	.get("/", ({ user }) => user.role, { role: "user" })
