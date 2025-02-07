@@ -7,7 +7,7 @@ export const levels = ["info", "success", "warn", "error", "debug"] as const
 
 export function shouldPublishLog(
 	currentLogLevel: LogLevel,
-	logLevel: LogLevel,
+	logLevel: LogLevel
 ): boolean {
 	return levels.indexOf(logLevel) <= levels.indexOf(currentLogLevel)
 }
@@ -77,7 +77,7 @@ const formatMessage = (level: LogLevel, message: string): string => {
 }
 
 export const createLogger = (
-	options?: Logger,
+	options?: Logger
 ): Record<LogLevel, (...params: LogHandlerParams) => void> => {
 	const enabled = options?.disabled !== true
 	const logLevel = options?.level ?? "error"
@@ -85,7 +85,7 @@ export const createLogger = (
 	const LogFunc = (
 		level: LogLevel,
 		message: string,
-		args: unknown[] = [],
+		args: unknown[] = []
 	): void => {
 		if (!enabled || !shouldPublishLog(logLevel, level)) {
 			return
@@ -112,7 +112,7 @@ export const createLogger = (
 			level,
 			(...[message, ...args]: LogHandlerParams) =>
 				LogFunc(level, message, args),
-		]),
+		])
 	) as Record<LogLevel, (...params: LogHandlerParams) => void>
 }
 
