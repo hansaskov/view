@@ -20,7 +20,10 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": true
+			"recommended": true,
+			"performance": {
+				"all": true
+			}
 		}
 	},
 	"javascript": {
@@ -29,7 +32,8 @@
 			"trailingCommas": "all",
 			"bracketSpacing": true,
 			"bracketSameLine": false,
-			"arrowParentheses": "asNeeded"
+			"arrowParentheses": "asNeeded",
+			"semicolons": "asNeeded"
 		}
 	}
 }

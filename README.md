@@ -8,7 +8,9 @@ This project aims to to be the singular OpenSource application for your home med
 
 ## Functionality. 
 - [x] Web support
-- [ ] Authenticate with email and password.
+- [ ] Sign up with email and password.
+- [ ] Login with email and password.
+- [ ] Password reset.
 - [ ] Upload photos
 - [ ] Upload videos
 - [ ] View photos
