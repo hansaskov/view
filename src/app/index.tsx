@@ -1,30 +1,21 @@
-import { Suspense, cache, use } from "react"
-import { createRoot } from "react-dom/client"
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Route, Routes } from "react-router";
+import Homepage from "./homepage";
+import Login from "./login";
 
-const fetchNames = cache(() => fetch("/api/names").then(res => res.json()))
+const root = document.getElementById("root")
 
-function Names({ namesPromise }: { namesPromise: Promise<string[]> }) {
-	const names = use(namesPromise)
-
-	return (
-		<ul>
-			{names.map(name => (
-				<li key={name}>{name}</li>
-			))}
-		</ul>
-	)
-}
-
-function App() {
-	return (
-		<div>
-			<h1 className="text-3xl font-bold">Names</h1>
-			<Suspense fallback={<div>Loading...</div>}>
-				<Names namesPromise={fetchNames()} />
-			</Suspense>
-		</div>
-	)
+if (!root) {
+	console.error("ERROR: ROOT NOT FOUND")
 }
 
 // biome-ignore lint/style/noNonNullAssertion: <explanation>
-createRoot(document.getElementById("root")!).render(<App />)
+ReactDOM.createRoot(root!).render(
+  <BrowserRouter>
+	<Routes >
+		<Route path="/" element={<Homepage />}/>
+		<Route path="/login" element={<Login />}/>
+	</Routes>
+  </BrowserRouter>
+);
