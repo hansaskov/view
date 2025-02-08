@@ -17,38 +17,40 @@
             <input type="radio" name="my_tabs_3" role="tab" class="tab" aria-label="Login" checked />
             <div class="tab-content bg-base-100  border border-base-200 p-4">
                 <div class="flex flex-col gap-4">
-
                     <form action="/api/auth/sign-in/email" method="post">
                         <fieldset class="flex flex-col gap-4">
-                            <div class="flex flex-col">
-                                <label class="text-xs font-semibold pb-2">email</label>
-                                <input type="email" name="email" class="input w-full" required placeholder="Email"
-                                    autofocus />
-                            </div>
 
-                            <div class="flex flex-col">
-                                <label class="text-xs font-semibold pb-2">password</label>
-                                <input type="password" name="password" class="input w-full" required
+                            <label class="text-xs font-semibold">
+                                email
+                                <input type="email" name="email" class="input w-full mt-2" required
+                                    placeholder="Email" />
+                            </label>
+
+                            <label class="text-xs font-semibold">
+                                password
+                                <input type="password" name="password" class="input w-full mt-2" required
                                     placeholder="Password" />
-                            </div>
+                            </label>
 
-                            <button class="btn btn-neutral">Login</button>
 
+                            <button type="submit" class="btn btn-neutral mt-2">
+                                Login
+                            </button>
                         </fieldset>
                     </form>
 
                     <hr class="h-[1px] border-t-0 bg-base-200" />
 
-                    <button class="btn w-full bg-white text-black">
+                    <button type="submit" class="btn w-full bg-white text-black">
                         <svg aria-label="Google logo" width="16" height="16" xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 512 512">
+                            <title>Google logo</title>
                             <g>
-                                <path d="m0 0H512V512H0" fill="#fff"></path>
-                                <path fill="#34a853" d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"></path>
-                                <path fill="#4285f4" d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"></path>
-                                <path fill="#fbbc02" d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"></path>
-                                <path fill="#ea4335" d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55">
-                                </path>
+                                <path d="m0 0H512V512H0" fill="#fff" />
+                                <path fill="#34a853" d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341" />
+                                <path fill="#4285f4" d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57" />
+                                <path fill="#fbbc02" d="m90 341a208 200 0 010-171l63 49q-12 37 0 73" />
+                                <path fill="#ea4335" d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55" />
                             </g>
                         </svg>
                         Login with Google
@@ -59,68 +61,70 @@
             <input type="radio" name="my_tabs_3" role="tab" class="tab" aria-label="Sign Up" />
             <div class="tab-content bg-base-100  border border-base-200 p-4">
                 <div class="flex flex-col gap-4">
-
                     <form action="/api/auth/sign-up/email" method="post">
                         <fieldset class="flex flex-col gap-4">
 
-                            <div class="flex flex-col">
-                                <label class="text-xs font-semibold pb-2">full name</label>
-                                <input type="input" name="name" class="input validator w-full" required
-                                    placeholder="Your name" maxlength="40" />
-                                <p class="validator-hint hidden">
-                                    Required
-                                </p>
-                            </div>
+                            <label class="text-xs font-semibold">
+                                full name
+                                <input type="input" name="name" class="input validator w-full mt-2" required
+                                    placeholder="Your name" maxLength={40} />
+                                <p class="validator-hint hidden">Required</p>
+                            </label>
 
-                            <div class="flex flex-col">
-                                <label class="text-xs font-semibold pb-2">email</label>
-                                <input type="email" name="email" class="input validator w-full" required
+                            <label class="text-xs font-semibold">
+                                email
+                                <input type="email" name="email" class="input validator w-full mt-2" required
                                     placeholder="Your Email" pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
                                     title="Please enter a valid email address" />
                                 <p class="validator-hint hidden">
                                     Must be a valid email address
                                 </p>
-                            </div>
+                            </label>
 
-                            <div class="flex flex-col">
-                                <label class="text-xs font-semibold pb-2">password</label>
-                                <input type="password" name="password" class="input validator w-full" required
-                                    placeholder="New Password" minlength="8"
+                            <label class="text-xs font-semibold">
+                                password
+                                <input type="password" name="password" class="input validator w-full mt-2" required
+                                    placeholder="New Password" minLength={8}
                                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                                     title="Must be more than 8 characters, including number, lowercase letter, uppercase letter" />
                                 <p class="validator-hint hidden">
                                     Must be more than 8 characters, including
-                                    <br />At least one number
-                                    <br />At least one lowercase letter
-                                    <br />At least one uppercase letter
+                                    <br />
+                                    At least one number
+                                    <br />
+                                    At least one lowercase letter
+                                    <br />
+                                    At least one uppercase letter
                                 </p>
-                            </div>
+                            </label>
 
-                            <div class="flex flex-col">
-                                <label class="text-xs font-semibold pb-2">profile picture (optional)</label>
-                                <input type="file" class="file-input text-xs file-input-sm h-10" accept="image/*" />
-                            </div>
+                            <label class="text-xs font-semibold">
+                                profile picture (optional)
+                                <input type="file" class="file-input text-xs file-input-sm h-10 mt-2"
+                                    accept="image/*" />
+                            </label>
 
-                            <button class="btn btn-neutral mt-2">Sign up</button>
-
+                            <button type="submit" class="btn btn-neutral mt-2">
+                                Sign up
+                            </button>
                         </fieldset>
                     </form>
 
                     <hr class="h-[1px] border-t-0 bg-base-200" />
 
-                    <button class="btn w-full bg-white text-black">
-                        <svg aria-label="Google logo" width="16" height="16" xmlns="http://www.w3.org/2000/svg"
+                    <button type="submit" class="btn w-full bg-white text-black">
+                        <svg name="" aria-label="Google logo" width="16" height="16" xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 512 512">
+                            <title>Google logo</title>
                             <g>
-                                <path d="m0 0H512V512H0" fill="#fff"></path>
-                                <path fill="#34a853" d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"></path>
-                                <path fill="#4285f4" d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"></path>
-                                <path fill="#fbbc02" d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"></path>
-                                <path fill="#ea4335" d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55">
-                                </path>
+                                <path d="m0 0H512V512H0" fill="#fff" />
+                                <path fill="#34a853" d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341" />
+                                <path fill="#4285f4" d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57" />
+                                <path fill="#fbbc02" d="m90 341a208 200 0 010-171l63 49q-12 37 0 73" />
+                                <path fill="#ea4335" d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55" />
                             </g>
                         </svg>
-                        Login with Google
+                        Sign up with Google
                     </button>
                 </div>
             </div>
