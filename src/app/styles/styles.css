@@ -1,6 +1,0 @@
-/* Import TailwindCSS in your CSS */
-@import "tailwindcss";
-
-@plugin "daisyui" {
-	themes: emerald --default;
-}

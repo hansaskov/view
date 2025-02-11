@@ -10,14 +10,18 @@
     "verify": "bun lint && bun check",
     "generate": "bun x drizzle-kit generate",
     "migrate": "bun x drizzle-kit migrate",
-    "studio": "bun x drizzle-kit studio"
+    "studio": "bun x drizzle-kit studio",
+    "generate-routes": "tsr generate",
+    "watch-routes": "tsr watch"
   },
   "dependencies": {
+    "@tanstack/react-router": "^1.102.1",
+    "@tanstack/router-devtools": "^1.102.1",
     "better-auth": "^1.1.16",
+    "bun-plugin-tailwind": "^0.0.14",
     "drizzle-orm": "^0.39.2",
     "drizzle-typebox": "^0.3.0",
-    "elysia": "^1.2.12",
-    "react-router": "^7.1.5"
+    "elysia": "^1.2.12"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
