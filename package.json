@@ -13,6 +13,7 @@
     "studio": "bun x drizzle-kit studio"
   },
   "dependencies": {
+    "@elysiajs/eden": "^1.2.0",
     "@tanstack/react-router": "^1.102.1",
     "@tanstack/router-devtools": "^1.102.1",
     "better-auth": "^1.1.17",
