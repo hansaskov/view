@@ -9,14 +9,14 @@ export const postRoute = createRoute({
 	path: "/posts/$postId",
 })
 
-const fetchNames = cache(() => api.names.get())
+const fetchPosts = cache(() => api.names.get())
 
-function Names({
+function Posts({
 	namesPromise,
-}: { namesPromise: ReturnType<typeof fetchNames> }) {
+}: { namesPromise: ReturnType<typeof fetchPosts> }) {
 	const { data, error } = use(namesPromise)
 
-	if (error) return <>error</>
+	if (error) return <div>error</div>
 
 	return (
 		<ul>
@@ -34,7 +34,7 @@ function Page() {
 		<div className="bg-white p-6 rounded-lg shadow">
 			<h2 className="text-2xl font-bold mb-4">Post {postId}</h2>
 			<Suspense fallback={<div>Loading...</div>}>
-				<Names namesPromise={fetchNames()} />
+				<Posts namesPromise={fetchPosts()} />
 			</Suspense>
 		</div>
 	)
