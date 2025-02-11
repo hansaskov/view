@@ -10,9 +10,7 @@
     "verify": "bun lint && bun check",
     "generate": "bun x drizzle-kit generate",
     "migrate": "bun x drizzle-kit migrate",
-    "studio": "bun x drizzle-kit studio",
-    "generate-routes": "tsr generate",
-    "watch-routes": "tsr watch"
+    "studio": "bun x drizzle-kit studio"
   },
   "dependencies": {
     "@tanstack/react-router": "^1.102.1",
