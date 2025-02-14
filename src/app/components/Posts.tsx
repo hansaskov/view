@@ -1,10 +1,10 @@
-import { use } from "react"
+import { cache, use } from "react"
 import type { fetchPosts } from "../fetch/api"
 
 export default function ({
-	namesPromise,
-}: { namesPromise: ReturnType<typeof fetchPosts> }) {
-	const { data, error } = use(namesPromise)
+	props,
+}: { props: Awaited<ReturnType<typeof fetchPosts>> }) {
+	const { data, error } = props
 
 	if (error) return <div>error</div>
 

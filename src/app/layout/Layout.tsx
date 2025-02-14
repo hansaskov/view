@@ -1,11 +1,26 @@
-import { Link, Outlet, createRootRoute } from "@tanstack/react-router"
+import type { QueryClient } from "@tanstack/react-query"
+import {
+	Link,
+	Outlet,
+	createRootRouteWithContext,
+} from "@tanstack/react-router"
 import { TanStackRouterDevtools } from "@tanstack/router-devtools"
 
-export const rootRoute = createRootRoute({
-	component: Layout,
+export const rootRoute = createRootRouteWithContext<{
+	queryClient: QueryClient
+}>()({
+	component: RootComponent,
+	notFoundComponent: () => {
+		return (
+			<div>
+				<p>This is the notFoundComponent configured on root route</p>
+				<Link to="/">Start Over</Link>
+			</div>
+		)
+	},
 })
 
-function Layout() {
+function RootComponent() {
 	return (
 		<div className="min-h-screen bg-gray-100">
 			<nav className="bg-white shadow-sm">
@@ -13,12 +28,14 @@ function Layout() {
 					<Link
 						to="/"
 						className="text-gray-600 hover:text-gray-900 [&.active]:font-bold [&.active]:text-blue-600"
+						preload="intent"
 					>
 						Home
 					</Link>
 					<Link
 						to="/about"
 						className="text-gray-600 hover:text-gray-900 [&.active]:font-bold [&.active]:text-blue-600"
+						preload="intent"
 					>
 						About
 					</Link>
@@ -26,6 +43,7 @@ function Layout() {
 						to="/posts/$postId"
 						params={{ postId: "123" }}
 						className="text-gray-600 hover:text-gray-900 [&.active]:font-bold [&.active]:text-blue-600"
+						preload="intent"
 					>
 						Example Post
 					</Link>

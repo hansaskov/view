@@ -14,8 +14,10 @@
   },
   "dependencies": {
     "@elysiajs/eden": "^1.2.0",
+    "@tanstack/react-query": "^5.66.0",
     "@tanstack/react-router": "^1.104.1",
     "@tanstack/router-devtools": "^1.104.3",
+    "arktype": "^2.0.4",
     "better-auth": "^1.1.18",
     "bun-plugin-tailwind": "^0.0.14",
     "drizzle-orm": "^0.39.3",
