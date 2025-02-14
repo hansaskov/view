@@ -1,27 +1,24 @@
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query"
 import { createRoute } from "@tanstack/react-router"
-import { type } from "arktype"
-import { Suspense } from "react"
 import Posts from "../components/Posts"
 import { fetchPosts } from "../fetch/api"
 import { rootRoute } from "../layout/Layout"
 
-const postsQueryOptions = queryOptions({
+const qOptions = queryOptions({
 	queryKey: ["posts"],
 	queryFn: () => fetchPosts(),
 })
 
 export const postRoute = createRoute({
-	getParentRoute: () => rootRoute,
 	path: "/posts/$postId",
-	loader: ({ context: { queryClient } }) =>
-		queryClient.ensureQueryData(postsQueryOptions),
+	loader: ({ context }) => context.queryClient.ensureQueryData(qOptions),
+	getParentRoute: () => rootRoute,
 	component: Page,
 })
 
 function Page() {
 	const { postId } = postRoute.useParams()
-	const { data } = useSuspenseQuery(postsQueryOptions)
+	const { data } = useSuspenseQuery(qOptions)
 
 	return (
 		<div className="bg-white p-6 rounded-lg shadow">

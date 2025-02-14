@@ -1,4 +1,3 @@
-import { cache, use } from "react"
 import type { fetchPosts } from "../fetch/api"
 
 export default function ({
