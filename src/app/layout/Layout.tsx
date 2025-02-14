@@ -1,7 +1,6 @@
 import { Link, Outlet, createRootRoute } from "@tanstack/react-router"
 import { TanStackRouterDevtools } from "@tanstack/router-devtools"
 
-// 1. Create Root Route with Navigation
 export const rootRoute = createRootRoute({
 	component: Layout,
 })

@@ -1,31 +1,14 @@
 import { createRoute } from "@tanstack/react-router"
 import { rootRoute } from "../layout/Layout"
-import { api } from "../utils/eden"
-import { cache, Suspense, use } from "react"
+import { fetchPosts } from "../fetch/api"
+import { Suspense } from "react"
+import Posts from "../components/Posts"
 
 export const postRoute = createRoute({
 	getParentRoute: () => rootRoute,
 	component: Page,
 	path: "/posts/$postId",
 })
-
-const fetchPosts = cache(() => api.names.get())
-
-function Posts({
-	namesPromise,
-}: { namesPromise: ReturnType<typeof fetchPosts> }) {
-	const { data, error } = use(namesPromise)
-
-	if (error) return <div>error</div>
-
-	return (
-		<ul>
-			{data.map(name => (
-				<li key={name}>{name}</li>
-			))}
-		</ul>
-	)
-}
 
 function Page() {
 	const { postId } = postRoute.useParams()
