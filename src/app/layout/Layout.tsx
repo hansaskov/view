@@ -47,6 +47,13 @@ function RootComponent() {
 					>
 						Example Post
 					</Link>
+					<Link
+						to="/login"
+						className="text-gray-600 hover:text-gray-900 [&.active]:font-bold [&.active]:text-blue-600"
+						preload="intent"
+					>
+						Login
+					</Link>
 				</div>
 			</nav>
 

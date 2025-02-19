@@ -20,6 +20,7 @@
     "arktype": "^2.0.4",
     "better-auth": "^1.1.18",
     "bun-plugin-tailwind": "^0.0.14",
+    "daisyui": "^5.0.0-beta.8",
     "drizzle-orm": "^0.39.3",
     "drizzle-typebox": "^0.3.0",
     "elysia": "^1.2.12"
