@@ -1,6 +1,6 @@
 import { createRoute } from "@tanstack/react-router"
+import { type PropsWithChildren, useState } from "react"
 import { rootRoute } from "../layout/Layout"
-import { useState, type PropsWithChildren } from "react"
 
 export const loginRoute = createRoute({
 	getParentRoute: () => rootRoute,

@@ -6,8 +6,8 @@ import ReactDOM from "react-dom/client"
 import { rootRoute } from "./layout/Layout"
 import { aboutRoute } from "./routes/About"
 import { homepageRoute } from "./routes/Homepage"
-import { postRoute } from "./routes/Post"
 import { loginRoute } from "./routes/Login"
+import { postRoute } from "./routes/Post"
 
 const routeTree = rootRoute.addChildren([
 	homepageRoute,
