@@ -20,5 +20,5 @@ process.on("unhandledRejection", error => {
 })
 
 server.listen(env.PORT ?? 3000, () =>
-	logger.info(`🚀 Server started at ${server.server?.url.origin}`)
+	logger.info("🚀 Server started at http://127.0.0.1:3000/")
 )
