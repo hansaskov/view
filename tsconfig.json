@@ -15,11 +15,9 @@
     "noEmit": true,
     "allowImportingTsExtensions": true,
     "noUncheckedIndexedAccess": true,
+    "baseUrl": "./src",
     "paths": {
-      "$config/*": [ "./src/config/*" ],
-      "$db/*": [ "./src/db/*" ],
-      "$collections/*": [ "./src/collections/*" ],
-      "$types/*": [ "./src/types/*" ]
+      "@/*": ["./*"]
     }
   },
   "include": [

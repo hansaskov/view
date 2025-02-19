@@ -1,4 +1,4 @@
-import { db } from "$db/drizzle"
+import { db } from "@/db/drizzle"
 import { eq } from "drizzle-orm"
 import { table } from "./table"
 import type { Insert, Select, Unique } from "./types"
