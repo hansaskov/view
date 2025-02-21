@@ -26,8 +26,8 @@ export const auth = betterAuth({
 
 export const Auth = new Elysia({ name: "better-auth" }).macro({
 	auth: {
-		async resolve({ error, request: { headers } }) {
-			const session = await auth.api.getSession({ headers })
+		async resolve({ error, request }) {
+			const session = await auth.api.getSession(request)
 
 			if (!session) {
 				return error(401)
@@ -41,8 +41,8 @@ export const Auth = new Elysia({ name: "better-auth" }).macro({
 	},
 
 	admin: {
-		async resolve({ error, request: { headers } }) {
-			const session = await auth.api.getSession({ headers })
+		async resolve({ error, request }) {
+			const session = await auth.api.getSession(request)
 
 			if (!session || session.user.role !== "admin") {
 				return error(401)
