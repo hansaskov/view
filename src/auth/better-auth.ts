@@ -1,12 +1,12 @@
 import account from "@/collections/account"
-import session, { type Session } from "@/collections/session"
-import user, { type User } from "@/collections/user"
+import session from "@/collections/session"
+import user from "@/collections/user"
 import verification from "@/collections/verification"
 import { db } from "@/db/drizzle"
 import { betterAuth } from "better-auth"
 import { drizzleAdapter } from "better-auth/adapters/drizzle"
 import { admin, openAPI } from "better-auth/plugins"
-import Elysia, { error } from "elysia"
+import Elysia from "elysia"
 
 export const auth = betterAuth({
 	database: drizzleAdapter(db, {
@@ -24,44 +24,38 @@ export const auth = betterAuth({
 	plugins: [openAPI(), admin()],
 })
 
-export const authMiddleware = new Elysia()
-	.macro({
-		isAuth: {
-			async resolve({ request }) {
-				const session = await auth.api.getSession({ headers: request.headers })
+export const Auth = new Elysia({ name: "better-auth" }).macro({
+	auth: {
+		async resolve({ error, request: { headers } }) {
+			const session = await auth.api.getSession({ headers })
 
-				if (!session) {
-					return error("Unauthorized", "Authentication is required")
-				}
+			if (!session) {
+				return error(401)
+			}
 
-				return {
-					user: session.user as User,
-					session: session.session as Session,
-				}
-			},
+			return {
+				user: session.user,
+				session: session.session,
+			}
 		},
+	},
 
-		isAdmin: {
-			async resolve({ request }) {
-				const session = await auth.api.getSession({ headers: request.headers })
+	admin: {
+		async resolve({ error, request: { headers } }) {
+			const session = await auth.api.getSession({ headers })
 
-				if (!session) {
-					return error("Unauthorized", "Authentication is required")
-				}
+			if (!session || session.user.role !== "admin") {
+				return error(401)
+			}
 
-				if (session.user.role !== "admin") {
-					return error("Unauthorized", "Admin privilages is required")
-				}
-
-				return {
-					user: session.user as User,
-					session: session.session as Session,
-				}
-			},
+			return {
+				user: session.user,
+				session: session.session,
+			}
 		},
-	})
-	.as("plugin")
+	},
+})
 
-export const authRoutes = new Elysia({ prefix: "/api/auth/*" })
+export const betterAuthHandler = new Elysia({ prefix: "/api/auth/*" })
 	.post("/", ({ request }) => auth.handler(request))
 	.get("/", ({ request }) => auth.handler(request))
