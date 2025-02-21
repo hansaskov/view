@@ -14,22 +14,22 @@
   },
   "dependencies": {
     "@elysiajs/eden": "^1.2.0",
-    "@tanstack/react-query": "^5.66.0",
-    "@tanstack/react-router": "^1.104.1",
-    "@tanstack/router-devtools": "^1.104.3",
+    "@tanstack/react-query": "^5.66.9",
+    "@tanstack/react-router": "^1.109.2",
+    "@tanstack/router-devtools": "^1.109.2",
     "arktype": "^2.0.4",
-    "better-auth": "^1.1.18",
+    "better-auth": "^1.1.19",
     "bun-plugin-tailwind": "^0.0.14",
     "daisyui": "^5.0.0-beta.8",
     "drizzle-orm": "^0.39.3",
     "drizzle-typebox": "^0.3.0",
-    "elysia": "^1.2.12"
+    "elysia": "^1.2.18"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@libsql/client": "^0.14.0",
     "@types/bun": "^1.2.2",
-    "@types/react-dom": "^19.0.3",
+    "@types/react-dom": "^19.0.4",
     "drizzle-kit": "^0.30.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
