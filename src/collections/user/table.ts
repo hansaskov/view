@@ -12,7 +12,7 @@ export const table = sqliteTable(TABLE_NAME, {
 	emailVerified: integer({ mode: "boolean" }).notNull().default(false),
 	image: text(),
 	role: text({ enum: ROLES }).notNull().default("user"),
-	banned: integer({ mode: "boolean" }),
+	banned: integer({ mode: "boolean" }).notNull().default(false),
 	banReason: text(),
 	banExpires: integer({ mode: "timestamp_ms" }),
 	createdAt: integer({ mode: "timestamp" })
