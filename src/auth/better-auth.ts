@@ -55,7 +55,3 @@ export const Auth = new Elysia({ name: "better-auth" }).macro({
 		},
 	},
 })
-
-export const betterAuthHandler = new Elysia({ prefix: "/api/auth/*" })
-	.post("/", ({ request }) => auth.handler(request))
-	.get("/", ({ request }) => auth.handler(request))
