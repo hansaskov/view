@@ -1,8 +1,7 @@
-import { Elysia, t } from "elysia"
+import { Elysia } from "elysia"
 import react from "./app/index.html"
-import { Auth, betterAuthHandler } from "./auth/better-auth"
+import { betterAuthHandler } from "./auth/better-auth"
 import { logger } from "./utils/logger"
-
 export const server = new Elysia()
 	.use(betterAuthHandler)
 	.onBeforeHandle(({ path }) => logger.info(path))
