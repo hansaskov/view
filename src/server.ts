@@ -1,10 +1,10 @@
 import { Elysia, t } from "elysia"
 import react from "./app/index.html"
-import { Auth } from "./auth/better-auth"
+import { Auth, betterAuthHandler } from "./auth/better-auth"
 import { logger } from "./utils/logger"
 
 export const server = new Elysia()
-	.use(Auth)
+	.use(betterAuthHandler)
 	.onBeforeHandle(({ path }) => logger.info(path))
 	.get("/favicon.ico", Bun.file("./public/favicon.ico"))
 	.get("/", react)

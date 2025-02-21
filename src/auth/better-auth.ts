@@ -24,36 +24,38 @@ export const auth = betterAuth({
 	plugins: [openAPI(), admin()],
 })
 
-export const Auth = new Elysia({ name: "better-auth" })
-	.mount("/api/auth", auth.handler)
-	.macro({
-		auth: {
-			async resolve({ error, request: { headers } }) {
-				const session = await auth.api.getSession({ headers })
+export const Auth = new Elysia({ name: "better-auth" }).macro({
+	auth: {
+		async resolve({ error, request: { headers } }) {
+			const session = await auth.api.getSession({ headers })
 
-				if (!session) {
-					return error(401)
-				}
+			if (!session) {
+				return error(401)
+			}
 
-				return {
-					user: session.user,
-					session: session.session,
-				}
-			},
+			return {
+				user: session.user,
+				session: session.session,
+			}
 		},
+	},
 
-		admin: {
-			async resolve({ error, request: { headers } }) {
-				const session = await auth.api.getSession({ headers })
+	admin: {
+		async resolve({ error, request: { headers } }) {
+			const session = await auth.api.getSession({ headers })
 
-				if (!session || session.user.role !== "admin") {
-					return error(401)
-				}
+			if (!session || session.user.role !== "admin") {
+				return error(401)
+			}
 
-				return {
-					user: session.user,
-					session: session.session,
-				}
-			},
+			return {
+				user: session.user,
+				session: session.session,
+			}
 		},
-	})
+	},
+})
+
+export const betterAuthHandler = new Elysia({ prefix: "/api/auth/*" })
+	.post("/", ({ request }) => auth.handler(request))
+	.get("/", ({ request }) => auth.handler(request))
