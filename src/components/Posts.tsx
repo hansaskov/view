@@ -1,4 +1,4 @@
-import type { fetchPosts } from "../fetch/api"
+import type { fetchPosts } from "@/lib/api"
 
 export default function ({
 	props,

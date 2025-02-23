@@ -2,26 +2,31 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "lib": [
-      "ESNext", "DOM"
+      "ESNext",
+      "DOM"
     ],
     "module": "ESNext",
     "target": "ESNext",
-    "moduleResolution": "Bundler",
+    "allowJs": true,
+    // Bundler mode
+    "moduleResolution": "bundler",
     "esModuleInterop": true,
     "strict": true,
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
-    "rootDir": "./src",
     "noEmit": true,
     "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
     "noUncheckedIndexedAccess": true,
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": [
+        "./src/*"
+      ]
     }
   },
   "include": [
-    "src"
+    "**/*.ts",
+    "**/*.tsx"
   ],
-
 }

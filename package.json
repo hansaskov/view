@@ -1,9 +1,11 @@
 {
   "name": "view",
   "type": "module",
+  "main": "src/index.tsx",
+  "module": "src/index.tsx",
   "scripts": {
-    "dev": "bun --watch src/index.ts ",
-    "start": "NODE_ENV=production bun ./src/index.ts",
+    "dev": "bun --hot src/index.tsx",
+    "start": "NODE_ENV=production bun src/index.tsx",
     "check": "bun x tsc --noEmit",
     "format": "bun x @biomejs/biome format src --write",
     "lint": "bun x @biomejs/biome check src --write",
@@ -14,28 +16,37 @@
   },
   "dependencies": {
     "@elysiajs/eden": "^1.2.0",
+    "@hookform/resolvers": "^4.1.0",
+    "@radix-ui/react-label": "^2.1.2",
+    "@radix-ui/react-select": "^2.1.6",
+    "@radix-ui/react-slot": "^1.1.2",
     "@tanstack/react-query": "^5.66.9",
     "@tanstack/react-router": "^1.109.2",
     "@tanstack/router-devtools": "^1.109.2",
     "arktype": "^2.0.4",
     "better-auth": "^1.1.19",
     "bun-plugin-tailwind": "^0.0.14",
-    "daisyui": "^5.0.0-beta.8",
+    "class-variance-authority": "^0.7.1",
+    "clear": "^0.1.0",
+    "clsx": "^2.1.1",
     "drizzle-orm": "^0.39.3",
     "drizzle-typebox": "^0.3.0",
-    "elysia": "^1.2.18"
+    "elysia": "^1.2.21",
+    "lucide-react": "^0.475.0",
+    "react": "^19",
+    "react-dom": "^19",
+    "react-hook-form": "^7.54.2",
+    "tailwind-merge": "^3.0.1",
+    "tailwindcss": "^4.0.6",
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@libsql/client": "^0.14.0",
-    "@types/bun": "^1.2.2",
-    "@types/react-dom": "^19.0.4",
-    "drizzle-kit": "^0.30.4",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "typescript": "^5.7.3"
-  },
-  "overrides": {
-    "@sinclair/typebox": "0.34.15"
+    "@types/bun": "latest",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "drizzle-kit": "^0.30.4"
   }
 }

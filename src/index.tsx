@@ -5,7 +5,7 @@ const signals = ["SIGINT", "SIGTERM"]
 
 for (const signal of signals) {
 	process.on(signal, async () => {
-		console.log(`Received ${signal}. Initiating graceful shutdown...`)
+		logger.info(`Received ${signal}. Initiating graceful shutdown...`)
 		await server.stop()
 		process.exit(0)
 	})

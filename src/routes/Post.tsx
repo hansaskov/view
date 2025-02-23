@@ -1,8 +1,8 @@
+import Posts from "@/components/Posts"
+import { rootRoute } from "@/layout/Layout"
+import { fetchPosts } from "@/lib/api"
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query"
 import { createRoute } from "@tanstack/react-router"
-import Posts from "../components/Posts"
-import { fetchPosts } from "../fetch/api"
-import { rootRoute } from "../layout/Layout"
 
 const qOptions = queryOptions({
 	queryKey: ["posts"],
