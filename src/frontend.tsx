@@ -10,16 +10,37 @@ import { RouterProvider, createRouter } from "@tanstack/react-router"
 import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
 import { rootRoute } from "./layout/Layout"
-import { aboutRoute } from "./routes/About"
-import { homepageRoute } from "./routes/Homepage"
-import { loginRoute } from "./routes/Login"
-import { postRoute } from "./routes/Post"
+import "bun/hmr"
+import {
+	apiKeysRoute,
+	devicesRoute,
+	filesRoute,
+	homepageRoute,
+	logRoute,
+	metadataRoute,
+	moviesRoute,
+	photosRoute,
+	postRoute,
+	sessionsRoute,
+	settingsRoute,
+	showsRoute,
+	usersRoute,
+} from "./routes"
 
 const routeTree = rootRoute.addChildren([
+	apiKeysRoute,
+	devicesRoute,
+	filesRoute,
 	homepageRoute,
-	aboutRoute,
+	logRoute,
+	metadataRoute,
+	moviesRoute,
+	photosRoute,
 	postRoute,
-	loginRoute,
+	sessionsRoute,
+	settingsRoute,
+	showsRoute,
+	usersRoute,
 ])
 const queryClient = new QueryClient()
 
@@ -43,7 +64,7 @@ declare module "@tanstack/react-router" {
 	}
 }
 
-const elem = document.getElementById("root")!
+const elem = document.getElementById("root")
 const app = (
 	<StrictMode>
 		<QueryClientProvider client={queryClient}>
@@ -52,8 +73,17 @@ const app = (
 	</StrictMode>
 )
 
+if (!elem) {
+	throw new Error(
+		"Could not find root element. Are you sure it is specified in your html?"
+	)
+}
+
+// @ts-ignore: Vite-specific HMR API
 if (import.meta.hot) {
 	// With hot module reloading, `import.meta.hot.data` is persisted.
+	// @ts-ignore: Vite-specific HMR API
+	// biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
 	const root = (import.meta.hot.data.root ??= createRoot(elem))
 	root.render(app)
 } else {

@@ -14,7 +14,10 @@ COPY tsconfig.json tsconfig.json
 RUN bun install --production
 
 # Copy source code
+COPY ./public ./public
 COPY ./src ./src
+COPY bunfig.toml bunfig.toml
+COPY drizzle.config.ts drizzle.config.ts
 
 # Will create a binary executable with the name of server
 RUN bun build \
@@ -23,7 +26,7 @@ RUN bun build \
 	--minify-syntax \
 	--target bun \
 	--outfile server \
-	./src/index.ts
+	./src/index.tsx
 
 # Use a minimal distroless image as the final base to reduce attack surface
 FROM gcr.io/distroless/base

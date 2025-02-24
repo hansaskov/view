@@ -9,9 +9,22 @@ export const homepageRoute = createRoute({
 
 function Page() {
 	return (
-		<div className="bg-white p-6 rounded-lg shadow">
-			<h2 className="text-2xl font-bold mb-4">Home Page</h2>
-			<p className="text-gray-600">Welcome to our website!</p>
-		</div>
+		<>
+			<div className="flex flex-1 flex-col gap-4 p-4 pt-0">
+				<h1 className="text-2xl font-bold">Welcome to View</h1>
+				<p>Your all-in-one media management solution.</p>
+				<div className="grid auto-rows-min gap-4 md:grid-cols-3">
+					<div className="aspect-video rounded-xl bg-muted/50 flex items-center justify-center">
+						Photos
+					</div>
+					<div className="aspect-video rounded-xl bg-muted/50 flex items-center justify-center">
+						Files
+					</div>
+					<div className="aspect-video rounded-xl bg-muted/50 flex items-center justify-center">
+						Movies & Shows
+					</div>
+				</div>
+			</div>
+		</>
 	)
 }

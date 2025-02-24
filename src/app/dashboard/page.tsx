@@ -1,4 +1,3 @@
-import { AppSidebar } from "@/components/app-sidebar"
 import {
 	Breadcrumb,
 	BreadcrumbItem,
@@ -11,29 +10,9 @@ import {
 	SidebarProvider,
 	SidebarTrigger,
 } from "@/components/ui/sidebar"
-import type { QueryClient } from "@tanstack/react-query"
-import {
-	Link,
-	Outlet,
-	createRootRouteWithContext,
-} from "@tanstack/react-router"
-import { TanStackRouterDevtools } from "@tanstack/router-devtools"
+import { AppSidebar } from "../../components/app-sidebar"
 
-export const rootRoute = createRootRouteWithContext<{
-	queryClient: QueryClient
-}>()({
-	component: RootComponent,
-	notFoundComponent: () => {
-		return (
-			<div>
-				<p>This is the notFoundComponent configured on root route</p>
-				<Link to="/">Start Over</Link>
-			</div>
-		)
-	},
-})
-
-function RootComponent() {
+export default function Page() {
 	return (
 		<SidebarProvider>
 			<AppSidebar />
@@ -51,11 +30,20 @@ function RootComponent() {
 						</Breadcrumb>
 					</div>
 				</header>
-				<div>
-					<main>
-						<Outlet />
-					</main>
-					<TanStackRouterDevtools />
+				<div className="flex flex-1 flex-col gap-4 p-4 pt-0">
+					<h1 className="text-2xl font-bold">Welcome to View</h1>
+					<p>Your all-in-one media management solution.</p>
+					<div className="grid auto-rows-min gap-4 md:grid-cols-3">
+						<div className="aspect-video rounded-xl bg-muted/50 flex items-center justify-center">
+							Photos
+						</div>
+						<div className="aspect-video rounded-xl bg-muted/50 flex items-center justify-center">
+							Files
+						</div>
+						<div className="aspect-video rounded-xl bg-muted/50 flex items-center justify-center">
+							Movies & Shows
+						</div>
+					</div>
 				</div>
 			</SidebarInset>
 		</SidebarProvider>
