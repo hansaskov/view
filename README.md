@@ -11,7 +11,12 @@ This project aims to to be the singular OpenSource application for your home med
 - [x] Sign up with email and password.
 - [x] Login with email and password.
 - [x] Upgrade to use tsx. Wait for new update
-- [ ] Refactor homepage and login page to react, react router and better-stack
+- [x] Create Auth Layout
+- [x] Create All routes for auth Layout
+- [ ] Create non-auth layout
+- [ ] Create login page
+- [ ] Create sign-up page
+- [ ] Redirect non authed user
 - [ ] Send emails.
 - [ ] Password reset.
 - [ ] Upload photos
