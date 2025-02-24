@@ -1,8 +1,9 @@
+import { nonAuthRoute } from "@/layout/NonAuthLayout"
 import { createRoute } from "@tanstack/react-router"
-import { rootRoute } from "../layout/Layout"
+import { rootRoute } from "../../layout/RootLayout"
 
 export const homepageRoute = createRoute({
-	getParentRoute: () => rootRoute,
+	getParentRoute: () => nonAuthRoute,
 	component: Page,
 	path: "/",
 })

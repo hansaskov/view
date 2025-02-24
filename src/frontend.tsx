@@ -1,45 +1,16 @@
-/**
- * This file is the entry point for the React app, it sets up the root
- * element and renders the App component to the DOM.
- *
- * It is included in `src/index.html`.
- */
-
+import * as AuthRoutes from "@/routes/auth"
+import * as NonAuthRoutes from "@/routes/non-auth"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { RouterProvider, createRouter } from "@tanstack/react-router"
 import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
-import { rootRoute } from "./layout/Layout"
-import {
-	apiKeysRoute,
-	devicesRoute,
-	filesRoute,
-	homepageRoute,
-	logRoute,
-	metadataRoute,
-	moviesRoute,
-	photosRoute,
-	postRoute,
-	sessionsRoute,
-	settingsRoute,
-	showsRoute,
-	usersRoute,
-} from "./routes"
+import { authRoute } from "./layout/AuthLayout"
+import { nonAuthRoute } from "./layout/NonAuthLayout"
+import { rootRoute } from "./layout/RootLayout"
 
 const routeTree = rootRoute.addChildren([
-	apiKeysRoute,
-	devicesRoute,
-	filesRoute,
-	homepageRoute,
-	logRoute,
-	metadataRoute,
-	moviesRoute,
-	photosRoute,
-	postRoute,
-	sessionsRoute,
-	settingsRoute,
-	showsRoute,
-	usersRoute,
+	authRoute.addChildren(AuthRoutes),
+	nonAuthRoute.addChildren(NonAuthRoutes),
 ])
 const queryClient = new QueryClient()
 

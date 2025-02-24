@@ -1,8 +1,9 @@
+import { authRoute } from "@/layout/AuthLayout"
 import { createRoute } from "@tanstack/react-router"
-import { rootRoute } from "../layout/Layout"
+import { rootRoute } from "../../layout/RootLayout"
 
 export const moviesRoute = createRoute({
-	getParentRoute: () => rootRoute,
+	getParentRoute: () => authRoute,
 	component: Page,
 	path: "/movies",
 })
