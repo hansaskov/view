@@ -10,7 +10,6 @@ import { RouterProvider, createRouter } from "@tanstack/react-router"
 import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
 import { rootRoute } from "./layout/Layout"
-import "bun/hmr"
 import {
 	apiKeysRoute,
 	devicesRoute,
