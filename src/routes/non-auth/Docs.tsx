@@ -1,12 +1,17 @@
 import { nonAuthRoute } from "@/layout/NonAuthLayout"
 import { createRoute } from "@tanstack/react-router"
 
-export const forgotPasswordRoute = createRoute({
+export const docsRoute = createRoute({
 	getParentRoute: () => nonAuthRoute,
 	component: Page,
-	path: "/forgot-password",
+	path: "/docs",
 })
 
 function Page() {
-	return <>Whoops, looks like you've forgotten your password</>
+	return (
+		<>
+			Welcome to the documentation page! Unfortunately. It is empty and a work
+			in progress
+		</>
+	)
 }

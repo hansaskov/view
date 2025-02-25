@@ -1,5 +1,3 @@
-"use client"
-
 import { Button } from "@/components/ui/button"
 import {
 	Card,
@@ -12,6 +10,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { signUp } from "@/lib/auth-client"
+import { useNavigate } from "@tanstack/react-router"
 import { Loader2, X } from "lucide-react"
 import { useState } from "react"
 import { toast } from "sonner"
@@ -24,8 +23,9 @@ export function SignUp() {
 	const [passwordConfirmation, setPasswordConfirmation] = useState("")
 	const [image, setImage] = useState<File | null>(null)
 	const [imagePreview, setImagePreview] = useState<string | null>(null)
-	const router = useRouter()
 	const [loading, setLoading] = useState(false)
+
+	const navigate = useNavigate()
 
 	const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const file = e.target.files?.[0]
@@ -118,7 +118,7 @@ export function SignUp() {
 									<img
 										src={imagePreview}
 										alt="Profile preview"
-										objectFit="cover"
+										style={{ objectFit: "cover" }}
 									/>
 								</div>
 							)}
@@ -164,7 +164,7 @@ export function SignUp() {
 										toast.error(ctx.error.message)
 									},
 									onSuccess: async () => {
-										router.push("/dashboard")
+										navigate({ to: "/movies" })
 									},
 								},
 							})

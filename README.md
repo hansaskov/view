@@ -13,8 +13,9 @@ This project aims to to be the singular OpenSource application for your home med
 - [x] Upgrade to use tsx. Wait for new update
 - [x] Create Auth Layout
 - [x] Create All routes for auth Layout
-- [ ] Create non-auth layout
-- [ ] Create login page
+- [x] Create non-auth layout
+- [x] Create login page
+- [ ] Fallback navigation to react
 - [ ] Create sign-up page
 - [ ] Redirect non authed user
 - [ ] Send emails.

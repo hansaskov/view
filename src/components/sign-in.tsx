@@ -1,11 +1,8 @@
-"use client"
-
 import { Button } from "@/components/ui/button"
 import {
 	Card,
 	CardContent,
 	CardDescription,
-	CardFooter,
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card"
@@ -14,15 +11,17 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { signIn } from "@/lib/auth-client"
 import { cn } from "@/lib/utils"
-import { Link } from "@tanstack/react-router"
-import { Key, Loader2 } from "lucide-react"
+import { Link, useNavigate } from "@tanstack/react-router"
+import { Loader2 } from "lucide-react"
 import { useState } from "react"
 
-export default function SignIn() {
+export function SignIn() {
 	const [email, setEmail] = useState("")
 	const [password, setPassword] = useState("")
 	const [loading, setLoading] = useState(false)
 	const [rememberMe, setRememberMe] = useState(false)
+
+	const navigate = useNavigate()
 
 	return (
 		<Card className="max-w-md">
@@ -51,7 +50,10 @@ export default function SignIn() {
 					<div className="grid gap-2">
 						<div className="flex items-center">
 							<Label htmlFor="password">Password</Label>
-							<Link to="#" className="ml-auto inline-block text-sm underline">
+							<Link
+								to="/forgot-password"
+								className="ml-auto inline-block text-sm underline"
+							>
 								Forgot your password?
 							</Link>
 						</div>
@@ -81,7 +83,23 @@ export default function SignIn() {
 						className="w-full"
 						disabled={loading}
 						onClick={async () => {
-							await signIn.email({ email, password })
+							setLoading(true)
+							try {
+								await signIn.email({
+									email,
+									password,
+									fetchOptions: {
+										onSuccess: () => {
+											navigate({ to: "/movies" })
+										},
+										onError: () => {
+											setLoading(false)
+										},
+									},
+								})
+							} catch (error) {
+								setLoading(false)
+							}
 						}}
 					>
 						{loading ? <Loader2 size={16} className="animate-spin" /> : "Login"}
@@ -97,10 +115,15 @@ export default function SignIn() {
 							variant="outline"
 							className={cn("w-full gap-2")}
 							onClick={async () => {
-								await signIn.social({
-									provider: "github",
-									callbackURL: "/dashboard",
-								})
+								setLoading(true)
+								try {
+									await signIn.social({
+										provider: "github",
+										callbackURL: "/movies",
+									})
+								} catch (error) {
+									setLoading(false)
+								}
 							}}
 						>
 							<svg
@@ -118,13 +141,19 @@ export default function SignIn() {
 							Sign in with Github
 						</Button>
 						<Button
+							type="button"
 							variant="outline"
 							className={cn("w-full gap-2")}
 							onClick={async () => {
-								await signIn.social({
-									provider: "google",
-									callbackURL: "/dashboard",
-								})
+								setLoading(true)
+								try {
+									await signIn.social({
+										provider: "google",
+										callbackURL: "/movies",
+									})
+								} catch (error) {
+									setLoading(false)
+								}
 							}}
 						>
 							<svg

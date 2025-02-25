@@ -9,6 +9,20 @@ import { drizzleAdapter } from "better-auth/adapters/drizzle"
 import { admin, openAPI } from "better-auth/plugins"
 import Elysia from "elysia"
 
+const GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID
+if (!GITHUB_CLIENT_ID) throw new Error("❌ GITHUB_CLIENT_ID enviroment missing")
+
+const GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET
+if (!GITHUB_CLIENT_SECRET)
+	throw new Error("❌ GITHUB_CLIENT_SECRET enviroment missing")
+
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID
+if (!GOOGLE_CLIENT_ID) throw new Error("❌ GOOGLE_CLIENT_ID enviroment missing")
+
+const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET
+if (!GOOGLE_CLIENT_SECRET)
+	throw new Error("❌ GOOGLE_CLIENT_SECRET enviroment missing")
+
 export const auth = betterAuth({
 	database: drizzleAdapter(db, {
 		provider: "sqlite",
@@ -26,22 +40,22 @@ export const auth = betterAuth({
 			// Send an email to the user with a link to reset their password
 			logger.error("EMAIL NOT IMPLEMENTED")
 		},
-		socialProviders: {
-			github: {
-				clientId: process.env.GITHUB_CLIENT_ID,
-				clientSecret: process.env.GITHUB_CLIENT_SECRET,
-			},
+	},
 
-			google: {
-				clientId: process.env.GOOGLE_CLIENT_ID,
-				clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-			},
+	socialProviders: {
+		github: {
+			clientId: GITHUB_CLIENT_ID,
+			clientSecret: GITHUB_CLIENT_SECRET,
+		},
+		google: {
+			clientId: GOOGLE_CLIENT_ID,
+			clientSecret: GOOGLE_CLIENT_SECRET,
 		},
 	},
 	plugins: [openAPI(), admin()],
 })
 
-export const Auth = new Elysia({ name: "better-auth" }).macro({
+export const AuthMiddleware = new Elysia({ name: "better-auth" }).macro({
 	auth: {
 		async resolve({ error, request }) {
 			const session = await auth.api.getSession(request)

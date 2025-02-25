@@ -17,9 +17,9 @@ export const table = sqliteTable(TABLE_NAME, {
 	impersonatedBy: text(),
 	createdAt: integer({ mode: "timestamp" })
 		.notNull()
-		.$default(() => sql`(current_timestamp)`),
+		.$defaultFn(() => new Date()),
 	updatedAt: integer({ mode: "timestamp" })
 		.notNull()
-		.$default(() => sql`(current_timestamp)`)
-		.$onUpdate(() => sql`(current_timestamp)`),
+		.$defaultFn(() => new Date())
+		.$onUpdateFn(() => new Date()),
 })
