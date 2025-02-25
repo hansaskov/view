@@ -10,7 +10,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { signUp } from "@/lib/auth-client"
-import { useNavigate } from "@tanstack/react-router"
+import { Link, useNavigate } from "@tanstack/react-router"
 import { Loader2, X } from "lucide-react"
 import { useState } from "react"
 import { toast } from "sonner"
@@ -40,7 +40,7 @@ export function SignUp() {
 	}
 
 	return (
-		<Card className="z-50 rounded-md rounded-t-none max-w-md">
+		<Card>
 			<CardHeader>
 				<CardTitle className="text-lg md:text-xl">Sign Up</CardTitle>
 				<CardDescription className="text-xs md:text-sm">
@@ -179,9 +179,15 @@ export function SignUp() {
 				</div>
 			</CardContent>
 			<CardFooter>
-				<div className="flex justify-center w-full border-t py-4">
+				<div className="flex justify-center w-full border-t pt-4">
 					<p className="text-center text-xs text-neutral-500">
-						Secured by <span className="text-orange-400">better-auth.</span>
+						already have an account?{" "}
+						<Link
+							to="/login"
+							className="bg-gradient-to-r from-primary to-violet-500 bg-clip-text text-transparent"
+						>
+							login here.
+						</Link>
 					</p>
 				</div>
 			</CardFooter>

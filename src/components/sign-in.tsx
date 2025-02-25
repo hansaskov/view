@@ -3,6 +3,7 @@ import {
 	Card,
 	CardContent,
 	CardDescription,
+	CardFooter,
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card"
@@ -185,6 +186,19 @@ export function SignIn() {
 					</div>
 				</div>
 			</CardContent>
+			<CardFooter>
+				<div className="flex justify-center w-full border-t pt-4">
+					<p className="text-center text-xs text-neutral-500">
+						no account?{" "}
+						<Link
+							to="/sign-up"
+							className="bg-gradient-to-r from-primary to-violet-500 bg-clip-text text-transparent"
+						>
+							sign up here.
+						</Link>
+					</p>
+				</div>
+			</CardFooter>
 		</Card>
 	)
 }
