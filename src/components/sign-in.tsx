@@ -14,7 +14,7 @@ import { signIn } from "@/lib/auth-client"
 import { cn } from "@/lib/utils"
 import { Link, useNavigate } from "@tanstack/react-router"
 import { Loader2 } from "lucide-react"
-import { useState, type FormEventHandler } from "react"
+import { type FormEventHandler, useState } from "react"
 
 export function SignIn() {
 	const [email, setEmail] = useState("")
