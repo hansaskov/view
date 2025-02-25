@@ -161,10 +161,10 @@ function Page() {
 					{[
 						{
 							category: "Authentication & Security",
-							progress: 0,
+							progress: 50,
 							features: [
-								{ name: "Email & Password Authentiation", completed: false },
-								{ name: "OAuth Integration", completed: false },
+								{ name: "Email & Password Authentiation", completed: true },
+								{ name: "OAuth Integration", completed: true },
 								{ name: "Two-factor Authentication", completed: false },
 								{ name: "Role-based Access Control", completed: false },
 							],
@@ -234,13 +234,13 @@ function Page() {
 					<div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
 						{[
 							{
-								name: "Immich / Google Photos",
+								name: "Google Photos",
 								logo: "📸",
-								relation: "Modern media browsing with powerful search",
+								relation: "Modern photo gallery and media ",
 								differentiator: "Complete privacy and data ownership",
 							},
 							{
-								name: "Jellyfin",
+								name: "Netflix",
 								logo: "🎬",
 								relation: "Self-hosted media streaming",
 								differentiator:

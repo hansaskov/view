@@ -11,13 +11,26 @@ import {
 	SidebarProvider,
 	SidebarTrigger,
 } from "@/components/ui/sidebar"
-import { Outlet, createRoute } from "@tanstack/react-router"
+import { authClient } from "@/lib/auth-client"
+import { Outlet, createRoute, redirect } from "@tanstack/react-router"
+import { toast } from "sonner"
 import { rootRoute } from "./RootLayout"
 
 export const authRoute = createRoute({
 	getParentRoute: () => rootRoute,
 	id: "auth-layout",
 	component: Layout,
+	beforeLoad: async ({ location }) => {
+		const { data: session } = await authClient.getSession()
+
+		if (!session) {
+			toast.error("Invalid session. Redirecting to /login")
+			throw redirect({
+				to: "/login",
+				search: location.href,
+			})
+		}
+	},
 })
 
 function Layout() {
