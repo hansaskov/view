@@ -14,7 +14,7 @@ import { signIn } from "@/lib/auth-client"
 import { cn } from "@/lib/utils"
 import { Link, useNavigate } from "@tanstack/react-router"
 import { Loader2 } from "lucide-react"
-import { useState } from "react"
+import { useState, type FormEventHandler } from "react"
 
 export function SignIn() {
 	const [email, setEmail] = useState("")
@@ -33,7 +33,29 @@ export function SignIn() {
 				</CardDescription>
 			</CardHeader>
 			<CardContent>
-				<div className="grid gap-4">
+				<form
+					className="grid gap-4"
+					onSubmit={async e => {
+						e.preventDefault()
+						setLoading(true)
+						try {
+							await signIn.email({
+								email,
+								password,
+								fetchOptions: {
+									onSuccess: () => {
+										navigate({ to: "/movies" })
+									},
+									onError: () => {
+										setLoading(false)
+									},
+								},
+							})
+						} catch (error) {
+							setLoading(false)
+						}
+					}}
+				>
 					<div className="grid gap-2">
 						<Label htmlFor="email">Email</Label>
 						<Input
@@ -79,30 +101,7 @@ export function SignIn() {
 						<Label htmlFor="remember">Remember me</Label>
 					</div>
 
-					<Button
-						type="submit"
-						className="w-full"
-						disabled={loading}
-						onClick={async () => {
-							setLoading(true)
-							try {
-								await signIn.email({
-									email,
-									password,
-									fetchOptions: {
-										onSuccess: () => {
-											navigate({ to: "/movies" })
-										},
-										onError: () => {
-											setLoading(false)
-										},
-									},
-								})
-							} catch (error) {
-								setLoading(false)
-							}
-						}}
-					>
+					<Button type="submit" className="w-full" disabled={loading}>
 						{loading ? <Loader2 size={16} className="animate-spin" /> : "Login"}
 					</Button>
 
@@ -184,7 +183,7 @@ export function SignIn() {
 							Sign in with Google
 						</Button>
 					</div>
-				</div>
+				</form>
 			</CardContent>
 			<CardFooter>
 				<div className="flex justify-center w-full border-t pt-4">

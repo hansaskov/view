@@ -15,9 +15,10 @@ This project aims to to be the singular OpenSource application for your home med
 - [x] Create All routes for auth Layout
 - [x] Create non-auth layout
 - [x] Create login page
-- [ ] Fallback navigation to react
-- [ ] Create sign-up page
+- [x] Create sign-up page
+- [x] Fallback navigation to react
 - [ ] Redirect non authed user
+- [ ] Unify themes across authenticatd / non-authenticated routes
 - [ ] Send emails.
 - [ ] Password reset.
 - [ ] Upload photos
