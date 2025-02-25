@@ -19,6 +19,8 @@ This project aims to to be the singular OpenSource application for your home med
 - [x] Fallback navigation to react
 - [x] Redirect non authed user
 - [ ] Unify themes across authenticatd / non-authenticated routes
+- [ ] Add logout functionality
+- [ ] Use the users correct picture
 - [ ] Send emails.
 - [ ] Password reset.
 - [ ] Upload photos
