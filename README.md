@@ -17,7 +17,7 @@ This project aims to to be the singular OpenSource application for your home med
 - [x] Create login page
 - [x] Create sign-up page
 - [x] Fallback navigation to react
-- [ ] Redirect non authed user
+- [x] Redirect non authed user
 - [ ] Unify themes across authenticatd / non-authenticated routes
 - [ ] Send emails.
 - [ ] Password reset.
@@ -31,5 +31,5 @@ This project aims to to be the singular OpenSource application for your home med
 
 ## Inspirations
 - Immich (Google photo)
-- Jellyfin
+- Jellyfin / Ples / Netflix
 - Onedrive
