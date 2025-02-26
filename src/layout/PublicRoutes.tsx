@@ -1,15 +1,13 @@
 import { ModeToggle } from "@/components/mode-toggle"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
-import { Switch } from "@/components/ui/switch"
 import { Link, Outlet, createRoute } from "@tanstack/react-router"
-import { BookOpen, ExternalLink, Github, Moon, Sun } from "lucide-react"
-import { useState } from "react"
-import { rootRoute } from "./RootLayout"
+import { BookOpen, ExternalLink, Github } from "lucide-react"
+import { rootRoute } from "./RootRoutes"
 
-export const nonAuthRoute = createRoute({
+export const publicRoutes = createRoute({
 	getParentRoute: () => rootRoute,
-	id: "non-auth-layout",
+	id: "public-layout",
 	component: Layout,
 })
 

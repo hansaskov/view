@@ -5,13 +5,13 @@ import { RouterProvider, createRouter } from "@tanstack/react-router"
 import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
 import { ThemeProvider } from "./components/theme-provider"
-import { authRoute } from "./layout/AuthLayout"
-import { nonAuthRoute } from "./layout/NonAuthLayout"
-import { rootRoute } from "./layout/RootLayout"
+import { protectedRoute } from "./layout/ProtectedRoutes"
+import { publicRoutes } from "./layout/PublicRoutes"
+import { rootRoute } from "./layout/RootRoutes"
 
 const routeTree = rootRoute.addChildren([
-	authRoute.addChildren(AuthRoutes),
-	nonAuthRoute.addChildren(NonAuthRoutes),
+	protectedRoute.addChildren(AuthRoutes),
+	publicRoutes.addChildren(NonAuthRoutes),
 ])
 const queryClient = new QueryClient()
 

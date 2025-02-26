@@ -12,24 +12,30 @@ import {
 	SidebarTrigger,
 } from "@/components/ui/sidebar"
 import { authClient } from "@/lib/auth-client"
+import { queryOptions } from "@tanstack/react-query"
 import { Outlet, createRoute, redirect } from "@tanstack/react-router"
-import { toast } from "sonner"
-import { rootRoute } from "./RootLayout"
+import { rootRoute } from "./RootRoutes"
 
-export const authRoute = createRoute({
+const qOptions = queryOptions({
+	queryKey: ["sessions"],
+	queryFn: () => authClient.getSession(),
+})
+
+export const protectedRoute = createRoute({
 	getParentRoute: () => rootRoute,
-	id: "auth-layout",
+	id: "protected-layout",
 	component: Layout,
-	beforeLoad: async ({ location }) => {
-		const { data: session } = await authClient.getSession()
+	beforeLoad: async ({ location, context: { queryClient } }) => {
+		const { data: session } = await queryClient.ensureQueryData(qOptions)
 
 		if (!session) {
-			toast.error("Invalid session. Redirecting to /login")
 			throw redirect({
 				to: "/login",
 				search: location.href,
 			})
 		}
+
+		return session
 	},
 })
 

@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { Separator } from "@/components/ui/separator"
-import { nonAuthRoute } from "@/layout/NonAuthLayout"
+import { publicRoutes } from "@/layout/PublicRoutes"
 import { Link, createRoute } from "@tanstack/react-router"
 import {
 	BookOpen,
@@ -27,7 +27,7 @@ import {
 } from "lucide-react"
 
 export const homepageRoute = createRoute({
-	getParentRoute: () => nonAuthRoute,
+	getParentRoute: () => publicRoutes,
 	component: Page,
 	path: "/",
 })

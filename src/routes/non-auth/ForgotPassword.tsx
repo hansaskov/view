@@ -1,8 +1,8 @@
-import { nonAuthRoute } from "@/layout/NonAuthLayout"
+import { publicRoutes } from "@/layout/PublicRoutes"
 import { createRoute } from "@tanstack/react-router"
 
 export const forgotPasswordRoute = createRoute({
-	getParentRoute: () => nonAuthRoute,
+	getParentRoute: () => publicRoutes,
 	component: Page,
 	path: "/forgot-password",
 })

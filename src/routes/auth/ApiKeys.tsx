@@ -1,8 +1,8 @@
-import { authRoute } from "@/layout/AuthLayout"
+import { protectedRoute } from "@/layout/ProtectedRoutes"
 import { createRoute } from "@tanstack/react-router"
 
 export const apiKeysRoute = createRoute({
-	getParentRoute: () => authRoute,
+	getParentRoute: () => protectedRoute,
 	component: Page,
 	path: "/api-keys",
 })

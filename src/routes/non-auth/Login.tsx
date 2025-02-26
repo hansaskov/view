@@ -1,9 +1,9 @@
 import { SignIn } from "@/components/sign-in"
-import { nonAuthRoute } from "@/layout/NonAuthLayout"
+import { publicRoutes } from "@/layout/PublicRoutes"
 import { createRoute } from "@tanstack/react-router"
 
 export const loginRoute = createRoute({
-	getParentRoute: () => nonAuthRoute,
+	getParentRoute: () => publicRoutes,
 	component: Page,
 	path: "/login",
 })

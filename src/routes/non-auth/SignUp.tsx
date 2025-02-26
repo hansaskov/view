@@ -1,9 +1,9 @@
 import { SignUp } from "@/components/sign-up"
-import { nonAuthRoute } from "@/layout/NonAuthLayout"
+import { publicRoutes } from "@/layout/PublicRoutes"
 import { createRoute } from "@tanstack/react-router"
 
 export const signUpRoute = createRoute({
-	getParentRoute: () => nonAuthRoute,
+	getParentRoute: () => publicRoutes,
 	component: Page,
 	path: "/sign-up",
 })

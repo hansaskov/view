@@ -1,5 +1,5 @@
-import { nonAuthRoute } from "@/layout/NonAuthLayout"
-import { rootRoute } from "@/layout/RootLayout"
+import { publicRoutes } from "@/layout/PublicRoutes"
+import { rootRoute } from "@/layout/RootRoutes"
 import { fetchPosts } from "@/lib/api"
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query"
 import { createRoute } from "@tanstack/react-router"
@@ -10,7 +10,7 @@ const qOptions = queryOptions({
 })
 
 export const postRoute = createRoute({
-	getParentRoute: () => nonAuthRoute,
+	getParentRoute: () => publicRoutes,
 	path: "/posts/$postId",
 	loader: ({ context }) => context.queryClient.ensureQueryData(qOptions),
 	component: Page,
