@@ -25,6 +25,9 @@ import {
 } from "lucide-react"
 import { useCallback, useMemo } from "react"
 import { useTheme } from "./theme-provider"
+import { authClient } from "@/lib/auth-client"
+import { useNavigate } from "@tanstack/react-router"
+import { toast } from "sonner"
 
 export function NavUser({
 	user,
@@ -35,12 +38,8 @@ export function NavUser({
 		avatar: string
 	}
 }) {
-	const { theme, setTheme } = useTheme()
-	const isDarkMode = theme === "dark"
+	const navigate = useNavigate()
 
-	const toggleTheme = () => {
-		setTheme(isDarkMode ? "light" : "dark")
-	}
 	return (
 		<SidebarMenu>
 			<SidebarMenuItem>
@@ -103,7 +102,22 @@ export function NavUser({
 							<ThemeToggle />
 						</DropdownMenuGroup>
 						<DropdownMenuSeparator />
-						<DropdownMenuItem>
+						<DropdownMenuItem
+							onClick={async () => {
+								try {
+									await authClient.signOut({
+										fetchOptions: {
+											onSuccess: () => {
+												navigate({ to: "/login" })
+											},
+											onError: ctx => {
+												toast.error(ctx.error.message)
+											},
+										},
+									})
+								} catch (error) {}
+							}}
+						>
 							<LogOut />
 							Log out
 						</DropdownMenuItem>
