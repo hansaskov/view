@@ -41,6 +41,7 @@ const navMain = [
 			{ title: "API Keys", url: "/api-keys", icon: KeyRound },
 			{ title: "Log", url: "/log", icon: FileText },
 			{ title: "Metadata", url: "/metadata", icon: BookMarked },
+			{ title: "Payment", url: "/payment", icon: BookMarked },
 			{ title: "Settings", url: "/settings", icon: Settings },
 		],
 	},
