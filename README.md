@@ -21,6 +21,9 @@ This project aims to to be the singular OpenSource application for your home med
 - [x] Unify themes across authenticatd / non-authenticated routes
 - [x] Add logout functionality
 - [x] Use the users correct picture
+- [x] Create reuseable table component
+- [ ] Create users page
+- [ ] Create sessions page
 - [ ] Send emails.
 - [ ] Password reset.
 - [ ] Upload photos
