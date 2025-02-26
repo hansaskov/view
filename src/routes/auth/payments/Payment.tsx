@@ -5,6 +5,13 @@ import { protectedRoute } from "@/layout/ProtectedRoutes"
 import { createRoute } from "@tanstack/react-router"
 import { columns } from "./columns"
 import { payments } from "./data"
+import {
+	Card,
+	CardContent,
+	CardDescription,
+	CardHeader,
+	CardTitle,
+} from "@/components/ui/card"
 
 export const paymentRoute = createRoute({
 	getParentRoute: () => protectedRoute,
@@ -17,8 +24,16 @@ function Page() {
 	const toolbar = <DataTableToolbar table={table} accessorKey={"email"} />
 
 	return (
-		<div className="container mx-auto py-10">
-			<DataTable table={table} toolbar={toolbar} />
+		<div className=" px-10 py-6">
+			<Card>
+				<CardHeader>
+					<CardTitle>Payments</CardTitle>
+					<CardDescription>Manage your payment transactions</CardDescription>
+				</CardHeader>
+				<CardContent>
+					<DataTable table={table} toolbar={toolbar} />
+				</CardContent>
+			</Card>
 		</div>
 	)
 }

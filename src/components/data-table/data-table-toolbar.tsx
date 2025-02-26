@@ -14,7 +14,7 @@ export function DataTableToolbar<TData>({
 	accessorKey,
 }: DataTableToolbarProps<TData>) {
 	return (
-		<div className="flex items-center py-4">
+		<div className="flex items-center pb-4">
 			{accessorKey && (
 				<Input
 					placeholder={`Filter ${pluralize(accessorKey)}`}

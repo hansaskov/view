@@ -22,7 +22,7 @@ export function DataTable<TData>({ table, toolbar }: DataTableProps<TData>) {
 	const size = table.getTotalSize()
 
 	return (
-		<div className="space-y-4">
+		<div>
 			{toolbar}
 			<div className="rounded-md border">
 				<RootTable>
