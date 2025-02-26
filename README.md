@@ -20,7 +20,7 @@ This project aims to to be the singular OpenSource application for your home med
 - [x] Redirect non authed user
 - [x] Unify themes across authenticatd / non-authenticated routes
 - [x] Add logout functionality
-- [ ] Use the users correct picture
+- [x] Use the users correct picture
 - [ ] Send emails.
 - [ ] Password reset.
 - [ ] Upload photos
