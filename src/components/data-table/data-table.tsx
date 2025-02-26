@@ -1,93 +1,37 @@
 "use client"
 
-import {
-	type ColumnDef,
-	type ColumnFiltersState,
-	type SortingState,
-	type VisibilityState,
-	flexRender,
-	getCoreRowModel,
-	getFilteredRowModel,
-	getPaginationRowModel,
-	getSortedRowModel,
-	useReactTable,
-} from "@tanstack/react-table"
+import { type Table, flexRender } from "@tanstack/react-table"
 
-import { Button } from "@/components/ui/button"
 import {
-	DropdownMenu,
-	DropdownMenuCheckboxItem,
-	DropdownMenuContent,
-	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
-import {
-	Table,
+	Table as RootTable,
 	TableBody,
 	TableCell,
 	TableHead,
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table"
-import React from "react"
-import { DataTablePagination } from "./data-table-pagination"
-import { DataTableViewOptions } from "./data-table-view-options"
 
-interface DataTableProps<TData, TValue> {
-	columns: ColumnDef<TData, TValue>[]
-	data: TData[]
+import { DataTablePagination } from "./data-table-pagination"
+
+interface DataTableProps<TData> {
+	table: Table<TData>
+	toolbar?: React.ReactNode
 }
 
-export function DataTable<TData, TValue>({
-	columns,
-	data,
-}: DataTableProps<TData, TValue>) {
-	const [sorting, setSorting] = React.useState<SortingState>([])
-	const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-		[]
-	)
-	const [columnVisibility, setColumnVisibility] =
-		React.useState<VisibilityState>({})
-
-	const table = useReactTable({
-		data,
-		columns,
-		onSortingChange: setSorting,
-		getCoreRowModel: getCoreRowModel(),
-		getPaginationRowModel: getPaginationRowModel(),
-		getSortedRowModel: getSortedRowModel(),
-		onColumnFiltersChange: setColumnFilters,
-		getFilteredRowModel: getFilteredRowModel(),
-		onColumnVisibilityChange: setColumnVisibility,
-		state: {
-			sorting,
-			columnFilters,
-			columnVisibility,
-		},
-	})
+export function DataTable<TData>({ table, toolbar }: DataTableProps<TData>) {
+	const size = table.getTotalSize()
 
 	return (
-		<div>
-			<div className="flex items-center py-4">
-				<Input
-					placeholder="Filter emails..."
-					value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
-					onChange={event =>
-						table.getColumn("email")?.setFilterValue(event.target.value)
-					}
-					className="max-w-sm"
-				/>
-				<DataTableViewOptions table={table} />
-			</div>
-
+		<div className="space-y-4">
+			{toolbar}
 			<div className="rounded-md border">
-				<Table>
+				<RootTable>
 					<TableHeader>
 						{table.getHeaderGroups().map(headerGroup => (
 							<TableRow key={headerGroup.id}>
 								{headerGroup.headers.map(header => {
 									return (
-										<TableHead key={header.id}>
+										<TableHead key={header.id} colSpan={header.colSpan}>
 											{header.isPlaceholder
 												? null
 												: flexRender(
@@ -119,16 +63,13 @@ export function DataTable<TData, TValue>({
 							))
 						) : (
 							<TableRow>
-								<TableCell
-									colSpan={columns.length}
-									className="h-24 text-center"
-								>
+								<TableCell colSpan={size} className="h-24 text-center">
 									No results.
 								</TableCell>
 							</TableRow>
 						)}
 					</TableBody>
-				</Table>
+				</RootTable>
 			</div>
 			<DataTablePagination table={table} />
 		</div>
