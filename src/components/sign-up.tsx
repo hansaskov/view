@@ -40,7 +40,7 @@ export function SignUp() {
 	}
 
 	return (
-		<Card>
+		<Card className="w-sm">
 			<CardHeader>
 				<CardTitle className="text-lg md:text-xl">Sign Up</CardTitle>
 				<CardDescription className="text-xs md:text-sm">

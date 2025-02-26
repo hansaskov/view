@@ -25,7 +25,7 @@ export function SignIn() {
 	const navigate = useNavigate()
 
 	return (
-		<Card className="max-w-md">
+		<Card className="w-sm">
 			<CardHeader>
 				<CardTitle className="text-lg md:text-xl">Sign In</CardTitle>
 				<CardDescription className="text-xs md:text-sm">
