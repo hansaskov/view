@@ -13,6 +13,8 @@ import {
 	SidebarMenuButton,
 	SidebarMenuItem,
 } from "@/components/ui/sidebar"
+import { authClient } from "@/lib/auth-client"
+import { useNavigate } from "@tanstack/react-router"
 import {
 	BadgeCheck,
 	Bell,
@@ -24,10 +26,8 @@ import {
 	Sun,
 } from "lucide-react"
 import { useCallback, useMemo } from "react"
-import { useTheme } from "./theme-provider"
-import { authClient } from "@/lib/auth-client"
-import { useNavigate } from "@tanstack/react-router"
 import { toast } from "sonner"
+import { useTheme } from "./theme-provider"
 
 export function NavUser({
 	user,
