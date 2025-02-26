@@ -19,6 +19,9 @@ import { rootRoute } from "./RootRoutes"
 const qOptions = queryOptions({
 	queryKey: ["sessions"],
 	queryFn: () => authClient.getSession(),
+	staleTime: 5 * 1000, // 5 seconds
+	retryDelay: 1 * 1000, // 1 second
+	retry: 1,
 })
 
 export const protectedRoute = createRoute({
@@ -26,7 +29,7 @@ export const protectedRoute = createRoute({
 	id: "protected-layout",
 	component: Layout,
 	beforeLoad: async ({ location, context: { queryClient } }) => {
-		const { data: session } = await queryClient.ensureQueryData(qOptions)
+		const { data: session } = await queryClient.fetchQuery(qOptions)
 
 		if (!session) {
 			throw redirect({
