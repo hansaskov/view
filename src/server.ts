@@ -27,5 +27,6 @@ export const server = new Elysia()
 	.get("/posts/*", client)
 	.get("/sign-up", client)
 	.get("/sign-in", client)
+	.get("/payment", client)
 
 export type App = typeof server

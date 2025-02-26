@@ -1,4 +1,4 @@
-import { DataTable } from "@/components/data-table"
+import { DataTable } from "@/components/data-table/data-table"
 import { protectedRoute } from "@/layout/ProtectedRoutes"
 import { createRoute } from "@tanstack/react-router"
 import { type Payment, columns } from "./columns"
