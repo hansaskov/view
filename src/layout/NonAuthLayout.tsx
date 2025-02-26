@@ -1,3 +1,4 @@
+import { ModeToggle } from "@/components/mode-toggle"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { Switch } from "@/components/ui/switch"
@@ -13,16 +14,8 @@ export const nonAuthRoute = createRoute({
 })
 
 function Layout() {
-	const [darkMode, setDarkMode] = useState(true)
-
-	const toggleDarkMode = () => {
-		setDarkMode(!darkMode)
-	}
-
 	return (
-		<div
-			className={`min-h-screen flex flex-col ${darkMode ? "dark bg-background text-foreground" : "bg-background text-foreground"}`}
-		>
+		<div className={"min-h-screen flex flex-col"}>
 			{/* Header - Added sticky positioning */}
 			<header className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg border-b">
 				<div className="container max-w-6xl px-6 mx-auto py-6 flex justify-between items-center">
@@ -35,17 +28,7 @@ function Layout() {
 						</Link>
 					</div>
 					<div className="flex items-center gap-4">
-						<div className="flex items-center gap-2">
-							<Sun
-								size={16}
-								className={`${darkMode ? "text-muted-foreground" : "text-amber-500"}`}
-							/>
-							<Switch checked={darkMode} onCheckedChange={toggleDarkMode} />
-							<Moon
-								size={16}
-								className={`${darkMode ? "text-primary" : "text-muted-foreground"}`}
-							/>
-						</div>
+						<ModeToggle />
 
 						<Button asChild variant="ghost" size="sm">
 							<Link to="/docs">Docs</Link>

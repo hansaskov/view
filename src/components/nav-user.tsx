@@ -1,12 +1,3 @@
-import {
-	BadgeCheck,
-	Bell,
-	ChevronsUpDown,
-	CreditCard,
-	LogOut,
-	Sparkles,
-} from "lucide-react"
-
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
 	DropdownMenu,
@@ -22,6 +13,18 @@ import {
 	SidebarMenuButton,
 	SidebarMenuItem,
 } from "@/components/ui/sidebar"
+import {
+	BadgeCheck,
+	Bell,
+	ChevronsUpDown,
+	CreditCard,
+	LogOut,
+	Moon,
+	Sparkles,
+	Sun,
+} from "lucide-react"
+import { useCallback, useMemo } from "react"
+import { useTheme } from "./theme-provider"
 
 export function NavUser({
 	user,
@@ -32,6 +35,12 @@ export function NavUser({
 		avatar: string
 	}
 }) {
+	const { theme, setTheme } = useTheme()
+	const isDarkMode = theme === "dark"
+
+	const toggleTheme = () => {
+		setTheme(isDarkMode ? "light" : "dark")
+	}
 	return (
 		<SidebarMenu>
 			<SidebarMenuItem>
@@ -91,6 +100,7 @@ export function NavUser({
 								<Bell />
 								Notifications
 							</DropdownMenuItem>
+							<ThemeToggle />
 						</DropdownMenuGroup>
 						<DropdownMenuSeparator />
 						<DropdownMenuItem>
@@ -101,5 +111,27 @@ export function NavUser({
 				</DropdownMenu>
 			</SidebarMenuItem>
 		</SidebarMenu>
+	)
+}
+
+function ThemeToggle() {
+	const { theme, setTheme } = useTheme()
+	const isDarkMode = useMemo(() => theme === "dark", [theme])
+	const toggleTheme = useCallback(() => {
+		setTheme(isDarkMode ? "light" : "dark")
+	}, [isDarkMode, setTheme])
+
+	return (
+		<DropdownMenuItem onClick={toggleTheme}>
+			{isDarkMode ? (
+				<>
+					<Sun /> Toggle Light Theme
+				</>
+			) : (
+				<>
+					<Moon /> Toggle Dark Theme
+				</>
+			)}
+		</DropdownMenuItem>
 	)
 }

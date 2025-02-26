@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { RouterProvider, createRouter } from "@tanstack/react-router"
 import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
+import { ThemeProvider } from "./components/theme-provider"
 import { authRoute } from "./layout/AuthLayout"
 import { nonAuthRoute } from "./layout/NonAuthLayout"
 import { rootRoute } from "./layout/RootLayout"
@@ -38,9 +39,11 @@ declare module "@tanstack/react-router" {
 const elem = document.getElementById("root")
 const app = (
 	<StrictMode>
-		<QueryClientProvider client={queryClient}>
-			<RouterProvider router={router} />
-		</QueryClientProvider>
+		<ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+			<QueryClientProvider client={queryClient}>
+				<RouterProvider router={router} />
+			</QueryClientProvider>
+		</ThemeProvider>
 	</StrictMode>
 )
 
