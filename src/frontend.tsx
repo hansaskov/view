@@ -1,17 +1,20 @@
-import * as AuthRoutes from "@/routes/protected"
-import * as NonAuthRoutes from "@/routes/public"
+import * as ProtectedRoutes from "@/routes/protected"
+import * as ProtectedAdminRoutes from "@/routes/protected-admin"
+import * as Public from "@/routes/public"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { RouterProvider, createRouter } from "@tanstack/react-router"
 import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
 import { ThemeProvider } from "./components/theme-provider"
+import { protectedAdminRoute } from "./layout/ProtectedAdminRoutes"
 import { protectedRoute } from "./layout/ProtectedRoutes"
 import { publicRoutes } from "./layout/PublicRoutes"
 import { rootRoute } from "./layout/RootRoutes"
 
 const routeTree = rootRoute.addChildren([
-	protectedRoute.addChildren(AuthRoutes),
-	publicRoutes.addChildren(NonAuthRoutes),
+	protectedRoute.addChildren(ProtectedRoutes),
+	protectedAdminRoute.addChildren(ProtectedAdminRoutes),
+	publicRoutes.addChildren(Public),
 ])
 const queryClient = new QueryClient()
 

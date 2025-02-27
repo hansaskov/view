@@ -7,7 +7,7 @@ import { rootRoute } from "./RootRoutes"
 
 export const publicRoutes = createRoute({
 	getParentRoute: () => rootRoute,
-	id: "public-layout",
+	id: "public-route",
 	component: Layout,
 })
 

@@ -8,7 +8,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card"
-import { protectedRoute } from "@/layout/ProtectedRoutes"
+import { protectedAdminRoute } from "@/layout/ProtectedAdminRoutes"
 import { authClient } from "@/lib/auth-client"
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query"
 import { createRoute } from "@tanstack/react-router"
@@ -25,7 +25,7 @@ const qOptions = queryOptions({
 })
 
 export const usersRoute = createRoute({
-	getParentRoute: () => protectedRoute,
+	getParentRoute: () => protectedAdminRoute,
 	component: Page,
 	loader: ({ context }) => context.queryClient.ensureQueryData(qOptions),
 	path: "/users",

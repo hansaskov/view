@@ -26,7 +26,7 @@ const qOptions = queryOptions({
 
 export const protectedRoute = createRoute({
 	getParentRoute: () => rootRoute,
-	id: "protected-layout",
+	id: "protected-route",
 	component: Layout,
 	beforeLoad: async ({ location, context: { queryClient } }) => {
 		const { data: session } = await queryClient.fetchQuery(qOptions)

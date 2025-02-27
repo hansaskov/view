@@ -9,7 +9,6 @@ import { sessionsRoute } from "./Sessions"
 import { settingsRoute } from "./Settings"
 import { showsRoute } from "./Shows"
 import { paymentRoute } from "./payments/Payment"
-import { usersRoute } from "./users/Users"
 
 export {
 	apiKeysRoute,
@@ -22,6 +21,5 @@ export {
 	sessionsRoute,
 	settingsRoute,
 	showsRoute,
-	usersRoute,
 	paymentRoute,
 }
