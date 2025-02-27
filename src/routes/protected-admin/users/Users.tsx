@@ -43,8 +43,11 @@ function Page() {
 		<div className=" px-10 py-6">
 			<Card>
 				<CardHeader>
-					<CardTitle>Payments</CardTitle>
-					<CardDescription>Manage your payment transactions</CardDescription>
+					<CardTitle>User Management</CardTitle>
+					<CardDescription>
+						View, modify permissions, restrict access, or remove accounts from
+						the platform
+					</CardDescription>
 				</CardHeader>
 				<CardContent>
 					<DataTable table={table} toolbar={toolbar} />
