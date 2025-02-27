@@ -5,6 +5,7 @@
     "meganrogge.template-string-converter",
     "oven.bun-vscode",
     "biomejs.biome",
-    "rphlmr.vscode-drizzle-orm"
+    "rphlmr.vscode-drizzle-orm",
+    "bradlc.vscode-tailwindcss"
   ]
 }
