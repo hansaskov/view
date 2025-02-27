@@ -23,7 +23,7 @@ This project aims to to be the singular OpenSource application for your home med
 - [x] Use the users correct picture
 - [x] Create reuseable table component
 - [x] Add Admin protected routes
-- [ ] Create users page
+- [x] Create users page (fixed re-rendering)
 - [ ] Create sessions page
 - [ ] Send emails.
 - [ ] Password reset.

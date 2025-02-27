@@ -1,6 +1,3 @@
-"use client"
-
-import { auth } from "@/auth/better-auth"
 import { DataTableColumnHeader } from "@/components/data-table/data-table-column-header"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
@@ -16,21 +13,20 @@ import {
 	DropdownMenuSubTrigger,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import {
+	TooltipContent,
+	TooltipProvider,
+	TooltipTrigger,
+} from "@/components/ui/tooltip"
 import { authClient } from "@/lib/auth-client"
+import { Tooltip } from "@radix-ui/react-tooltip"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { useRouter } from "@tanstack/react-router"
 import type { ColumnDef } from "@tanstack/react-table"
 import type { Prettify } from "better-auth"
 import type { UserWithRole } from "better-auth/plugins"
-import {
-	CheckCircle,
-	MoreHorizontal,
-	Router,
-	User,
-	XCircle,
-} from "lucide-react"
-import { toast } from "sonner"
-import { usersRoute } from "./Users"
+import { CheckCircle, MoreHorizontal, XCircle } from "lucide-react"
+import { useCallback } from "react"
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -94,6 +90,50 @@ export const userColumns: ColumnDef<UserWithRole>[] = [
 		header: ({ column }) => (
 			<DataTableColumnHeader column={column} title="Role" />
 		),
+		cell: ({ row }) => {
+			const user = row.original
+
+			if (user.role === "user") return <Badge variant={"secondary"}>User</Badge>
+			if (user.role === "admin") return <Badge>Admin</Badge>
+
+			return <Badge variant={"default"}>{user.role}</Badge>
+		},
+	},
+	{
+		accessorKey: "banned",
+		header: ({ column }) => (
+			<DataTableColumnHeader column={column} title="Status" />
+		),
+		cell: ({ row }) => {
+			const user = row.original
+
+			if (user.banned) {
+				// Create tooltip content for banned users
+				const tooltipContent = [
+					user.banReason && `Reason: ${user.banReason}`,
+					user.banExpires &&
+						`Expires: ${new Date(user.banExpires).toLocaleDateString()}`,
+					!user.banExpires && "Permanent ban",
+				]
+					.filter(Boolean)
+					.join("\n")
+
+				return (
+					<TooltipProvider>
+						<Tooltip>
+							<TooltipTrigger asChild>
+								<Badge variant={"destructive"}>Banned</Badge>
+							</TooltipTrigger>
+							<TooltipContent>
+								{tooltipContent || "No additional information"}
+							</TooltipContent>
+						</Tooltip>
+					</TooltipProvider>
+				)
+			}
+
+			return <Badge variant={"secondary"}>Active</Badge>
+		},
 	},
 	{
 		accessorKey: "createdAt",
@@ -104,51 +144,48 @@ export const userColumns: ColumnDef<UserWithRole>[] = [
 			return row.original.createdAt.toDateString()
 		},
 	},
-
 	{
 		id: "actions",
 		cell: function ActionCell({ row }) {
 			const user = row.original
-			const router = useRouter()
 			const queryClient = useQueryClient()
 
+			// Shared callback for query invalidation - prevents recreation on each render
+			const invalidateUsers = useCallback(() => {
+				return queryClient.invalidateQueries({ queryKey: ["users"] })
+			}, [queryClient])
+
+			// Define mutations with shared onSuccess handler to reduce redundancy
 			const removeUserMutation = useMutation({
 				mutationKey: ["removeUser", user.id],
 				mutationFn: () => authClient.admin.removeUser({ userId: user.id }),
-				onSuccess: async () => {
-					await queryClient.invalidateQueries({ queryKey: ["users"] })
-				},
+				onSuccess: invalidateUsers,
 			})
 
 			const setRoleMutation = useMutation({
 				mutationKey: ["setRole", user.id],
 				mutationFn: (role: string) =>
 					authClient.admin.setRole({ userId: user.id, role }),
-				onSuccess: async ({ data }) => {
-					await queryClient.invalidateQueries({ queryKey: ["users"] })
-				},
+				onSuccess: invalidateUsers,
 			})
 
 			const banUserMutation = useMutation({
 				mutationKey: ["banUser", user.id],
 				mutationFn: () => authClient.admin.banUser({ userId: user.id }),
-				onSuccess: async () => {
-					await queryClient.invalidateQueries({ queryKey: ["users"] })
-				},
+				onSuccess: invalidateUsers,
 			})
 
 			const unbanUserMutation = useMutation({
 				mutationKey: ["unbanUser", user.id],
 				mutationFn: () => authClient.admin.unbanUser({ userId: user.id }),
-				onSuccess: async () => {
-					await queryClient.invalidateQueries({ queryKey: ["users"] })
-				},
+				onSuccess: invalidateUsers,
 			})
 
 			const revokeSessionsMutation = useMutation({
 				mutationKey: ["revokeSessions", user.id],
 				mutationFn: () =>
 					authClient.admin.revokeUserSessions({ userId: user.id }),
+				onSuccess: invalidateUsers,
 			})
 
 			return (

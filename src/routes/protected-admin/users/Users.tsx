@@ -1,6 +1,5 @@
 import { DataTable } from "@/components/data-table/data-table"
 import { DataTableToolbar } from "@/components/data-table/data-table-toolbar"
-import { createTable } from "@/components/data-table/table"
 import {
 	Card,
 	CardContent,
@@ -8,10 +7,12 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card"
+import { useDataTable } from "@/hooks/use-data-table"
 import { protectedAdminRoute } from "@/layout/ProtectedAdminRoutes"
 import { authClient } from "@/lib/auth-client"
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query"
 import { createRoute } from "@tanstack/react-router"
+import { useMemo } from "react"
 import { userColumns } from "./columns"
 
 const qOptions = queryOptions({
@@ -36,11 +37,29 @@ function Page() {
 		data: { data },
 	} = useSuspenseQuery(qOptions)
 
-	const table = createTable({ columns: userColumns, data: data?.users ?? [] })
-	const toolbar = <DataTableToolbar table={table} accessorKey={"email"} />
+	// Memoize the data to prevent unnecessary re-renders
+	const users = useMemo(() => data?.users ?? [], [data?.users])
+
+	// Use our custom hook instead of the inline table creation
+	const table = useDataTable({
+		columns: userColumns,
+		data: users,
+		initialState: {
+			pagination: {
+				pageSize: 10,
+				pageIndex: 0,
+			},
+		},
+	})
+
+	// Memoize the toolbar to prevent rebuilding on each render
+	const toolbar = useMemo(
+		() => <DataTableToolbar table={table} accessorKey="email" />,
+		[table]
+	)
 
 	return (
-		<div className=" px-10 py-6">
+		<div className="px-10 py-6">
 			<Card>
 				<CardHeader>
 					<CardTitle>User Management</CardTitle>
