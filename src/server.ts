@@ -10,23 +10,25 @@ const api = new Elysia({ prefix: "/api" })
 export const server = new Elysia()
 	.mount(auth.handler)
 	.use(api)
+
+	// Public Routes
 	.get("/", client)
-	.get("/login", client)
-	.get("/devices", client)
-	.get("/log", client)
-	.get("/metadata", client)
-	.get("/movies", client)
-	.get("/photos", client)
-	.get("/sessions", client)
-	.get("/settings", client)
-	.get("/shows", client)
-	.get("/users", client)
 	.get("/docs", client)
-	.get("/forgot-password", client)
 	.get("/login", client)
-	.get("/posts/*", client)
-	.get("/sign-up", client)
 	.get("/sign-in", client)
-	.get("/payment", client)
+	.get("/forgot-password", client)
+
+	// Protected Routes
+	.get("/photos", client)
+	.get("/files", client)
+	.get("/movies", client)
+	.get("/shows", client)
+	.get("/metadata", client)
+
+	// Protected Admin Routes
+	.get("/users", client)
+	.get("/log", client)
+	.get("/api-keys", client)
+	.get("/settings", client)
 
 export type App = typeof server
