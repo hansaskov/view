@@ -1,9 +1,8 @@
-import { protectedRoute } from "@/layout/ProtectedRoutes"
+import { protectedAdminRoute } from "@/layout/ProtectedAdminRoutes"
 import { createRoute } from "@tanstack/react-router"
-import { rootRoute } from "../../layout/RootRoutes"
 
 export const sessionsRoute = createRoute({
-	getParentRoute: () => protectedRoute,
+	getParentRoute: () => protectedAdminRoute,
 	component: Page,
 	path: "/sessions",
 })
