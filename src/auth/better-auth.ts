@@ -23,6 +23,14 @@ const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET
 if (!GOOGLE_CLIENT_SECRET)
 	throw new Error("❌ GOOGLE_CLIENT_SECRET enviroment missing")
 
+const MICROSOFT_CLIENT_ID = process.env.MICROSOFT_CLIENT_ID
+if (!MICROSOFT_CLIENT_ID)
+	throw new Error("❌ MICROSOFT_CLIENT_ID enviroment missing")
+
+const MICROSOFT_CLIENT_SECRET = process.env.MICROSOFT_CLIENT_SECRET
+if (!MICROSOFT_CLIENT_SECRET)
+	throw new Error("❌ MICROSOFT_CLIENT_SECRET enviroment missing")
+
 export const auth = betterAuth({
 	database: drizzleAdapter(db, {
 		provider: "sqlite",
@@ -51,7 +59,15 @@ export const auth = betterAuth({
 			clientId: GOOGLE_CLIENT_ID,
 			clientSecret: GOOGLE_CLIENT_SECRET,
 		},
+		microsoft: {
+			clientId: MICROSOFT_CLIENT_ID,
+			clientSecret: MICROSOFT_CLIENT_SECRET,
+			// Optional
+			tenantId: "common",
+			requireSelectAccount: true,
+		},
 	},
+
 	plugins: [openAPI(), admin()],
 })
 
