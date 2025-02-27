@@ -30,6 +30,7 @@ const navMain = [
 			{ title: "Files", url: "/files", icon: File },
 			{ title: "Movies", url: "/movies", icon: Film },
 			{ title: "Shows", url: "/shows", icon: Tv },
+			{ title: "Metadata", url: "/metadata", icon: BookMarked },
 		],
 	},
 	{
@@ -38,7 +39,6 @@ const navMain = [
 			{ title: "Users", url: "/users", icon: Users },
 			{ title: "API Keys", url: "/api-keys", icon: KeyRound },
 			{ title: "Log", url: "/log", icon: FileText },
-			{ title: "Metadata", url: "/metadata", icon: BookMarked },
 			{ title: "Settings", url: "/settings", icon: Settings },
 		],
 	},
