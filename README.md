@@ -24,10 +24,13 @@ This project aims to to be the singular OpenSource application for your home med
 - [x] Create reuseable table component
 - [x] Add Admin protected routes
 - [x] Create users page (fixed re-rendering)
-- [ ] Create sessions page
+- [ ] Redirect users back to their inteded page after logging back in when thrown out by missing session 
 - [ ] Send emails.
 - [ ] Password reset.
 - [ ] Upload photos
+- [ ] Create organization
+- [ ] Protected organization layout
+- [ ] Manage members on organization
 - [ ] Upload videos
 - [ ] View photos
 - [ ] Play videos

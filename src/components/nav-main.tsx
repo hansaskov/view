@@ -36,8 +36,6 @@ const navMain = [
 		title: "Admin",
 		items: [
 			{ title: "Users", url: "/users", icon: Users },
-			{ title: "Sessions", url: "/sessions", icon: BookUser },
-			{ title: "Devices", url: "/devices", icon: Smartphone },
 			{ title: "API Keys", url: "/api-keys", icon: KeyRound },
 			{ title: "Log", url: "/log", icon: FileText },
 			{ title: "Metadata", url: "/metadata", icon: BookMarked },
