@@ -8,8 +8,8 @@ import { photosRoute } from "./Photos"
 import { sessionsRoute } from "./Sessions"
 import { settingsRoute } from "./Settings"
 import { showsRoute } from "./Shows"
-import { usersRoute } from "./Users"
 import { paymentRoute } from "./payments/Payment"
+import { usersRoute } from "./users/Users"
 
 export {
 	apiKeysRoute,

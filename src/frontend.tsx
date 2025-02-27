@@ -1,5 +1,5 @@
-import * as AuthRoutes from "@/routes/auth"
-import * as NonAuthRoutes from "@/routes/non-auth"
+import * as AuthRoutes from "@/routes/protected"
+import * as NonAuthRoutes from "@/routes/public"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { RouterProvider, createRouter } from "@tanstack/react-router"
 import { StrictMode } from "react"
