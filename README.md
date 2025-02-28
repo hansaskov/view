@@ -25,6 +25,9 @@ This project aims to to be the singular OpenSource application for your home med
 - [x] Add Admin protected routes
 - [x] Create users page (fixed re-rendering)
 - [ ] Redirect users back to their inteded page after logging back in when thrown out by missing session 
+- [ ] Create an organization
+- [ ] Invite users to an organization
+- [ ] Manage users within your organization
 - [ ] Send emails.
 - [ ] Password reset.
 - [ ] Upload photos

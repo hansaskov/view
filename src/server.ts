@@ -1,6 +1,6 @@
 import { Elysia } from "elysia"
 import { auth } from "./auth/better-auth"
-import client from "./index.html" with { type: "file" }
+import client from "./index.html" with { type: "embed" }
 import { logger } from "./utils/logger"
 
 const api = new Elysia({ prefix: "/api" })

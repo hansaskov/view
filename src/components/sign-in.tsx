@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { signIn } from "@/lib/auth-client"
 import { cn } from "@/lib/utils"
+import { loginRoute } from "@/routes/public"
 import { Link, useNavigate } from "@tanstack/react-router"
 import { Loader2 } from "lucide-react"
 import { type FormEventHandler, useState } from "react"
@@ -23,6 +24,7 @@ export function SignIn() {
 	const [rememberMe, setRememberMe] = useState(false)
 
 	const navigate = useNavigate()
+	const { redirectURL } = loginRoute.useSearch()
 
 	return (
 		<Card className="w-sm">
@@ -44,7 +46,7 @@ export function SignIn() {
 								password,
 								fetchOptions: {
 									onSuccess: () => {
-										navigate({ to: "/movies" })
+										navigate({ to: redirectURL ?? "/movies" })
 									},
 									onError: () => {
 										setLoading(false)
@@ -121,7 +123,7 @@ export function SignIn() {
 							try {
 								await signIn.social({
 									provider: "google",
-									callbackURL: "/movies",
+									callbackURL: redirectURL ?? "/movies",
 								})
 							} catch (error) {
 								setLoading(false)
@@ -162,7 +164,7 @@ export function SignIn() {
 							try {
 								await signIn.social({
 									provider: "microsoft",
-									callbackURL: "/movies",
+									callbackURL: redirectURL ?? "/movies",
 								})
 							} catch (error) {
 								setLoading(false)
@@ -191,7 +193,7 @@ export function SignIn() {
 							try {
 								await signIn.social({
 									provider: "github",
-									callbackURL: "/movies",
+									callbackURL: redirectURL ?? "/movies",
 								})
 							} catch (error) {
 								setLoading(false)

@@ -34,7 +34,7 @@ export const protectedRoute = createRoute({
 		if (!session) {
 			throw redirect({
 				to: "/login",
-				search: location.href,
+				search: { redirectURL: location.href },
 			})
 		}
 
