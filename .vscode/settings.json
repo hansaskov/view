@@ -6,6 +6,14 @@
   "[typescript]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
+  // allow autocomplete for ArkType expressions like "string | num"
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
+// prioritize ArkType's "type" for autoimports
+  "typescript.preferences.autoImportSpecifierExcludeRegexes": [
+    "^(node:)?os$"
+  ],
   "workbench.editor.customLabels.patterns": {
     "**/src/collections/**/index.ts": "${dirname} - index.ts",
     "**/src/collections/**/query.ts": "${dirname} - query.ts",

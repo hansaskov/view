@@ -24,7 +24,8 @@ This project aims to to be the singular OpenSource application for your home med
 - [x] Create reuseable table component
 - [x] Add Admin protected routes
 - [x] Create users page (fixed re-rendering)
-- [ ] Redirect users back to their inteded page after logging back in when thrown out by missing session 
+- [x] Redirect users back to their inteded page after logging back in when thrown out by missing session 
+- [ ] Hide admin tab is not an admin
 - [ ] Create an organization
 - [ ] Invite users to an organization
 - [ ] Manage users within your organization

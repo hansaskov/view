@@ -1,7 +1,10 @@
-import type { Config } from "drizzle-kit";
-import { getSqlitePath } from "./src/config/enviroment";
+import type { Config } from "drizzle-kit"
+import { getSqlitePath } from "./src/utils/path"
 
-const SQLITE_PATH = getSqlitePath();
+const SQLITE_PATH = getSqlitePath({
+	dataPath: process.env.DATA_PATH ?? "./data",
+	sqlite: process.env.SQLITE ?? "sqlite.db",
+})
 
 export default {
 	schema: "./src/collections/**/table.ts",
@@ -11,4 +14,4 @@ export default {
 	dbCredentials: {
 		url: SQLITE_PATH,
 	},
-} satisfies Config;
+} satisfies Config

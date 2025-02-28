@@ -1,5 +1,5 @@
-import { env } from "elysia"
 import { server } from "./server.ts"
+import { environment } from "./utils/environment.ts"
 import { logger } from "./utils/logger.ts"
 const signals = ["SIGINT", "SIGTERM"]
 
@@ -19,6 +19,6 @@ process.on("unhandledRejection", error => {
 	console.error(error)
 })
 
-server.listen(env.PORT ?? 3000, () =>
-	logger.info(`🚀 Server started at ${env.BETTER_AUTH_URL}`)
+server.listen(environment.PORT, () =>
+	logger.info(`🚀 Server started at ${environment.BETTER_AUTH_URL}`)
 )

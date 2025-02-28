@@ -1,8 +1,12 @@
 import { Database } from "bun:sqlite"
-import { getSqlitePath } from "../config/enviroment"
+import { environment } from "@/utils/environment"
 import { logger } from "../utils/logger"
+import { getSqlitePath } from "../utils/path"
 
-const SQLITE_PATH = getSqlitePath()
+const SQLITE_PATH = getSqlitePath({
+	dataPath: environment.DATA_PATH,
+	sqlite: environment.SQLITE,
+})
 
 export const sqlite = new Database(SQLITE_PATH)
 
