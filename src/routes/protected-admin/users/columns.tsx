@@ -21,7 +21,6 @@ import {
 import { authClient } from "@/lib/auth-client"
 import { Tooltip } from "@radix-ui/react-tooltip"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { useRouter } from "@tanstack/react-router"
 import type { ColumnDef } from "@tanstack/react-table"
 import type { Prettify } from "better-auth"
 import type { UserWithRole } from "better-auth/plugins"
