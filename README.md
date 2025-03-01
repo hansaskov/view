@@ -27,6 +27,7 @@ This project aims to to be the singular OpenSource application for your home med
 - [x] Redirect users back to their inteded page after logging back in when thrown out by missing session 
 - [x] Refactor environment variables to use arktype parsing
 - [x] Create database schema for organizations, members and invites
+- [x] create org member middleware
 - [ ] Hide admin tab is not an admin
 - [ ] Create an organization
 - [ ] Invite users to an organization
