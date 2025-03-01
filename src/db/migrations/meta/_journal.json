@@ -29,6 +29,13 @@
 			"when": 1740517126404,
 			"tag": "0003_bright_adam_destine",
 			"breakpoints": true
+		},
+		{
+			"idx": 4,
+			"version": "6",
+			"when": 1740787918844,
+			"tag": "0004_daffy_metal_master",
+			"breakpoints": true
 		}
 	]
 }

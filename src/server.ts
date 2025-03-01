@@ -1,5 +1,6 @@
 import { Elysia } from "elysia"
 import { auth } from "./auth/better-auth"
+import users from "./collections/user"
 import client from "./index.html" with { type: "embed" }
 import { logger } from "./utils/logger"
 
@@ -32,3 +33,5 @@ export const server = new Elysia()
 	.get("/settings", client)
 
 export type App = typeof server
+
+const test = users
