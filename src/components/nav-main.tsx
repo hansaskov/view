@@ -15,6 +15,7 @@ import {
 	Image,
 	KeyRound,
 	Settings,
+	Share2,
 	Tv,
 	Users,
 } from "lucide-react"
@@ -35,6 +36,15 @@ export function NavMain() {
 		],
 	}
 
+	const organizationSection = {
+		title: "Organization",
+		items: [
+			{ title: "Sharing", url: "/organization/sharing", icon: Share2 },
+			{ title: "Users", url: "/organization/users", icon: Users },
+			{ title: "Settings", url: "/organization/settings", icon: Settings },
+		],
+	}
+
 	const adminSidebarSection = {
 		title: "Admin",
 		items: [
@@ -45,8 +55,12 @@ export function NavMain() {
 		],
 	}
 
-	// Build navigation menu based on user role inside the component
 	const navMain = [defaultSidebarSection]
+
+	// TODO! Show sidebar if the user is in an organization
+	navMain.push(organizationSection)
+
+	// Show sidebar if the user is an admin
 	if (user.role === "admin") {
 		navMain.push(adminSidebarSection)
 	}

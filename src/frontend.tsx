@@ -1,5 +1,8 @@
+import { protectedOrganizationAdminRoute } from "@/layout/ProtectedOrganizationAdminRoutes"
 import * as ProtectedRoutes from "@/routes/protected"
 import * as ProtectedAdminRoutes from "@/routes/protected-admin"
+import * as ProtectedOrganizationRoutes from "@/routes/protected-organization"
+import * as ProtectedOrganizationAdminRoutes from "@/routes/protected-organization-admin"
 import * as PublicRoutes from "@/routes/public"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { RouterProvider, createRouter } from "@tanstack/react-router"
@@ -7,6 +10,7 @@ import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
 import { ThemeProvider } from "./components/theme-provider"
 import { protectedAdminRoute } from "./layout/ProtectedAdminRoutes"
+import { protectedOrganizationRoute } from "./layout/ProtectedOrganizationRoutes"
 import { protectedRoute } from "./layout/ProtectedRoutes"
 import { publicRoutes } from "./layout/PublicRoutes"
 import { rootRoute } from "./layout/RootRoutes"
@@ -14,6 +18,8 @@ import { rootRoute } from "./layout/RootRoutes"
 const routeTree = rootRoute.addChildren([
 	protectedRoute.addChildren(ProtectedRoutes),
 	protectedAdminRoute.addChildren(ProtectedAdminRoutes),
+	protectedOrganizationRoute.addChildren(ProtectedOrganizationRoutes),
+	protectedOrganizationAdminRoute.addChildren(ProtectedOrganizationAdminRoutes),
 	publicRoutes.addChildren(PublicRoutes),
 ])
 const queryClient = new QueryClient()

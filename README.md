@@ -29,8 +29,18 @@ This project aims to to be the singular OpenSource application for your home med
 - [x] Create database schema for organizations, members and invites
 - [x] create org member middleware
 - [x] Hide admin tab if not an admin
+- [x] Sharing route for an organization
+- [x] Organization users route for org admins  
+- [x] Organization settings route for org admins 
 - [ ] Create an organization
+- [ ] List organizations on user
+- [ ] Choose organization
+- [ ] Make org layouts use a slug
+- [ ] Protect organization routes 
+- [ ] Leave organization
+- [ ] Change the name of your organization
 - [ ] Invite users to an organization
+- [ ] List users within your organization
 - [ ] Manage users within your organization
 - [ ] Send emails.
 - [ ] Password reset.
