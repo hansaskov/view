@@ -28,7 +28,7 @@ This project aims to to be the singular OpenSource application for your home med
 - [x] Refactor environment variables to use arktype parsing
 - [x] Create database schema for organizations, members and invites
 - [x] create org member middleware
-- [ ] Hide admin tab is not an admin
+- [x] Hide admin tab if not an admin
 - [ ] Create an organization
 - [ ] Invite users to an organization
 - [ ] Manage users within your organization
