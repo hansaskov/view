@@ -12,7 +12,7 @@ export const table = sqliteTable(TABLE_NAME, {
 		.references(() => user.id),
 	organizationId: text()
 		.notNull()
-		.references(() => organization.id),
+		.references(() => organization.id, { onDelete: "cascade" }),
 	role: text(),
 	createdAt: integer({ mode: "timestamp" })
 		.notNull()

@@ -10,10 +10,10 @@ export const table = sqliteTable(TABLE_NAME, {
 	email: text().notNull(),
 	inviterId: text()
 		.notNull()
-		.references(() => user.id),
+		.references(() => user.id, { onDelete: "cascade" }),
 	organizationId: text()
 		.notNull()
-		.references(() => organization.id),
+		.references(() => organization.id, { onDelete: "cascade" }),
 	role: text(),
 	status: text(),
 	expiresAt: integer({ mode: "timestamp" }).notNull(),
