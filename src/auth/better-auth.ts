@@ -1,4 +1,7 @@
 import account from "@/collections/account"
+import invitation from "@/collections/invitation"
+import member from "@/collections/member"
+import organization from "@/collections/organization"
 import session from "@/collections/session"
 import user from "@/collections/user"
 import verification from "@/collections/verification"
@@ -7,7 +10,11 @@ import { environment } from "@/utils/environment"
 import { logger } from "@/utils/logger"
 import { betterAuth } from "better-auth"
 import { drizzleAdapter } from "better-auth/adapters/drizzle"
-import { admin, openAPI, organization } from "better-auth/plugins"
+import {
+	admin,
+	openAPI,
+	organization as organizationPlugin,
+} from "better-auth/plugins"
 import { memberAc } from "better-auth/plugins/organization/access"
 import Elysia from "elysia"
 
@@ -15,10 +22,13 @@ export const auth = betterAuth({
 	database: drizzleAdapter(db, {
 		provider: "sqlite",
 		schema: {
-			user: user.table,
 			account: account.table,
-			verification: verification.table,
+			invitation: invitation.table,
+			member: member.table,
+			organization: organization.table,
 			session: session.table,
+			user: user.table,
+			verification: verification.table,
 		},
 	}),
 	emailAndPassword: {
@@ -48,7 +58,7 @@ export const auth = betterAuth({
 		},
 	},
 
-	plugins: [openAPI(), admin(), organization()],
+	plugins: [openAPI(), admin(), organizationPlugin()],
 })
 
 export const AuthMiddleware = new Elysia({ name: "better-auth" }).macro({
