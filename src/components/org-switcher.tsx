@@ -14,7 +14,7 @@ import {
 	SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import { authClient } from "@/lib/auth-client"
-import { ChevronsUpDown } from "lucide-react"
+import { ChevronsUpDown, GalleryVerticalEnd } from "lucide-react"
 import { CreateOrganizationDialog } from "./create-organization-dialog"
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 export function TeamSwitcher() {
@@ -50,11 +50,17 @@ export function TeamSwitcher() {
 									</div>
 								</>
 							) : (
-								<div className="flex-1 text-left">
-									<p className="text-sm font-medium truncate">
-										Select your organization
-									</p>
-								</div>
+								<>
+									<div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+										<GalleryVerticalEnd className="size-4" />
+									</div>
+
+									<div className="flex-1 text-left">
+										<p className="font-semibold truncate">
+											Select your organization
+										</p>
+									</div>
+								</>
 							)}
 							<ChevronsUpDown className="ml-auto size-4" />
 						</SidebarMenuButton>

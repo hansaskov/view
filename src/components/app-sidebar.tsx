@@ -1,21 +1,5 @@
 "use client"
 
-import {
-	BookMarked,
-	BookUser,
-	Database,
-	File,
-	FileText,
-	Film,
-	GalleryVerticalEnd,
-	Image,
-	Key,
-	KeyRound,
-	Settings,
-	Smartphone,
-	Tv,
-	Users,
-} from "lucide-react"
 import type * as React from "react"
 
 import {
@@ -28,22 +12,6 @@ import {
 import { NavMain } from "./nav-main"
 import { NavUser } from "./nav-user"
 import { TeamSwitcher } from "./org-switcher"
-
-// Update the data object to include the new sections
-const data = {
-	user: {
-		name: "John Doe",
-		email: "john@example.com",
-		avatar: "/avatars/john-doe.jpg",
-	},
-	organizations: [
-		{
-			name: "View",
-			logo: GalleryVerticalEnd,
-			plan: "Pro",
-		},
-	],
-}
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 	return (
