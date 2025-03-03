@@ -52,11 +52,7 @@ function Page() {
 		},
 	})
 
-	// Memoize the toolbar to prevent rebuilding on each render
-	const toolbar = useMemo(
-		() => <DataTableToolbar table={table} accessorKey="email" />,
-		[table]
-	)
+	const toolbar = <DataTableToolbar table={table} accessorKey="email" />
 
 	return (
 		<div className="px-10 py-6">
