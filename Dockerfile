@@ -26,7 +26,7 @@ RUN bun build \
 	--minify-syntax \
 	--target bun \
 	--outfile server \
-	./src/index.tsx
+	./src/index.ts
 
 # Use a minimal distroless image as the final base to reduce attack surface
 FROM gcr.io/distroless/base

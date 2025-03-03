@@ -27,7 +27,7 @@ import {
 } from "@/components/ui/sidebar"
 import { NavMain } from "./nav-main"
 import { NavUser } from "./nav-user"
-import { TeamSwitcher } from "./team-switcher"
+import { TeamSwitcher } from "./org-switcher"
 
 // Update the data object to include the new sections
 const data = {
@@ -36,7 +36,7 @@ const data = {
 		email: "john@example.com",
 		avatar: "/avatars/john-doe.jpg",
 	},
-	teams: [
+	organizations: [
 		{
 			name: "View",
 			logo: GalleryVerticalEnd,
@@ -49,7 +49,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 	return (
 		<Sidebar collapsible="icon" {...props}>
 			<SidebarHeader>
-				<TeamSwitcher teams={data.teams} />
+				<TeamSwitcher />
 			</SidebarHeader>
 			<SidebarContent>
 				<NavMain />

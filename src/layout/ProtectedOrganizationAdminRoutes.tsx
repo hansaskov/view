@@ -5,7 +5,7 @@ export const protectedOrganizationAdminRoute = createRoute({
 	getParentRoute: () => protectedOrganizationRoute,
 	id: "protected-organization-admin-layout",
 	component: Layout,
-	beforeLoad: async ({ context: { user } }) => {
+	beforeLoad: async ({ context }) => {
 		/* TODO! */
 	},
 })

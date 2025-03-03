@@ -6,6 +6,7 @@ import {
 	SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import { protectedRoute } from "@/layout/ProtectedRoutes"
+import { authClient } from "@/lib/auth-client"
 import { Link } from "@tanstack/react-router"
 import {
 	BookMarked,
@@ -23,26 +24,42 @@ import {
 export function NavMain() {
 	// Move the hook inside the component
 	const { user } = protectedRoute.useRouteContext()
+	const { data: activeOrganization } = authClient.useActiveOrganization()
 
-	// Define sidebar sections inside the component
-	const defaultSidebarSection = {
-		title: "Media",
-		items: [
-			{ title: "Photos", url: "/photos", icon: Image },
-			{ title: "Files", url: "/files", icon: File },
-			{ title: "Movies", url: "/movies", icon: Film },
-			{ title: "Shows", url: "/shows", icon: Tv },
-			{ title: "Metadata", url: "/metadata", icon: BookMarked },
-		],
-	}
+	const navMain = [
+		{
+			title: "Media",
+			items: [
+				{ title: "Photos", url: "/photos", icon: Image },
+				{ title: "Files", url: "/files", icon: File },
+				{ title: "Movies", url: "/movies", icon: Film },
+				{ title: "Shows", url: "/shows", icon: Tv },
+				{ title: "Metadata", url: "/metadata", icon: BookMarked },
+			],
+		},
+	]
 
-	const organizationSection = {
-		title: "Organization",
-		items: [
-			{ title: "Sharing", url: "/organization/sharing", icon: Share2 },
-			{ title: "Users", url: "/organization/users", icon: Users },
-			{ title: "Settings", url: "/organization/settings", icon: Settings },
-		],
+	if (activeOrganization) {
+		navMain.push({
+			title: "Organization",
+			items: [
+				{
+					title: "Sharing",
+					url: `/${activeOrganization.slug}/sharing`,
+					icon: Share2,
+				},
+				{
+					title: "Users",
+					url: `/${activeOrganization.slug}/users`,
+					icon: Users,
+				},
+				{
+					title: "Settings",
+					url: `/${activeOrganization.slug}/settings`,
+					icon: Settings,
+				},
+			],
+		})
 	}
 
 	const adminSidebarSection = {
@@ -55,10 +72,7 @@ export function NavMain() {
 		],
 	}
 
-	const navMain = [defaultSidebarSection]
-
 	// TODO! Show sidebar if the user is in an organization
-	navMain.push(organizationSection)
 
 	// Show sidebar if the user is an admin
 	if (user.role === "admin") {

@@ -4,4 +4,4 @@ import { table } from "./table"
 
 export default { queries, schema, table } as const
 
-export type * as Invitation from "./types"
+export type * as Member from "./types"
