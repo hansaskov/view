@@ -13,16 +13,21 @@ import { DropdownMenuItem } from "@/components/ui/dropdown-menu"
 import {
 	Form,
 	FormControl,
-	FormDescription,
 	FormField,
 	FormItem,
 	FormLabel,
 	FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import {
+	Tooltip,
+	TooltipContent,
+	TooltipProvider,
+	TooltipTrigger,
+} from "@/components/ui/tooltip"
 import { authClient } from "@/lib/auth-client"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Plus } from "lucide-react"
+import { Info, Plus } from "lucide-react"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { toast } from "sonner"
@@ -110,7 +115,7 @@ export function CreateOrganizationDialog() {
 				<DialogHeader>
 					<DialogTitle>Create New Organization</DialogTitle>
 					<DialogDescription>
-						Fill in the details to create a new organization for your team.
+						Choose the name, slug and logo for your new organization
 					</DialogDescription>
 				</DialogHeader>
 				<Form {...form}>
@@ -120,7 +125,19 @@ export function CreateOrganizationDialog() {
 							name="name"
 							render={({ field }) => (
 								<FormItem>
-									<FormLabel>Organization Name</FormLabel>
+									<div className="flex items-center space-x-2">
+										<FormLabel>Name</FormLabel>
+										<TooltipProvider>
+											<Tooltip>
+												<TooltipTrigger asChild>
+													<Info className="h-4 w-4 text-muted-foreground" />
+												</TooltipTrigger>
+												<TooltipContent>
+													The name of your new organization
+												</TooltipContent>
+											</Tooltip>
+										</TooltipProvider>
+									</div>
 									<FormControl>
 										<Input
 											placeholder="Acme Inc."
@@ -131,9 +148,6 @@ export function CreateOrganizationDialog() {
 											}}
 										/>
 									</FormControl>
-									<FormDescription>
-										The name of your new organization
-									</FormDescription>
 									<FormMessage />
 								</FormItem>
 							)}
@@ -144,13 +158,22 @@ export function CreateOrganizationDialog() {
 							name="slug"
 							render={({ field }) => (
 								<FormItem>
-									<FormLabel>Organization Slug</FormLabel>
+									<div className="flex items-center space-x-2">
+										<FormLabel>Slug</FormLabel>
+										<TooltipProvider>
+											<Tooltip>
+												<TooltipTrigger asChild>
+													<Info className="h-4 w-4 text-muted-foreground" />
+												</TooltipTrigger>
+												<TooltipContent>
+													This will be used in URLs for your organization.
+												</TooltipContent>
+											</Tooltip>
+										</TooltipProvider>
+									</div>
 									<FormControl>
 										<Input placeholder="acme-inc" {...field} />
 									</FormControl>
-									<FormDescription>
-										This will be used in URLs for your organization.
-									</FormDescription>
 									<FormMessage />
 								</FormItem>
 							)}
@@ -161,16 +184,25 @@ export function CreateOrganizationDialog() {
 							name="logo"
 							render={({ field }) => (
 								<FormItem>
-									<FormLabel>Logo URL (Optional)</FormLabel>
+									<div className="flex items-center space-x-2">
+										<FormLabel>Logo URL (Optional)</FormLabel>
+										<TooltipProvider>
+											<Tooltip>
+												<TooltipTrigger asChild>
+													<Info className="h-4 w-4 text-muted-foreground" />
+												</TooltipTrigger>
+												<TooltipContent>
+													Leave blank if you don't have a logo yet.
+												</TooltipContent>
+											</Tooltip>
+										</TooltipProvider>
+									</div>
 									<FormControl>
 										<Input
 											placeholder="https://example.com/logo.png"
 											{...field}
 										/>
 									</FormControl>
-									<FormDescription>
-										Leave blank if you don't have a logo yet.
-									</FormDescription>
 									<FormMessage />
 								</FormItem>
 							)}
