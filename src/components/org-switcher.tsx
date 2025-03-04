@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/sidebar"
 import { authClient } from "@/lib/auth-client"
 import { useQueryClient } from "@tanstack/react-query"
-import { Link } from "@tanstack/react-router"
+import { Link, useParams } from "@tanstack/react-router"
 import { ChevronsUpDown, GalleryVerticalEnd } from "lucide-react"
 import { CreateOrganizationDialog } from "./create-organization-dialog"
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
@@ -23,6 +23,7 @@ export function TeamSwitcher() {
 	const { data: organizations } = authClient.useListOrganizations()
 	const { data: activeOrganization } = authClient.useActiveOrganization()
 	const queryClient = useQueryClient()
+	const params = useParams({ strict: false })
 
 	if (!organizations) {
 		return <></>
@@ -83,13 +84,13 @@ export function TeamSwitcher() {
 								{/** This should just navigate to the same page but with different slug. For some reason it does not work */}
 								<Link
 									preload={false}
-									to={activeOrganization ? "/$slug/sharing" : "/$slug/sharing"}
+									to={params.slug ? "/$slug/sharing" : "/$slug/sharing"}
 									params={prev => ({
 										...prev,
 										slug: org.slug,
 									})}
-									onBeforeInput={() => {
-										queryClient.invalidateQueries({
+									onClick={async () => {
+										await queryClient.invalidateQueries({
 											queryKey: ["organization", org.slug],
 										})
 									}}
