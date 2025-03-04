@@ -14,12 +14,16 @@ import {
 	SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import { authClient } from "@/lib/auth-client"
+import { useQueryClient } from "@tanstack/react-query"
+import { Link } from "@tanstack/react-router"
 import { ChevronsUpDown, GalleryVerticalEnd } from "lucide-react"
 import { CreateOrganizationDialog } from "./create-organization-dialog"
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 export function TeamSwitcher() {
 	const { data: organizations } = authClient.useListOrganizations()
 	const { data: activeOrganization } = authClient.useActiveOrganization()
+	const queryClient = useQueryClient()
+
 	if (!organizations) {
 		return <></>
 	}
@@ -75,21 +79,28 @@ export function TeamSwitcher() {
 							Organizations
 						</DropdownMenuLabel>
 						{organizations.map((org, index) => (
-							<DropdownMenuItem
-								key={org.name}
-								onClick={() => {
-									authClient.organization.setActive({
-										organizationSlug: org.slug,
-									})
-								}}
-								className="gap-2 p-2"
-							>
-								<Avatar className="flex aspect-square size-8 items-center justify-center rounded-lg ">
-									<AvatarImage src={org.logo ?? undefined} />
-									<AvatarFallback>{org.name.slice(0, 2)}</AvatarFallback>
-								</Avatar>
-								{org.name}
-								<DropdownMenuShortcut>⌘{index + 1}</DropdownMenuShortcut>
+							<DropdownMenuItem asChild key={org.name} className="gap-2 p-2">
+								{/** This should just navigate to the same page but with different slug. For some reason it does not work */}
+								<Link
+									preload={false}
+									to={activeOrganization ? "/$slug/sharing" : "/$slug/sharing"}
+									params={prev => ({
+										...prev,
+										slug: org.slug,
+									})}
+									onBeforeInput={() => {
+										queryClient.invalidateQueries({
+											queryKey: ["organization", org.slug],
+										})
+									}}
+								>
+									<Avatar className="flex aspect-square size-8 items-center justify-center rounded-lg ">
+										<AvatarImage src={org.logo ?? undefined} />
+										<AvatarFallback>{org.name.slice(0, 2)}</AvatarFallback>
+									</Avatar>
+									{org.name}
+									<DropdownMenuShortcut>⌘{index + 1}</DropdownMenuShortcut>
+								</Link>
 							</DropdownMenuItem>
 						))}
 						<DropdownMenuSeparator />

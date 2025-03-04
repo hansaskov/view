@@ -22,7 +22,6 @@ import {
 } from "lucide-react"
 
 export function NavMain() {
-	// Move the hook inside the component
 	const { user } = protectedRoute.useRouteContext()
 	const { data: activeOrganization } = authClient.useActiveOrganization()
 
@@ -62,21 +61,17 @@ export function NavMain() {
 		})
 	}
 
-	const adminSidebarSection = {
-		title: "Admin",
-		items: [
-			{ title: "Users", url: "/users", icon: Users },
-			{ title: "API Keys", url: "/api-keys", icon: KeyRound },
-			{ title: "Log", url: "/log", icon: FileText },
-			{ title: "Settings", url: "/settings", icon: Settings },
-		],
-	}
-
-	// TODO! Show sidebar if the user is in an organization
-
 	// Show sidebar if the user is an admin
 	if (user.role === "admin") {
-		navMain.push(adminSidebarSection)
+		navMain.push({
+			title: "Admin",
+			items: [
+				{ title: "Users", url: "/users", icon: Users },
+				{ title: "API Keys", url: "/api-keys", icon: KeyRound },
+				{ title: "Log", url: "/log", icon: FileText },
+				{ title: "Settings", url: "/settings", icon: Settings },
+			],
+		})
 	}
 
 	return (
