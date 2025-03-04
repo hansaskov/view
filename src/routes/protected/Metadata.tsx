@@ -1,8 +1,8 @@
-import { protectedAdminRoute } from "@/layout/ProtectedAdminRoutes"
+import { protectedRoute } from "@/layout/ProtectedRoutes"
 import { createRoute } from "@tanstack/react-router"
 
 export const metadataRoute = createRoute({
-	getParentRoute: () => protectedAdminRoute,
+	getParentRoute: () => protectedRoute,
 	component: Page,
 	path: "/metadata",
 })

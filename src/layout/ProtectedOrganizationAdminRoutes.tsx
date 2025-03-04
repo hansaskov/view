@@ -5,15 +5,28 @@ export const protectedOrganizationAdminRoute = createRoute({
 	getParentRoute: () => protectedOrganizationRoute,
 	id: "protected-organization-admin-layout",
 	component: Layout,
-	beforeLoad: async ({ context }) => {
-		/* TODO! */
+	beforeLoad: async ({ context: { activeOrganization, user }, params }) => {
+		const activeMember = activeOrganization.members.find(member => {
+			return member.userId === user.id
+		})
+
+		if (!activeMember || activeMember.role === "member") {
+			throw redirect({
+				to: "/$slug/sharing",
+				params: () => ({ slug: params.slug }),
+			})
+		}
+
+		return { activeMember }
 	},
 })
 
 function Layout() {
 	return (
 		<>
-			<Outlet />
+			<div className="px-10 py-6">
+				<Outlet />
+			</div>
 		</>
 	)
 }
