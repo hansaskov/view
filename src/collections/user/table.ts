@@ -1,5 +1,4 @@
 import { randomUUID } from "node:crypto"
-import { sql } from "drizzle-orm"
 import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core"
 
 const TABLE_NAME = "user"

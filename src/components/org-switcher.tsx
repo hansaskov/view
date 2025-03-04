@@ -18,6 +18,7 @@ import { useQueryClient } from "@tanstack/react-query"
 import { Link, useParams } from "@tanstack/react-router"
 import { ChevronsUpDown, GalleryVerticalEnd } from "lucide-react"
 import { CreateOrganizationDialog } from "./create-organization-dialog"
+import { LeaveOrganizationDialog } from "./leave-organization-dialog"
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 export function TeamSwitcher() {
 	const { data: organizations } = authClient.useListOrganizations()
@@ -106,6 +107,14 @@ export function TeamSwitcher() {
 						))}
 						<DropdownMenuSeparator />
 						<CreateOrganizationDialog />
+						{activeOrganization ? (
+							<LeaveOrganizationDialog
+								organizationId={activeOrganization.id}
+								organizationName={activeOrganization.name}
+							/>
+						) : (
+							<></>
+						)}
 					</DropdownMenuContent>
 				</DropdownMenu>
 			</SidebarMenuItem>

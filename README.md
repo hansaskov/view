@@ -37,7 +37,7 @@ This project aims to to be the singular OpenSource application for your home med
 - [x] Choose organization
 - [x] Make org layouts use a slug
 - [x] Protect organization routes 
-- [ ] Changeing organization should leave you on the same page but with updated params  
+- [-] Changeing organization should leave you on the same page but with updated params  
 - [ ] Leave organization
 - [ ] Change the name of your organization
 - [ ] Invite users to an organization
