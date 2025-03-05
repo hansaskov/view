@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { signUp } from "@/lib/auth-client"
+import { authClient } from "@/lib/auth-client"
 import { Link, useNavigate } from "@tanstack/react-router"
 import { Loader2, X } from "lucide-react"
 import { useState } from "react"
@@ -52,7 +52,7 @@ export function SignUp() {
 					className="grid gap-4"
 					onSubmit={async e => {
 						e.preventDefault()
-						await signUp.email({
+						await authClient.signUp.email({
 							email,
 							password,
 							name: `${firstName} ${lastName}`,

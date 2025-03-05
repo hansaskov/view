@@ -5,5 +5,3 @@ export const authClient = createAuthClient({
 	baseURL: "http://localhost:3000",
 	plugins: [adminClient(), organizationClient()],
 })
-
-export const { signIn, signOut, signUp, useSession } = authClient

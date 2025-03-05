@@ -10,7 +10,7 @@ import {
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { signIn } from "@/lib/auth-client"
+import { authClient } from "@/lib/auth-client"
 import { cn } from "@/lib/utils"
 import { loginRoute } from "@/routes/public"
 import { Link, useNavigate } from "@tanstack/react-router"
@@ -41,7 +41,7 @@ export function SignIn() {
 						e.preventDefault()
 						setLoading(true)
 						try {
-							await signIn.email({
+							await authClient.signIn.email({
 								email,
 								password,
 								fetchOptions: {
@@ -121,7 +121,7 @@ export function SignIn() {
 						onClick={async () => {
 							setLoading(true)
 							try {
-								await signIn.social({
+								await authClient.signIn.social({
 									provider: "google",
 									callbackURL: redirectURL ?? "/movies",
 								})
@@ -162,7 +162,7 @@ export function SignIn() {
 						onClick={async () => {
 							setLoading(true)
 							try {
-								await signIn.social({
+								await authClient.signIn.social({
 									provider: "microsoft",
 									callbackURL: redirectURL ?? "/movies",
 								})
@@ -191,7 +191,7 @@ export function SignIn() {
 						onClick={async () => {
 							setLoading(true)
 							try {
-								await signIn.social({
+								await authClient.signIn.social({
 									provider: "github",
 									callbackURL: redirectURL ?? "/movies",
 								})
