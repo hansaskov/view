@@ -1,18 +1,18 @@
 import { Elysia } from "elysia"
+import { publicApi } from "./api/public"
+import betterAuthView from "./auth/auth-view"
 import { auth } from "./auth/better-auth"
 import client from "./index.html" with { type: "embed" }
 import { logger } from "./utils/logger"
-import { publicApi } from "./api/public"
 
 const api = new Elysia({ prefix: "/api" })
 	.onBeforeHandle(({ path }) => logger.info(path))
 	.get("/names", ["Jack", "Jill", "Jones"])
 
 export const server = new Elysia()
-
-	.mount(auth.handler)
 	.use(api)
 	.use(publicApi)
+	.all("/api/auth/*", betterAuthView)
 
 	// Public Routes
 	.get("/", client)
