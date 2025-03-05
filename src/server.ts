@@ -1,16 +1,18 @@
 import { Elysia } from "elysia"
 import { auth } from "./auth/better-auth"
-import users from "./collections/user"
 import client from "./index.html" with { type: "embed" }
 import { logger } from "./utils/logger"
+import { publicApi } from "./api/public"
 
 const api = new Elysia({ prefix: "/api" })
 	.onBeforeHandle(({ path }) => logger.info(path))
 	.get("/names", ["Jack", "Jill", "Jones"])
 
 export const server = new Elysia()
+
 	.mount(auth.handler)
 	.use(api)
+	.use(publicApi)
 
 	// Public Routes
 	.get("/", client)
@@ -33,5 +35,3 @@ export const server = new Elysia()
 	.get("/settings", client)
 
 export type App = typeof server
-
-const test = users

@@ -39,9 +39,11 @@ This project aims to to be the singular OpenSource application for your home med
 - [x] Protect organization routes 
 - [-] Changeing organization should leave you on the same page but with updated params  
 - [-] Leave organization
-- [ ] Change the name of your organization
+- [x] Change the name of your organization
+- [ ] List all members of an organization
+- [ ] Kick a user from an organization. 
+- [ ] Switch role of a user. 
 - [ ] Invite users to an organization
-- [ ] List users within your organization
 - [ ] Manage users within your organization
 - [ ] Send emails.
 - [ ] Password reset.
