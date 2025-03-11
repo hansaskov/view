@@ -52,10 +52,9 @@ function Page() {
 				},
 
 				fetchOptions: {
-					onSuccess: async () => {
+					onSuccess: async ({ data }) => {
 						toast("Organization updated", {
-							description:
-								"Your organization settings have been updated successfully.",
+							description: `New name is ${data.name}`,
 						})
 
 						// Invalidate queries to refresh data

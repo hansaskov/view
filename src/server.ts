@@ -1,7 +1,6 @@
 import { Elysia } from "elysia"
 import { publicApi } from "./api/public"
 import betterAuthView from "./auth/auth-view"
-import { auth } from "./auth/better-auth"
 import client from "./index.html" with { type: "embed" }
 import { logger } from "./utils/logger"
 
