@@ -10,8 +10,8 @@ import {
 import { useDataTable } from "@/hooks/use-data-table"
 import { protectedOrganizationAdminRoute } from "@/layout/ProtectedOrganizationAdminRoutes"
 import { createRoute } from "@tanstack/react-router"
-import { userColumns } from "./columns"
 import { useMemo } from "react"
+import { userColumns } from "./columns"
 
 export const orgUsersRoute = createRoute({
 	getParentRoute: () => protectedOrganizationAdminRoute,

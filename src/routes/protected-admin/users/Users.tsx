@@ -61,7 +61,7 @@ function Page() {
 					<CardTitle>User Management</CardTitle>
 					<CardDescription>
 						View, modify permissions, restrict access, or remove accounts from
-						the platform
+						the platform.
 					</CardDescription>
 				</CardHeader>
 				<CardContent>

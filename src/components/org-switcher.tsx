@@ -41,7 +41,7 @@ export function TeamSwitcher() {
 							{activeOrganization ? (
 								<>
 									<Avatar className="flex aspect-square size-8 items-center justify-center rounded-lg ">
-										<AvatarImage src={activeOrganization.logo} />
+										<AvatarImage src={activeOrganization.logo ?? undefined} />
 										<AvatarFallback>
 											{activeOrganization.name.slice(0, 2)}
 										</AvatarFallback>

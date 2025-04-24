@@ -1,3 +1,4 @@
+import type { Role } from "@/collections/user/types"
 import { DataTableColumnHeader } from "@/components/data-table/data-table-column-header"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
@@ -163,7 +164,7 @@ export const userColumns: ColumnDef<UserWithRole>[] = [
 
 			const setRoleMutation = useMutation({
 				mutationKey: ["setRole", user.id],
-				mutationFn: (role: string) =>
+				mutationFn: (role: Role["role"]) =>
 					authClient.admin.setRole({ userId: user.id, role }),
 				onSuccess: invalidateUsers,
 			})
