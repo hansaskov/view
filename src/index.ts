@@ -1,4 +1,4 @@
-import { server } from "./server.ts"
+import { server } from "./server.tsx"
 import { environment } from "./utils/environment.ts"
 import { logger } from "./utils/logger.ts"
 const signals = ["SIGINT", "SIGTERM"]

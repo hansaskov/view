@@ -14,8 +14,6 @@ export const table = sqliteTable(TABLE_NAME, {
 	expiresAt: integer({ mode: "timestamp" }).notNull(),
 	ipAddress: text(),
 	userAgent: text(),
-	impersonatedBy: text(),
-	activeOrganizationId: text(),
 	createdAt: integer({ mode: "timestamp" })
 		.notNull()
 		.$defaultFn(() => new Date()),
