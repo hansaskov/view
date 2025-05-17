@@ -24,9 +24,7 @@ export const protectedOrganizationAdminRoute = createRoute({
 function Layout() {
 	return (
 		<>
-			<div className="px-10 py-6">
-				<Outlet />
-			</div>
+			<Outlet />
 		</>
 	)
 }
