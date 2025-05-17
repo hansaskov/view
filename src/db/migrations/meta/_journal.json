@@ -1,48 +1,55 @@
 {
-	"version": "7",
-	"dialect": "sqlite",
-	"entries": [
-		{
-			"idx": 0,
-			"version": "6",
-			"when": 1738926595999,
-			"tag": "0000_steady_madripoor",
-			"breakpoints": true
-		},
-		{
-			"idx": 1,
-			"version": "6",
-			"when": 1738947289058,
-			"tag": "0001_rainy_longshot",
-			"breakpoints": true
-		},
-		{
-			"idx": 2,
-			"version": "6",
-			"when": 1738950042761,
-			"tag": "0002_amazing_ultimatum",
-			"breakpoints": true
-		},
-		{
-			"idx": 3,
-			"version": "6",
-			"when": 1740517126404,
-			"tag": "0003_bright_adam_destine",
-			"breakpoints": true
-		},
-		{
-			"idx": 4,
-			"version": "6",
-			"when": 1740787918844,
-			"tag": "0004_daffy_metal_master",
-			"breakpoints": true
-		},
-		{
-			"idx": 5,
-			"version": "6",
-			"when": 1740987908185,
-			"tag": "0005_worthless_toad_men",
-			"breakpoints": true
-		}
-	]
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1738926595999,
+      "tag": "0000_steady_madripoor",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1738947289058,
+      "tag": "0001_rainy_longshot",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1738950042761,
+      "tag": "0002_amazing_ultimatum",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1740517126404,
+      "tag": "0003_bright_adam_destine",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1740787918844,
+      "tag": "0004_daffy_metal_master",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1740987908185,
+      "tag": "0005_worthless_toad_men",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1747515867916,
+      "tag": "0006_busy_gauntlet",
+      "breakpoints": true
+    }
+  ]
 }
