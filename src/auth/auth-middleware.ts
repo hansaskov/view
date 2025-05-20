@@ -2,7 +2,7 @@ import { memberAc } from "better-auth/plugins/organization/access"
 import Elysia from "elysia"
 import { auth } from "./better-auth"
 
-export const AuthMiddleware = new Elysia({ name: "better-auth" }).macro({
+export const betterAuth = new Elysia({ name: "better-auth" }).macro({
 	auth: {
 		async resolve({ status, request }) {
 			const session = await auth.api.getSession(request)
