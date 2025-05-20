@@ -4,11 +4,11 @@ import { auth } from "./better-auth"
 
 export const AuthMiddleware = new Elysia({ name: "better-auth" }).macro({
 	auth: {
-		async resolve({ error, request }) {
+		async resolve({ status, request }) {
 			const session = await auth.api.getSession(request)
 
 			if (!session) {
-				return error(401)
+				return status(401)
 			}
 
 			return {
@@ -19,11 +19,11 @@ export const AuthMiddleware = new Elysia({ name: "better-auth" }).macro({
 	},
 
 	admin: {
-		async resolve({ error, request }) {
+		async resolve({ status, request }) {
 			const session = await auth.api.getSession(request)
 
 			if (!session || session.user.role !== "admin") {
-				return error(401)
+				return status(401)
 			}
 
 			return {
@@ -33,7 +33,7 @@ export const AuthMiddleware = new Elysia({ name: "better-auth" }).macro({
 		},
 	},
 	organization: {
-		async resolve({ error, request }) {
+		async resolve({ status, request }) {
 			// First define the promises to handle
 			const getSession = auth.api.getSession(request)
 			const getPermission = auth.api.hasPermission({
@@ -52,7 +52,7 @@ export const AuthMiddleware = new Elysia({ name: "better-auth" }).macro({
 
 			// Check if that they are authorized to perform this action
 			if (!session || !permission.success) {
-				return error(401)
+				return status(401)
 			}
 
 			// Return values to context

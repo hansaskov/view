@@ -34,7 +34,8 @@ export const auth = betterAuth({
 
 		async sendResetPassword(data, request) {
 			// Send an email to the user with a link to reset their password
-			logger.error("EMAIL NOT IMPLEMENTED")
+			logger.warn(`sending fake reset email to ${data.user}`)
+			logger.warn(`Click the lick below to reset your password \n ${data.url}`)
 		},
 	},
 
