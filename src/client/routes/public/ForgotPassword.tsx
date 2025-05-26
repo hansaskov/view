@@ -1,12 +1,12 @@
-import { publicRoutes } from "@client/layout/PublicRoutes";
-import { createRoute } from "@tanstack/react-router";
+import { publicRoutes } from "@client/layout/PublicRoutes"
+import { createRoute } from "@tanstack/react-router"
 
 export const forgotPasswordRoute = createRoute({
-  getParentRoute: () => publicRoutes,
-  component: Page,
-  path: "/forgot-password",
-});
+	getParentRoute: () => publicRoutes,
+	component: Page,
+	path: "/forgot-password",
+})
 
 function Page() {
-  return <>Whoops, looks like you've forgotten your password</>;
+	return <>Whoops, looks like you've forgotten your password</>
 }

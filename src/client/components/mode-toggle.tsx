@@ -1,26 +1,26 @@
-import { useTheme } from "@client/components/theme-provider";
-import { Switch } from "@client/components/ui/switch";
-import { Moon, Sun } from "lucide-react";
+import { useTheme } from "@client/components/theme-provider"
+import { Switch } from "@client/components/ui/switch"
+import { Moon, Sun } from "lucide-react"
 
 export function ModeToggle() {
-  const { theme, setTheme } = useTheme();
-  const isDarkMode = theme === "dark";
+	const { theme, setTheme } = useTheme()
+	const isDarkMode = theme === "dark"
 
-  const toggleTheme = () => {
-    setTheme(isDarkMode ? "light" : "dark");
-  };
+	const toggleTheme = () => {
+		setTheme(isDarkMode ? "light" : "dark")
+	}
 
-  return (
-    <div className="flex items-center gap-2 px-2">
-      <Sun
-        size={16}
-        className={`${isDarkMode ? "text-muted-foreground" : "text-amber-500"}`}
-      />
-      <Switch onCheckedChange={toggleTheme} />
-      <Moon
-        size={16}
-        className={`${isDarkMode ? "text-primary" : "text-muted-foreground"}`}
-      />
-    </div>
-  );
+	return (
+		<div className="flex items-center gap-2 px-2">
+			<Sun
+				size={16}
+				className={`${isDarkMode ? "text-muted-foreground" : "text-amber-500"}`}
+			/>
+			<Switch onCheckedChange={toggleTheme} />
+			<Moon
+				size={16}
+				className={`${isDarkMode ? "text-primary" : "text-muted-foreground"}`}
+			/>
+		</div>
+	)
 }
