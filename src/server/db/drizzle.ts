@@ -4,6 +4,6 @@ import { sqlite } from "./sqlite"
 
 const db = drizzle(sqlite, { casing: "snake_case" })
 
-migrate(db, { migrationsFolder: "./src/db/migrations" })
+migrate(db, { migrationsFolder: "./src/server/db/migrations" })
 
 export { db }
