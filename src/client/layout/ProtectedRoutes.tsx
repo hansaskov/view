@@ -19,7 +19,7 @@ import { rootRoute } from "./RootRoutes"
 const qOptions = queryOptions({
 	queryKey: ["sessions"],
 	queryFn: () => authClient.getSession(),
-	staleTime: 5 * 1000, // 5 seconds
+	staleTime: 10 * 1000, // 10 seconds
 	retryDelay: 1 * 1000, // 1 second
 	retry: 1,
 })

@@ -40,7 +40,8 @@ This project aims to to be the singular OpenSource application for your home med
 - [-] Changeing organization should leave you on the same page but with updated params  
 - [-] Leave organization
 - [x] Change the name of your organization
-- [ ] List all members of an organization
+- [ ] Refactor to Use slug of organization in URL like "organization/slug/"
+- [ ] Fix issue with rerendering organization. 
 - [ ] Kick a user from an organization. 
 - [ ] Switch role of a user. 
 - [ ] Invite users to an organization
