@@ -23,13 +23,12 @@ import {
 } from "@client/components/ui/dialog"
 import { Input } from "@client/components/ui/input"
 import { Label } from "@client/components/ui/label"
-import { Separator } from "@client/components/ui/separator"
 import { protectedOrganizationAdminRoute } from "@client/layout/ProtectedOrganizationAdminRoutes"
 import { authClient } from "@client/lib/auth-client"
-import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { createRoute, redirect, useRouter } from "@tanstack/react-router"
+import { useMutation } from "@tanstack/react-query"
+import { createRoute } from "@tanstack/react-router"
 import { AlertCircle, Loader2 } from "lucide-react"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { toast } from "sonner"
 
 export const orgSettingsRoute = createRoute({
@@ -161,7 +160,6 @@ function Page() {
 							<div className="grid gap-2">
 								<Label htmlFor="orgName">Organization Name</Label>
 								<Input
-									id="orgName"
 									value={orgName}
 									onChange={e => setOrgName(e.target.value)}
 									disabled={updateMutation.isPending}
@@ -176,7 +174,6 @@ function Page() {
 										example.com/org/
 									</span>
 									<Input
-										id="orgSlug"
 										value={orgSlug}
 										onChange={e => setOrgSlug(e.target.value)}
 										disabled={updateMutation.isPending}

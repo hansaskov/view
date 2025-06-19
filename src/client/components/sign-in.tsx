@@ -53,7 +53,7 @@ export function SignIn() {
 									},
 								},
 							})
-						} catch (error) {
+						} catch (_error) {
 							setLoading(false)
 						}
 					}}
@@ -61,7 +61,6 @@ export function SignIn() {
 					<div className="grid gap-2">
 						<Label htmlFor="email">Email</Label>
 						<Input
-							id="email"
 							type="email"
 							placeholder="m@example.com"
 							required
@@ -84,7 +83,6 @@ export function SignIn() {
 						</div>
 
 						<Input
-							id="password"
 							type="password"
 							placeholder="password"
 							autoComplete="password"
@@ -95,7 +93,6 @@ export function SignIn() {
 
 					<div className="flex items-center gap-2">
 						<Checkbox
-							id="remember"
 							onClick={() => {
 								setRememberMe(!rememberMe)
 							}}
@@ -125,7 +122,7 @@ export function SignIn() {
 									provider: "google",
 									callbackURL: redirectURL ?? "/movies",
 								})
-							} catch (error) {
+							} catch (_error) {
 								setLoading(false)
 							}
 						}}
@@ -166,7 +163,7 @@ export function SignIn() {
 									provider: "microsoft",
 									callbackURL: redirectURL ?? "/movies",
 								})
-							} catch (error) {
+							} catch (_error) {
 								setLoading(false)
 							}
 						}}
@@ -195,7 +192,7 @@ export function SignIn() {
 									provider: "github",
 									callbackURL: redirectURL ?? "/movies",
 								})
-							} catch (error) {
+							} catch (_error) {
 								setLoading(false)
 							}
 						}}

@@ -1,7 +1,6 @@
-import Elysia from "elysia"
-
-import manifest from "@/../public/manifest.json"
 import { file } from "bun"
+import Elysia from "elysia"
+import manifest from "@/../public/manifest.json"
 
 export const publicApi = new Elysia({ prefix: "/public" })
 	// Static routes

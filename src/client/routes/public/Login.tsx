@@ -1,6 +1,6 @@
 import { SignIn } from "@client/components/sign-in"
 import { publicRoutes } from "@client/layout/PublicRoutes"
-import { createRoute, redirect } from "@tanstack/react-router"
+import { createRoute } from "@tanstack/react-router"
 import { type } from "arktype"
 
 const searchSchema = type({

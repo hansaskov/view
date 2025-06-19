@@ -1,4 +1,4 @@
-import { Outlet, createRoute, redirect } from "@tanstack/react-router"
+import { createRoute, Outlet, redirect } from "@tanstack/react-router"
 import { protectedRoute } from "./ProtectedRoutes"
 
 export const protectedAdminRoute = createRoute({

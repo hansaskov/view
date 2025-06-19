@@ -38,7 +38,7 @@ export const auth = betterAuth({
 	emailAndPassword: {
 		enabled: true,
 
-		async sendResetPassword(data, request) {
+		async sendResetPassword(data) {
 			// Send an email to the user with a link to reset their password
 			logger.warn(`sending fake reset email to ${data.user}`)
 			logger.warn(`Click the lick below to reset your password \n ${data.url}`)

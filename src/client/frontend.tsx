@@ -5,7 +5,7 @@ import * as ProtectedOrganizationRoutes from "@client/routes/protected-organizat
 import * as ProtectedOrganizationAdminRoutes from "@client/routes/protected-organization-admin"
 import * as PublicRoutes from "@client/routes/public"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
-import { RouterProvider, createRouter } from "@tanstack/react-router"
+import { createRouter, RouterProvider } from "@tanstack/react-router"
 import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
 import { ThemeProvider } from "./components/theme-provider"
@@ -66,8 +66,8 @@ if (!elem) {
 if (import.meta.hot) {
 	// With hot module reloading, `import.meta.hot.data` is persisted.
 	// @ts-ignore: Vite-specific HMR API
-	// biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
-	const root = (import.meta.hot.data.root ??= createRoot(elem))
+	import.meta.hot.data.root ??= createRoot(elem)
+	const root = import.meta.hot.data.root
 	root.render(app)
 } else {
 	// The hot module reloading API is not available in production.

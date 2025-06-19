@@ -69,7 +69,7 @@ export function CreateOrganizationDialog() {
 	})
 
 	async function onSubmit(values: OrganizationFormValues) {
-		const { data, error } = await authClient.organization.create(
+		await authClient.organization.create(
 			{
 				name: values.name,
 				slug: values.slug,

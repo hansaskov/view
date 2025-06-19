@@ -1,7 +1,7 @@
 import { ModeToggle } from "@client/components/mode-toggle"
 import { Button } from "@client/components/ui/button"
 import { Separator } from "@client/components/ui/separator"
-import { Link, Outlet, createRoute } from "@tanstack/react-router"
+import { createRoute, Link, Outlet } from "@tanstack/react-router"
 import { BookOpen, ExternalLink, Github } from "lucide-react"
 import { rootRoute } from "./RootRoutes"
 

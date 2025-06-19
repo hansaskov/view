@@ -3,27 +3,22 @@ import {
 	Card,
 	CardContent,
 	CardDescription,
-	CardFooter,
 	CardHeader,
 	CardTitle,
 } from "@client/components/ui/card"
 import { Progress } from "@client/components/ui/progress"
 import { Separator } from "@client/components/ui/separator"
 import { publicRoutes } from "@client/layout/PublicRoutes"
-import { Link, createRoute } from "@tanstack/react-router"
+import { createRoute, Link } from "@tanstack/react-router"
 import {
 	BookOpen,
 	CheckCircle,
 	Clock,
 	Code,
 	Database,
-	ExternalLink,
 	FolderOpen,
-	Github,
 	Monitor,
-	Moon,
 	Server,
-	Sun,
 } from "lucide-react"
 
 export const homepageRoute = createRoute({

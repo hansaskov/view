@@ -1,9 +1,9 @@
 import { Toaster } from "@client/components/ui/sonner"
 import type { QueryClient } from "@tanstack/react-query"
 import {
+	createRootRouteWithContext,
 	Link,
 	Outlet,
-	createRootRouteWithContext,
 } from "@tanstack/react-router"
 export const rootRoute = createRootRouteWithContext<{
 	queryClient: QueryClient

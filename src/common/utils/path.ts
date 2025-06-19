@@ -4,7 +4,10 @@ import { join } from "node:path"
 export function getSqlitePath({
 	dataPath,
 	sqlite,
-}: { dataPath: string; sqlite: string }) {
+}: {
+	dataPath: string
+	sqlite: string
+}) {
 	if (sqlite === ":memory:") {
 		return ":memory:"
 	}

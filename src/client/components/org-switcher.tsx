@@ -107,13 +107,11 @@ export function TeamSwitcher() {
 						))}
 						<DropdownMenuSeparator />
 						<CreateOrganizationDialog />
-						{activeOrganization ? (
+						{activeOrganization && (
 							<LeaveOrganizationDialog
 								organizationId={activeOrganization.id}
 								organizationName={activeOrganization.name}
 							/>
-						) : (
-							<></>
 						)}
 					</DropdownMenuContent>
 				</DropdownMenu>

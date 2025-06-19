@@ -13,7 +13,7 @@ import {
 } from "@client/components/ui/sidebar"
 import { authClient } from "@client/lib/auth-client"
 import { queryOptions } from "@tanstack/react-query"
-import { Outlet, createRoute, redirect } from "@tanstack/react-router"
+import { createRoute, Outlet, redirect } from "@tanstack/react-router"
 import { rootRoute } from "./RootRoutes"
 
 const qOptions = queryOptions({

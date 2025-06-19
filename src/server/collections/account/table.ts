@@ -1,5 +1,4 @@
 import { randomUUID } from "node:crypto"
-import { sql } from "drizzle-orm"
 import { index, integer, sqliteTable, text } from "drizzle-orm/sqlite-core"
 import { table as users } from "../user/table" // drizzle-kit still does not support esm
 

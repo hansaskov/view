@@ -1,16 +1,14 @@
 import {
 	type ColumnDef,
 	type ColumnFiltersState,
-	type Table as DataTableType,
-	type SortingState,
-	type Table,
-	type VisibilityState,
-	flexRender,
 	getCoreRowModel,
 	getFilteredRowModel,
 	getPaginationRowModel,
 	getSortedRowModel,
+	type SortingState,
+	type Table,
 	useReactTable,
+	type VisibilityState,
 } from "@tanstack/react-table"
 
 import React from "react"

@@ -1,7 +1,5 @@
 "use client"
 
-import type * as React from "react"
-
 import {
 	Sidebar,
 	SidebarContent,
@@ -9,6 +7,7 @@ import {
 	SidebarHeader,
 	SidebarRail,
 } from "@client/components/ui/sidebar"
+import type * as React from "react"
 import { NavMain } from "./nav-main"
 import { NavUser } from "./nav-user"
 import { TeamSwitcher } from "./org-switcher"

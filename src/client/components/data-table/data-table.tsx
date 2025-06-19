@@ -1,7 +1,5 @@
 "use client"
 
-import { type Table, flexRender } from "@tanstack/react-table"
-
 import {
 	Table as RootTable,
 	TableBody,
@@ -10,6 +8,7 @@ import {
 	TableHeader,
 	TableRow,
 } from "@client/components/ui/table"
+import { flexRender, type Table } from "@tanstack/react-table"
 
 import { DataTablePagination } from "./data-table-pagination"
 

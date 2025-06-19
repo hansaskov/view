@@ -1,6 +1,7 @@
 import { environment } from "./common/utils/environment.ts"
 import { logger } from "./common/utils/logger.ts"
 import { server } from "./server.ts"
+
 const signals = ["SIGINT", "SIGTERM"]
 
 for (const signal of signals) {

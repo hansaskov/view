@@ -27,16 +27,9 @@ import { Tooltip } from "@radix-ui/react-tooltip"
 import type { Role } from "@server/collections/user/types"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import type { ColumnDef } from "@tanstack/react-table"
-import type { Prettify } from "better-auth"
 import type { UserWithRole } from "better-auth/plugins"
 import { CheckCircle, MoreHorizontal, XCircle } from "lucide-react"
 import { useCallback } from "react"
-
-// This type is used to define the shape of our data.
-// You can use a Zod schema here if you want.
-
-type UserWithRole1 = Prettify<UserWithRole>
-//^?
 
 export const userColumns: ColumnDef<UserWithRole>[] = [
 	{

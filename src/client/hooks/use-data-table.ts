@@ -1,14 +1,14 @@
 import {
 	type ColumnDef,
 	type ColumnFiltersState,
-	type PaginationState,
-	type SortingState,
-	type VisibilityState,
 	getCoreRowModel,
 	getFilteredRowModel,
 	getPaginationRowModel,
 	getSortedRowModel,
+	type PaginationState,
+	type SortingState,
 	useReactTable,
+	type VisibilityState,
 } from "@tanstack/react-table"
 import { useState } from "react"
 

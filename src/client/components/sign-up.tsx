@@ -79,7 +79,6 @@ export function SignUp() {
 						<div className="grid gap-2">
 							<Label htmlFor="first-name">First name</Label>
 							<Input
-								id="first-name"
 								placeholder="Max"
 								required
 								onChange={e => {
@@ -91,7 +90,6 @@ export function SignUp() {
 						<div className="grid gap-2">
 							<Label htmlFor="last-name">Last name</Label>
 							<Input
-								id="last-name"
 								placeholder="Robinson"
 								required
 								onChange={e => {
@@ -104,7 +102,6 @@ export function SignUp() {
 					<div className="grid gap-2">
 						<Label htmlFor="email">Email</Label>
 						<Input
-							id="email"
 							type="email"
 							placeholder="m@example.com"
 							required
@@ -117,7 +114,6 @@ export function SignUp() {
 					<div className="grid gap-2">
 						<Label htmlFor="password">Password</Label>
 						<Input
-							id="password"
 							type="password"
 							value={password}
 							onChange={e => setPassword(e.target.value)}
@@ -128,7 +124,6 @@ export function SignUp() {
 					<div className="grid gap-2">
 						<Label htmlFor="password">Confirm Password</Label>
 						<Input
-							id="password_confirmation"
 							type="password"
 							value={passwordConfirmation}
 							onChange={e => setPasswordConfirmation(e.target.value)}
@@ -150,7 +145,6 @@ export function SignUp() {
 							)}
 							<div className="flex items-center gap-2 w-full">
 								<Input
-									id="image"
 									type="file"
 									accept="image/*"
 									onChange={handleImageChange}

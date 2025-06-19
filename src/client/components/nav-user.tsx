@@ -102,18 +102,16 @@ export function NavUser() {
 						<DropdownMenuSeparator />
 						<DropdownMenuItem
 							onClick={async () => {
-								try {
-									await authClient.signOut({
-										fetchOptions: {
-											onSuccess: () => {
-												navigate({ to: "/login" })
-											},
-											onError: ctx => {
-												toast.error(ctx.error.message)
-											},
+								await authClient.signOut({
+									fetchOptions: {
+										onSuccess: () => {
+											navigate({ to: "/login" })
 										},
-									})
-								} catch (error) {}
+										onError: ctx => {
+											toast.error(ctx.error.message)
+										},
+									},
+								})
 							}}
 						>
 							<LogOut />
