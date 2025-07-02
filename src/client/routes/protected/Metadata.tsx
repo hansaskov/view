@@ -8,5 +8,5 @@ export const metadataRoute = createRoute({
 })
 
 function Page() {
-	return <>Metadata</>
+	return "Metadata"
 }

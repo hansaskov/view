@@ -1,26 +1,26 @@
 {
-  "compilerOptions": {
-    "jsx": "react-jsx",
-    "lib": ["ESNext", "DOM"],
-    "module": "ESNext",
-    "target": "ESNext",
-    "allowJs": true,
-    // Bundler mode
-    "moduleResolution": "bundler",
-    "esModuleInterop": true,
-    "strict": true,
-    "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true,
-    "noEmit": true,
-    "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": true,
-    "noUncheckedIndexedAccess": true,
-    "baseUrl": ".",
-    "paths": {
-      "@client/*": ["./src/client/*"],
-      "@server/*": ["./src/server/*"],
-      "@common/*": ["./src/common/*"]
-    }
-  },
-  "include": ["**/*.ts", "**/*.tsx"]
+	"compilerOptions": {
+		"jsx": "react-jsx",
+		"lib": ["ESNext", "DOM"],
+		"module": "ESNext",
+		"target": "ESNext",
+		"allowJs": true,
+		// Bundler mode
+		"moduleResolution": "bundler",
+		"esModuleInterop": true,
+		"strict": true,
+		"skipLibCheck": true,
+		"allowSyntheticDefaultImports": true,
+		"noEmit": true,
+		"allowImportingTsExtensions": true,
+		"verbatimModuleSyntax": true,
+		"noUncheckedIndexedAccess": true,
+		"baseUrl": ".",
+		"paths": {
+			"@client/*": ["./src/client/*"],
+			"@server/*": ["./src/server/*"],
+			"@common/*": ["./src/common/*"]
+		}
+	},
+	"include": ["**/*.ts", "**/*.tsx"]
 }

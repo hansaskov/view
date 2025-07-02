@@ -8,5 +8,5 @@ export const filesRoute = createRoute({
 })
 
 function Page() {
-	return <>Files</>
+	return "Files"
 }

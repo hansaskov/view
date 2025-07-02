@@ -8,5 +8,5 @@ export const moviesRoute = createRoute({
 })
 
 function Page() {
-	return <>Movies</>
+	return "Movies"
 }

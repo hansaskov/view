@@ -35,9 +35,5 @@ export const protectedOrganizationRoute = createRoute({
 })
 
 function Layout() {
-	return (
-		<>
-			<Outlet />
-		</>
-	)
+	return <Outlet />
 }

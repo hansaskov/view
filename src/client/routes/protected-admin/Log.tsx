@@ -8,5 +8,5 @@ export const logRoute = createRoute({
 })
 
 function Page() {
-	return <>Logs</>
+	return "Logs"
 }

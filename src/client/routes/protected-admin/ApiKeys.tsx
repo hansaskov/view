@@ -8,5 +8,5 @@ export const apiKeysRoute = createRoute({
 })
 
 function Page() {
-	return <>API Keys</>
+	return "API Keys"
 }

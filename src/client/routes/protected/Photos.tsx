@@ -8,5 +8,5 @@ export const photosRoute = createRoute({
 })
 
 function Page() {
-	return <>Photos</>
+	return "Photos"
 }

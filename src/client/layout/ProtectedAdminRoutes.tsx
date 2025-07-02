@@ -15,9 +15,5 @@ export const protectedAdminRoute = createRoute({
 })
 
 function Layout() {
-	return (
-		<>
-			<Outlet />
-		</>
-	)
+	return <Outlet />
 }

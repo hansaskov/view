@@ -27,8 +27,9 @@ export function TeamSwitcher() {
 	const params = useParams({ strict: false })
 
 	if (!organizations) {
-		return <></>
+		return
 	}
+
 	return (
 		<SidebarMenu>
 			<SidebarMenuItem>

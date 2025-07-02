@@ -8,5 +8,5 @@ export const orgSharingRoute = createRoute({
 })
 
 function Page() {
-	return <>Sharing</>
+	return "Sharing"
 }

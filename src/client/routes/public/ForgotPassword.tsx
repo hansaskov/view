@@ -8,5 +8,5 @@ export const forgotPasswordRoute = createRoute({
 })
 
 function Page() {
-	return <>Whoops, looks like you've forgotten your password</>
+	return "Whoops, looks like you've forgotten your password"
 }

@@ -8,5 +8,5 @@ export const settingsRoute = createRoute({
 })
 
 function Page() {
-	return <>Settings</>
+	return "Settings"
 }

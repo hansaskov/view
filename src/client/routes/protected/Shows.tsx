@@ -8,5 +8,5 @@ export const showsRoute = createRoute({
 })
 
 function Page() {
-	return <>Shows</>
+	return "Shows"
 }

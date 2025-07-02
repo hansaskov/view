@@ -8,10 +8,5 @@ export const docsRoute = createRoute({
 })
 
 function Page() {
-	return (
-		<>
-			Welcome to the documentation page! Unfortunately. It is empty and a work
-			in progress
-		</>
-	)
+	return "Welcome to the documentation page! Unfortunately. It is empty and a workin progress"
 }

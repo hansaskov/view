@@ -33,7 +33,7 @@ FROM gcr.io/distroless/base
 
 # Copy application artifacts from build stage:
 COPY --from=build /app/server server
-COPY --from=build /app/src/server/db/migrations src/server/db/migrations
+COPY --from=build /app/src/server/migrations src/server/migrations
 
 # Start Server
 EXPOSE 3000/tcp
