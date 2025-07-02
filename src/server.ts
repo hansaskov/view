@@ -1,19 +1,12 @@
 import client from "@client/index.html" with { type: "embed" }
-import { publicApi } from "@server/api/public"
+import { api } from "@server/api"
 import { Elysia } from "elysia"
-import { logger } from "./common/utils/logger"
 import { auth } from "./server/auth/better-auth"
 
-const api = new Elysia({ prefix: "/api" })
-	.onBeforeHandle(({ path }) => logger.info(path))
-	.get("/names", ["Jack", "Jill", "Jones"])
-
-export const server = new Elysia({
-	aot: true,
-})
+export const server = new Elysia()
 	.mount(auth.handler)
 	.use(api)
-	.use(publicApi)
+
 	// Public Routes
 	.get("/", client)
 	.get("/docs", client)
